@@ -27,8 +27,6 @@ namespace TransafeRx
             {
                 Exception ex = Server.GetLastError().InnerException;
 
-                SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
-                MailAddress from = new MailAddress("tachl_support@musc.edu");
                 MailMessage message = new MailMessage(from, to);
                 message.Body = "An error has occured in TransafeRx.  Please see below for details.\r\n";
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -23,8 +23,6 @@ namespace ProcessDailyEpicFiles
             try
             {
                 connectionString = ConfigurationManager.ConnectionStrings["TransafeRx"].ConnectionString;
-                string filePath = ConfigurationManager.AppSettings["EpicFilePath"];
-                string archiveFilePath = ConfigurationManager.AppSettings["EpicArchiveFilePath"];
                 string[] files = Directory.GetFiles(filePath);
                 
 
@@ -78,9 +76,6 @@ namespace ProcessDailyEpicFiles
             }
             catch(Exception ex)
             {
-                SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
-                MailAddress from = new MailAddress("tachl_support@musc.edu");
-                MailAddress to = new MailAddress(ConfigurationManager.AppSettings["SupportEmail"]);
                 MailMessage message = new MailMessage(from, to);
                 message.IsBodyHtml = false;
                 message.Body = "ProcName = " + procName + Environment.NewLine + " File = " + currentFile + Environment.NewLine + " Error = " + ex.Message;
