@@ -1,0 +1,2883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TransafeRxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdherenceProtocol">
+    <Key>
+      <PropertyRef Name="smaID" />
+    </Key>
+    <Property Name="smaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhaseID" Type="int" Nullable="false" />
+    <Property Name="PhaseNext" Type="int" />
+    <Property Name="AdhScoreLL" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="DaysBtMsgs" Type="int" />
+    <Property Name="ReqDaysAdh" Type="int" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="PhaseRelapse" Type="int" />
+    <Property Name="DaysToAvg" Type="int" />
+    <Property Name="Relapse" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Admissions">
+    <Key>
+      <PropertyRef Name="AdmissionId" />
+    </Key>
+    <Property Name="AdmissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AdmissionTypeId" Type="int" Nullable="false" />
+    <Property Name="AdmissionDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApplicationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RootItemId" Type="int" Nullable="false" />
+    <Property Name="ThemeId" Type="int" />
+    <Property Name="HeaderTitle" Type="nvarchar" MaxLength="80" />
+    <Property Name="HeaderImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="HeaderFontId" Type="int" />
+    <Property Name="HeaderFontSize" Type="int" />
+    <Property Name="HeaderColor" Type="nchar" MaxLength="7" />
+    <Property Name="HeaderBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="HeaderBackgroundImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="HeaderBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="HeaderBackgroundImageAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="HeaderEffect" Type="int" />
+    <Property Name="BackButtonType" Type="int" />
+    <Property Name="BackButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="BackButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="BackButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="MenuButtonType" Type="int" />
+    <Property Name="MenuButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="MenuButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="MenuButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="SelectedMenuButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedMenuButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedMenuButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="BodyFontId" Type="int" />
+    <Property Name="BodyFontSize" Type="int" />
+    <Property Name="BodyFontSizeLg" Type="int" />
+    <Property Name="BodyFontSizeSm" Type="int" />
+    <Property Name="BodyColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBodyColor" Type="nchar" MaxLength="7" />
+    <Property Name="BodyBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="BodyBackgroundPortraitImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="BodyBackgroundLandscapeImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="BodyBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="BodyBackgroundImageAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="SelectedBodyBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBodyBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="BodySeparatorType" Type="int" />
+    <Property Name="BodySeparatorColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="LabelColor" Type="nchar" MaxLength="7" />
+    <Property Name="ValidationColor" Type="nchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="AppVersions">
+    <Key>
+      <PropertyRef Name="AppVersionId" />
+    </Key>
+    <Property Name="AppVersionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppId" Type="int" Nullable="false" />
+    <Property Name="Version" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsAvailable" Type="bit" />
+    <Property Name="CreatedDateUTC" Type="date" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BloodGlucoseMeasurements">
+    <Key>
+      <PropertyRef Name="BloodGlucoseId" />
+    </Key>
+    <Property Name="BloodGlucoseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="GlucoseLevel" Type="int" Nullable="false" />
+    <Property Name="ReadingDate" Type="datetime" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="TransferDateUTC" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BloodPressureMeasurements">
+    <Key>
+      <PropertyRef Name="BloodPressureId" />
+    </Key>
+    <Property Name="BloodPressureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Systolic" Type="int" Nullable="false" />
+    <Property Name="Diastolic" Type="int" Nullable="false" />
+    <Property Name="Pulse" Type="int" Nullable="false" />
+    <Property Name="ReadingDate" Type="datetime" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="128" />
+    <Property Name="TransferDateUTC" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Weekday" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Secret" Type="varchar(max)" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="RefreshTokenLifeTime" Type="int" Nullable="false" />
+    <Property Name="AllowedOrigin" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeviceTokens">
+    <Key>
+      <PropertyRef Name="TokenId" />
+    </Key>
+    <Property Name="TokenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="TokenTypeId" Type="int" Nullable="false" />
+    <Property Name="Token" Type="nvarchar" MaxLength="512" Nullable="false" />
+    <Property Name="TokenCreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Fonts">
+    <Key>
+      <PropertyRef Name="FontId" />
+    </Key>
+    <Property Name="FontId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemLogic">
+    <Key>
+      <PropertyRef Name="LogicId" />
+    </Key>
+    <Property Name="LogicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="ActionId" Type="int" Nullable="false" />
+    <Property Name="Expression" Type="nvarchar(max)" />
+    <Property Name="Components" Type="nvarchar(max)" />
+    <Property Name="TargetItemId" Type="int" />
+    <Property Name="SelectedMenuItemId" Type="int" />
+  </EntityType>
+  <EntityType Name="ItemLogicActions">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemLogicEvents">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemNavigation">
+    <Key>
+      <PropertyRef Name="NavigationId" />
+    </Key>
+    <Property Name="NavigationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemId" Type="int" />
+    <Property Name="TemplateId" Type="int" Nullable="false" />
+    <Property Name="TargetItemId" Type="int" Nullable="false" />
+    <Property Name="SelectedMenuItemId" Type="int" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="NavigationTypeId" Type="int" />
+    <Property Name="TransitionTypeId" Type="int" />
+    <Property Name="LogicExpression" Type="nvarchar(max)" />
+    <Property Name="LogicComponents" Type="nvarchar(max)" />
+    <Property Name="ButtonText" Type="nvarchar" MaxLength="50" />
+    <Property Name="ButtonImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="ButtonFontId" Type="int" />
+    <Property Name="ButtonFontSize" Type="int" />
+    <Property Name="ButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundColor" Type="nchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="ItemNavigationTemplates">
+    <Key>
+      <PropertyRef Name="TemplateId" />
+    </Key>
+    <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemNavigationTypes">
+    <Key>
+      <PropertyRef Name="NavigationTypeId" />
+    </Key>
+    <Property Name="NavigationTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Items">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TemplateId" Type="int" Nullable="false" />
+    <Property Name="HeaderTitle" Type="nvarchar" MaxLength="80" />
+    <Property Name="HeaderImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="HeaderFontId" Type="int" />
+    <Property Name="HeaderFontSize" Type="int" />
+    <Property Name="HeaderColor" Type="nchar" MaxLength="7" />
+    <Property Name="HeaderBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="HeaderBackgroundImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="HeaderBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="HeaderBackgroundImageAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="HeaderEffect" Type="int" />
+    <Property Name="BackButtonType" Type="int" />
+    <Property Name="BackButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="BackButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="BackButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="BodyFontId" Type="int" />
+    <Property Name="BodyFontSize" Type="int" />
+    <Property Name="BodyColor" Type="nchar" MaxLength="7" />
+    <Property Name="BodyBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="BodyBackgroundPortraitImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="BodyBackgroundLandscapeImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="BodyBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="BodyBackgroundImageAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="CreatedDateUTC" Type="datetime" />
+    <Property Name="CreatedById" Type="nvarchar" MaxLength="128" />
+    <Property Name="LastUpdatedDateUTC" Type="datetime" />
+    <Property Name="LastUpdatedById" Type="nvarchar" MaxLength="128" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemTemplates">
+    <Key>
+      <PropertyRef Name="TemplateId" />
+    </Key>
+    <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemToolbarItems">
+    <Key>
+      <PropertyRef Name="ToolbarItemId" />
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Name="ToolbarItemId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="LogicExpression" Type="nvarchar(max)" />
+    <Property Name="LogicComponents" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ItemTransitionTypes">
+    <Key>
+      <PropertyRef Name="TransitionTypeId" />
+    </Key>
+    <Property Name="TransitionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemTypes">
+    <Key>
+      <PropertyRef Name="ItemTypeId" />
+    </Key>
+    <Property Name="ItemTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LogicBuilder" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginInformation">
+    <Key>
+      <PropertyRef Name="LoginInformationId" />
+    </Key>
+    <Property Name="LoginInformationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="DateDTO" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="OS" Type="nvarchar" MaxLength="50" />
+    <Property Name="Network" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneType" Type="nvarchar" MaxLength="50" />
+    <Property Name="AppVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateCTZ" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LU_AdmissionTypes">
+    <Key>
+      <PropertyRef Name="AdmissionTypeId" />
+    </Key>
+    <Property Name="AdmissionTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LU_AppId">
+    <Key>
+      <PropertyRef Name="AppId" />
+    </Key>
+    <Property Name="AppId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LU_DeviceTokenTypes">
+    <Key>
+      <PropertyRef Name="TokenTypeId" />
+    </Key>
+    <Property Name="TokenTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LU_MedicationActivityTypes">
+    <Key>
+      <PropertyRef Name="ActivityTypeId" />
+    </Key>
+    <Property Name="ActivityTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LU_NotificationType">
+    <Key>
+      <PropertyRef Name="NotificationTypeId" />
+    </Key>
+    <Property Name="NotificationTypeId" Type="int" Nullable="false" />
+    <Property Name="NotificationType" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MedicationActivity">
+    <Key>
+      <PropertyRef Name="ActivityId" />
+    </Key>
+    <Property Name="ActivityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityTypeId" Type="int" Nullable="false" />
+    <Property Name="ActivityUTC" Type="datetime" Nullable="false" />
+    <Property Name="ActivityDTO" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="ActivityCTZ" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" />
+    <Property Name="ScheduleDate" Type="datetime" />
+    <Property Name="UserMedicationId" Type="int" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MessageTypeID" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="LangID" Type="int" Nullable="false" />
+    <Property Name="ResponseReq" Type="bit" />
+    <Property Name="UploadFilePath" Type="nvarchar(max)" />
+    <Property Name="SendTypeID" Type="int" />
+    <Property Name="PersonalizedNodeId" Type="int" />
+    <Property Name="PersonalizedGroupNodeId" Type="int" />
+    <Property Name="InactiveDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" />
+    <Property Name="Error" Type="nvarchar" MaxLength="512" />
+    <Property Name="DateSentUTC" Type="datetime" Nullable="false" />
+    <Property Name="TokenId" Type="int" />
+  </EntityType>
+  <EntityType Name="NotificationMessages">
+    <Key>
+      <PropertyRef Name="NotificationMessageId" />
+    </Key>
+    <Property Name="NotificationMessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="NotificationTypeId" Type="int" Nullable="false" />
+    <Property Name="NotificationDateUTC" Type="datetime" Nullable="false" />
+    <Property Name="TokenId" Type="int" />
+  </EntityType>
+  <EntityType Name="NotificationPreferences">
+    <Key>
+      <PropertyRef Name="NotificationPreferencesId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="NotificationTypeId" Type="int" />
+    <Property Name="NotificationDays" Type="int" />
+    <Property Name="NotificationPreferencesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientMedPhase">
+    <Key>
+      <PropertyRef Name="sphID" />
+    </Key>
+    <Property Name="sphID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="phaseID" Type="int" Nullable="false" />
+    <Property Name="adhDate" Type="date" />
+    <Property Name="adherence" Type="bit" Nullable="false" />
+    <Property Name="phaseDayCount" Type="int" />
+    <Property Name="dateEntered" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientMessageSent">
+    <Key>
+      <PropertyRef Name="PatMessID" />
+    </Key>
+    <Property Name="PatMessID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+    <Property Name="MessageID" Type="int" />
+    <Property Name="SentTime" Type="datetime" />
+    <Property Name="MessageText" Type="varchar(max)" />
+    <Property Name="TwilioMessageSID" Type="nvarchar" MaxLength="150" />
+    <Property Name="TwilioMsgError" Type="nvarchar" MaxLength="300" />
+    <Property Name="TwilioMessageStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="ScheduleId" Type="int" />
+  </EntityType>
+  <EntityType Name="PatientSMSMessages">
+    <Key>
+      <PropertyRef Name="SMSMessageId" />
+    </Key>
+    <Property Name="SMSMessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="DateSent" Type="datetime" Nullable="false" />
+    <Property Name="SentBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PhoneNumberUsed" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalizedMessageType">
+    <Key>
+      <PropertyRef Name="MessageTypeID" />
+    </Key>
+    <Property Name="MessageTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MessageTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MessageTypeDesc" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="PersonalizedSurveyMessageHistory">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="MessageId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="MessageId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhoneNumbers">
+    <Key>
+      <PropertyRef Name="PhoneNumberId" />
+    </Key>
+    <Property Name="PhoneNumberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+    <Property Name="Transplant" Type="nvarchar" MaxLength="10" />
+    <Property Name="Study" Type="nvarchar" MaxLength="10" />
+    <Property Name="Pharmacy" Type="nvarchar" MaxLength="10" />
+    <Property Name="Refill" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Placeholders">
+    <Key>
+      <PropertyRef Name="PlaceholderId" />
+    </Key>
+    <Property Name="PlaceholderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UniqueName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsStatic" Type="bit" Nullable="false" />
+    <Property Name="ReplacementText" Type="nvarchar" MaxLength="500" />
+    <Property Name="Expression" Type="nvarchar(max)" />
+    <Property Name="Components" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="RefreshTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ClientId" Type="varchar" MaxLength="50" />
+    <Property Name="IssuedUtc" Type="datetime" />
+    <Property Name="ExpiresUtc" Type="datetime" />
+    <Property Name="ProtectedTicket" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Schedules">
+    <Key>
+      <PropertyRef Name="ScheduleId" />
+    </Key>
+    <Property Name="ScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserMedicationId" Type="int" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="DayOfWeek" Type="tinyint" Nullable="false" />
+    <Property Name="ScheduleTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="GroupId" Type="int" />
+    <Property Name="Inactive" Type="bit" Nullable="false" />
+    <Property Name="Dosage" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDateUTC" Type="datetime" />
+    <Property Name="CreatedDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreatedDateCTZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDateUTC" Type="datetime" />
+    <Property Name="UpdatedDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdatedDateCTZ" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TransafeRx.dbo.Scores' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Scores">
+    <Key>
+      <PropertyRef Name="Score" />
+    </Key>
+    <Property Name="Score" Type="numeric" Precision="2" Scale="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TransafeRx.dbo.Sequencer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Sequencer">
+    <Key>
+      <PropertyRef Name="SeqID" />
+    </Key>
+    <Property Name="SeqID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubID" Type="int" />
+  </EntityType>
+  <EntityType Name="SurveyAnswers">
+    <Key>
+      <PropertyRef Name="AnswerId" />
+    </Key>
+    <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="OptionId" Type="int" />
+    <Property Name="OptionValue" Type="int" />
+    <Property Name="AnswerText" Type="nvarchar(max)" />
+    <Property Name="AnswerDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="AnswerDateUTC" Type="datetime" Nullable="false" />
+    <Property Name="AnswerDateCTZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="Rank" Type="int" />
+  </EntityType>
+  <EntityType Name="SurveyOptionGroups">
+    <Key>
+      <PropertyRef Name="OptionGroupId" />
+    </Key>
+    <Property Name="OptionGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyOptions">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+    <Property Name="OptionText" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OptionValue" Type="int" />
+    <Property Name="OptionOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyQuestionCategories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CategoryOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyQuestionLogic">
+    <Key>
+      <PropertyRef Name="LogicId" />
+    </Key>
+    <Property Name="LogicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="ActionId" Type="int" Nullable="false" />
+    <Property Name="ActionQuestionId" Type="int" />
+    <Property Name="Expression" Type="nvarchar(max)" />
+    <Property Name="Components" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SurveyQuestionLogicActions">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyQuestionOptions">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="OptionText" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="OptionImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="OptionValue" Type="int" Nullable="false" />
+    <Property Name="OptionOrder" Type="int" Nullable="false" />
+    <Property Name="ShapeType" Type="int" />
+    <Property Name="Coordinates" Type="nvarchar" MaxLength="500" />
+    <Property Name="Feedback" Type="nvarchar(max)" />
+    <Property Name="FeedbackColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="FeedbackFontId" Type="int" />
+    <Property Name="FeedbackFontSize" Type="int" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SurveyQuestions">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+    </Key>
+    <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="QuestionTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="QuestionText" Type="nvarchar" MaxLength="1000" />
+    <Property Name="QuestionImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="QuestionOrder" Type="int" Nullable="false" />
+    <Property Name="OptionImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="Body" Type="nvarchar(max)" />
+    <Property Name="Feedback" Type="nvarchar(max)" />
+    <Property Name="Required" Type="bit" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="ListColor" Type="nchar" MaxLength="7" />
+    <Property Name="ListBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ListBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="ListFontId" Type="int" />
+    <Property Name="ListFontSize" Type="int" />
+    <Property Name="SelectedColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="SelectedFontId" Type="int" />
+    <Property Name="SelectedFontSize" Type="int" />
+    <Property Name="SelectedIconType" Type="int" />
+    <Property Name="SelectedIconColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="ButtonFontId" Type="int" />
+    <Property Name="ButtonFontSize" Type="int" />
+    <Property Name="ProgressBarColor" Type="nchar" MaxLength="7" />
+    <Property Name="ProgressBarBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ProgressBarBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="TooltipColor" Type="nchar" MaxLength="7" />
+    <Property Name="TooltipBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="TooltipBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="TooltipFontId" Type="int" />
+    <Property Name="TooltipFontSize" Type="int" />
+    <Property Name="FeedbackColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="FeedbackFontId" Type="int" />
+    <Property Name="FeedbackFontSize" Type="int" />
+    <Property Name="SeparatorColor" Type="nchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="SurveyQuestionTypes">
+    <Key>
+      <PropertyRef Name="QuestionTypeId" />
+    </Key>
+    <Property Name="QuestionTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HasOptions" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Surveys">
+    <Key>
+      <PropertyRef Name="SurveyId" />
+    </Key>
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="AllowRestart" Type="bit" Nullable="false" />
+    <Property Name="AutoSubmit" Type="bit" Nullable="false" />
+    <Property Name="ListColor" Type="nchar" MaxLength="7" />
+    <Property Name="ListBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ListBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="ListFontId" Type="int" />
+    <Property Name="ListFontSize" Type="int" />
+    <Property Name="SelectedColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="SelectedBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="SelectedFontId" Type="int" />
+    <Property Name="SelectedFontSize" Type="int" />
+    <Property Name="SelectedIconType" Type="int" />
+    <Property Name="SelectedIconColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ButtonBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="ButtonFontId" Type="int" />
+    <Property Name="ButtonFontSize" Type="int" />
+    <Property Name="ProgressBarColor" Type="nchar" MaxLength="7" />
+    <Property Name="ProgressBarBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="ProgressBarBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="TooltipColor" Type="nchar" MaxLength="7" />
+    <Property Name="TooltipBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="TooltipBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="TooltipFontId" Type="int" />
+    <Property Name="TooltipFontSize" Type="int" />
+    <Property Name="FeedbackColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundColor" Type="nchar" MaxLength="7" />
+    <Property Name="FeedbackBackgroundAlpha" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="FeedbackFontId" Type="int" />
+    <Property Name="FeedbackFontSize" Type="int" />
+    <Property Name="SeparatorColor" Type="nchar" MaxLength="7" />
+  </EntityType>
+  <EntityType Name="SurveySessions">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="StartDateUTC" Type="datetime" Nullable="false" />
+    <Property Name="StartDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="StartDateCTZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="EndDateUTC" Type="datetime" />
+    <Property Name="EndDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="EndDateCTZ" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Themes">
+    <Key>
+      <PropertyRef Name="ThemeId" />
+    </Key>
+    <Property Name="ThemeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PrimaryColor" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="SecondaryColor" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="TertiaryColor" Type="nchar" MaxLength="7" Nullable="false" />
+    <Property Name="FontId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ToolbarItemActions">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ToolbarItemNavigation">
+    <Key>
+      <PropertyRef Name="NavigationId" />
+    </Key>
+    <Property Name="NavigationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ToolbarItemId" Type="int" Nullable="false" />
+    <Property Name="TargetItemId" Type="int" Nullable="false" />
+    <Property Name="SelectedMenuItemId" Type="int" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="NavigationTypeId" Type="int" Nullable="false" />
+    <Property Name="TransitionTypeId" Type="int" Nullable="false" />
+    <Property Name="LogicExpression" Type="nvarchar(max)" />
+    <Property Name="LogicComponents" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ToolbarItems">
+    <Key>
+      <PropertyRef Name="ToolbarItemId" />
+    </Key>
+    <Property Name="ToolbarItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ActionId" Type="int" Nullable="false" />
+    <Property Name="ItemText" Type="nvarchar" MaxLength="20" />
+    <Property Name="Icon" Type="nvarchar" MaxLength="200" />
+    <Property Name="TargetItemId" Type="int" />
+    <Property Name="SelectedMenuItemId" Type="int" />
+    <Property Name="NavigationTypeId" Type="int" />
+    <Property Name="TransitionTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="UserMedications">
+    <Key>
+      <PropertyRef Name="UserMedicationId" />
+    </Key>
+    <Property Name="UserMedicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="DrugName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Instructions" Type="nvarchar" MaxLength="225" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="Route" Type="nvarchar" MaxLength="128" />
+    <Property Name="Quantity" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDateUTC" Type="datetime" />
+    <Property Name="CreatedDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="CreatedDateCTZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdatedDateUTC" Type="datetime" />
+    <Property Name="UpdatedDateDTO" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdatedDateCTZ" Type="nvarchar" MaxLength="50" />
+    <Property Name="InActive" Type="bit" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="GPI" Type="varchar" MaxLength="25" />
+    <Property Name="Frequency" Type="nvarchar" MaxLength="100" />
+    <Property Name="dosage" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="SubjectNbr" Type="int" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="APNSToken" Type="nvarchar" MaxLength="64" />
+    <Property Name="GCMToken" Type="nvarchar" MaxLength="512" />
+    <Property Name="MRN" Type="nvarchar" MaxLength="25" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="DateMedsReviewed" Type="datetime" />
+    <Property Name="PersonalizedSurveyTaken" Type="bit" />
+    <Property Name="ResearchNumber" Type="int" />
+    <Property Name="DisableMotivationalMessages" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Intervals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+    <Property Name="UtcStart" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="UtcEnd" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="LocalStart" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="LocalEnd" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="OffsetMinutes" Type="smallint" Nullable="false" />
+    <Property Name="Abbreviation" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Links">
+    <Key>
+      <PropertyRef Name="LinkZoneId" />
+    </Key>
+    <Property Name="LinkZoneId" Type="int" Nullable="false" />
+    <Property Name="CanonicalZoneId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VersionInfo">
+    <Key>
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="Version" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Loaded" Type="datetimeoffset" Precision="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ApplicationSettings_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="ApplicationSettings" Type="Self.ApplicationSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ApplicationSettings">
+        <PropertyRef Name="RootItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationSettings_Themes">
+    <End Role="Themes" Type="Self.Themes" Multiplicity="0..1" />
+    <End Role="ApplicationSettings" Type="Self.ApplicationSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Themes">
+        <PropertyRef Name="ThemeId" />
+      </Principal>
+      <Dependent Role="ApplicationSettings">
+        <PropertyRef Name="ThemeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloodGlucoseMeasurements_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="BloodGlucoseMeasurements" Type="Self.BloodGlucoseMeasurements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BloodGlucoseMeasurements">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloodPressureMeasurements_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="BloodPressureMeasurements" Type="Self.BloodPressureMeasurements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BloodPressureMeasurements">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceTokens_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="DeviceTokens" Type="Self.DeviceTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceTokens">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeviceTokens_LU_DeviceTokenTypes">
+    <End Role="LU_DeviceTokenTypes" Type="Self.LU_DeviceTokenTypes" Multiplicity="1" />
+    <End Role="DeviceTokens" Type="Self.DeviceTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_DeviceTokenTypes">
+        <PropertyRef Name="TokenTypeId" />
+      </Principal>
+      <Dependent Role="DeviceTokens">
+        <PropertyRef Name="TokenTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Intervals_Zones">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+    <End Role="Intervals" Type="Self.Intervals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Intervals">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLogic_ItemActions">
+    <End Role="ItemLogicActions" Type="Self.ItemLogicActions" Multiplicity="1" />
+    <End Role="ItemLogic" Type="Self.ItemLogic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemLogicActions">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="ItemLogic">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLogic_ItemEvents">
+    <End Role="ItemLogicEvents" Type="Self.ItemLogicEvents" Multiplicity="1" />
+    <End Role="ItemLogic" Type="Self.ItemLogic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemLogicEvents">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="ItemLogic">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLogic_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="ItemLogic" Type="Self.ItemLogic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemLogic">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemLogic_TargetItem">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="ItemLogic" Type="Self.ItemLogic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemLogic">
+        <PropertyRef Name="TargetItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemNavigation_ItemNavigationTemplates">
+    <End Role="ItemNavigationTemplates" Type="Self.ItemNavigationTemplates" Multiplicity="1" />
+    <End Role="ItemNavigation" Type="Self.ItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemNavigationTemplates">
+        <PropertyRef Name="TemplateId" />
+      </Principal>
+      <Dependent Role="ItemNavigation">
+        <PropertyRef Name="TemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemNavigation_ItemNavigationTypes">
+    <End Role="ItemNavigationTypes" Type="Self.ItemNavigationTypes" Multiplicity="0..1" />
+    <End Role="ItemNavigation" Type="Self.ItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemNavigationTypes">
+        <PropertyRef Name="NavigationTypeId" />
+      </Principal>
+      <Dependent Role="ItemNavigation">
+        <PropertyRef Name="NavigationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemNavigation_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="ItemNavigation" Type="Self.ItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemNavigation">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemNavigation_ItemTransitionTypes">
+    <End Role="ItemTransitionTypes" Type="Self.ItemTransitionTypes" Multiplicity="0..1" />
+    <End Role="ItemNavigation" Type="Self.ItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTransitionTypes">
+        <PropertyRef Name="TransitionTypeId" />
+      </Principal>
+      <Dependent Role="ItemNavigation">
+        <PropertyRef Name="TransitionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemNavigation_TargetItems">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="ItemNavigation" Type="Self.ItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemNavigation">
+        <PropertyRef Name="TargetItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_ItemTemplates">
+    <End Role="ItemTemplates" Type="Self.ItemTemplates" Multiplicity="1" />
+    <End Role="Items" Type="Self.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTemplates">
+        <PropertyRef Name="TemplateId" />
+      </Principal>
+      <Dependent Role="Items">
+        <PropertyRef Name="TemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_ItemTypes">
+    <End Role="ItemTypes" Type="Self.ItemTypes" Multiplicity="1" />
+    <End Role="Items" Type="Self.Items" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTypes">
+        <PropertyRef Name="ItemTypeId" />
+      </Principal>
+      <Dependent Role="Items">
+        <PropertyRef Name="ItemTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemTemplates_ItemTypes">
+    <End Role="ItemTypes" Type="Self.ItemTypes" Multiplicity="1" />
+    <End Role="ItemTemplates" Type="Self.ItemTemplates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTypes">
+        <PropertyRef Name="ItemTypeId" />
+      </Principal>
+      <Dependent Role="ItemTemplates">
+        <PropertyRef Name="ItemTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemToolbarItems_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="ItemToolbarItems" Type="Self.ItemToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ItemToolbarItems">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItemToolbarItems_ToolbarItems">
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="1" />
+    <End Role="ItemToolbarItems" Type="Self.ItemToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToolbarItems">
+        <PropertyRef Name="ToolbarItemId" />
+      </Principal>
+      <Dependent Role="ItemToolbarItems">
+        <PropertyRef Name="ToolbarItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Links_Zones_1">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+    <End Role="Links" Type="Self.Links" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Links">
+        <PropertyRef Name="LinkZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Links_Zones_2">
+    <End Role="Zones" Type="Self.Zones" Multiplicity="1" />
+    <End Role="Links" Type="Self.Links" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zones">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Links">
+        <PropertyRef Name="CanonicalZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginInformation_Users">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="LoginInformation" Type="Self.LoginInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LoginInformation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicationActivity_LU_MedicationActivityTypes">
+    <End Role="LU_MedicationActivityTypes" Type="Self.LU_MedicationActivityTypes" Multiplicity="1" />
+    <End Role="MedicationActivity" Type="Self.MedicationActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_MedicationActivityTypes">
+        <PropertyRef Name="ActivityTypeId" />
+      </Principal>
+      <Dependent Role="MedicationActivity">
+        <PropertyRef Name="ActivityTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicationActivity_Schedules">
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="0..1" />
+    <End Role="MedicationActivity" Type="Self.MedicationActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedules">
+        <PropertyRef Name="ScheduleId" />
+      </Principal>
+      <Dependent Role="MedicationActivity">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicationActivity_UserMedications">
+    <End Role="UserMedications" Type="Self.UserMedications" Multiplicity="0..1" />
+    <End Role="MedicationActivity" Type="Self.MedicationActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMedications">
+        <PropertyRef Name="UserMedicationId" />
+      </Principal>
+      <Dependent Role="MedicationActivity">
+        <PropertyRef Name="UserMedicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicationActivity_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="MedicationActivity" Type="Self.MedicationActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MedicationActivity">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_DeviceTokens">
+    <End Role="DeviceTokens" Type="Self.DeviceTokens" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTokens">
+        <PropertyRef Name="TokenId" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="TokenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Messages_Schedules">
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="0..1" />
+    <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedules">
+        <PropertyRef Name="ScheduleId" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationMessages_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="NotificationMessages" Type="Self.NotificationMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NotificationMessages">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationMessages_DeviceTokens">
+    <End Role="DeviceTokens" Type="Self.DeviceTokens" Multiplicity="0..1" />
+    <End Role="NotificationMessages" Type="Self.NotificationMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeviceTokens">
+        <PropertyRef Name="TokenId" />
+      </Principal>
+      <Dependent Role="NotificationMessages">
+        <PropertyRef Name="TokenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationMessages_LU_NotificationType">
+    <End Role="LU_NotificationType" Type="Self.LU_NotificationType" Multiplicity="1" />
+    <End Role="NotificationMessages" Type="Self.NotificationMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_NotificationType">
+        <PropertyRef Name="NotificationTypeId" />
+      </Principal>
+      <Dependent Role="NotificationMessages">
+        <PropertyRef Name="NotificationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationPreferences_LU_NotificationType">
+    <End Role="LU_NotificationType" Type="Self.LU_NotificationType" Multiplicity="0..1" />
+    <End Role="NotificationPreferences" Type="Self.NotificationPreferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_NotificationType">
+        <PropertyRef Name="NotificationTypeId" />
+      </Principal>
+      <Dependent Role="NotificationPreferences">
+        <PropertyRef Name="NotificationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotificationPreferences_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="NotificationPreferences" Type="Self.NotificationPreferences" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="NotificationPreferences">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientMessageSent_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="0..1" />
+    <End Role="PatientMessageSent" Type="Self.PatientMessageSent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="MessageID" />
+      </Principal>
+      <Dependent Role="PatientMessageSent">
+        <PropertyRef Name="MessageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientMessageSent_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PatientMessageSent" Type="Self.PatientMessageSent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="PatientMessageSent">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSMSMessages_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="PatientSMSMessages" Type="Self.PatientSMSMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatientSMSMessages">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalizedSurveyMessageHistory_Message">
+    <End Role="Message" Type="Self.Message" Multiplicity="1" />
+    <End Role="PersonalizedSurveyMessageHistory" Type="Self.PersonalizedSurveyMessageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Message">
+        <PropertyRef Name="MessageID" />
+      </Principal>
+      <Dependent Role="PersonalizedSurveyMessageHistory">
+        <PropertyRef Name="MessageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalizedSurveyMessageHistory_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="PersonalizedSurveyMessageHistory" Type="Self.PersonalizedSurveyMessageHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="PersonalizedSurveyMessageHistory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RefreshTokens_Clients">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+    <End Role="RefreshTokens" Type="Self.RefreshTokens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RefreshTokens">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedules_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedules_UserMedications">
+    <End Role="UserMedications" Type="Self.UserMedications" Multiplicity="0..1" />
+    <End Role="Schedules" Type="Self.Schedules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserMedications">
+        <PropertyRef Name="UserMedicationId" />
+      </Principal>
+      <Dependent Role="Schedules">
+        <PropertyRef Name="UserMedicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_SurveyQuestionCategories">
+    <End Role="SurveyQuestionCategories" Type="Self.SurveyQuestionCategories" Multiplicity="0..1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestionCategories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_SurveyQuestionOptions">
+    <End Role="SurveyQuestionOptions" Type="Self.SurveyQuestionOptions" Multiplicity="0..1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestionOptions">
+        <PropertyRef Name="OptionId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="OptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_SurveyQuestions">
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_Surveys">
+    <End Role="Surveys" Type="Self.Surveys" Multiplicity="1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Surveys">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_SurveySessions">
+    <End Role="SurveySessions" Type="Self.SurveySessions" Multiplicity="1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveySessions">
+        <PropertyRef Name="SessionId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="SessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyAnswers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="SurveyAnswers" Type="Self.SurveyAnswers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="SurveyAnswers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyOptions_SurveyOptionGroups">
+    <End Role="SurveyOptionGroups" Type="Self.SurveyOptionGroups" Multiplicity="1" />
+    <End Role="SurveyOptions" Type="Self.SurveyOptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyOptionGroups">
+        <PropertyRef Name="OptionGroupId" />
+      </Principal>
+      <Dependent Role="SurveyOptions">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestionCategories_SurveyQuestions">
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="1" />
+    <End Role="SurveyQuestionCategories" Type="Self.SurveyQuestionCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="SurveyQuestionCategories">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestionLogic_SurveyQuestionLogicActions">
+    <End Role="SurveyQuestionLogicActions" Type="Self.SurveyQuestionLogicActions" Multiplicity="1" />
+    <End Role="SurveyQuestionLogic" Type="Self.SurveyQuestionLogic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestionLogicActions">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="SurveyQuestionLogic">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestionOptions_Fonts">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestionOptions" Type="Self.SurveyQuestionOptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestionOptions">
+        <PropertyRef Name="FeedbackFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestionOptions_SurveyQuestionCategories">
+    <End Role="SurveyQuestionCategories" Type="Self.SurveyQuestionCategories" Multiplicity="0..1" />
+    <End Role="SurveyQuestionOptions" Type="Self.SurveyQuestionOptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestionCategories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="SurveyQuestionOptions">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestionOptions_SurveyQuestions">
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="1" />
+    <End Role="SurveyQuestionOptions" Type="Self.SurveyQuestionOptions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestions">
+        <PropertyRef Name="QuestionId" />
+      </Principal>
+      <Dependent Role="SurveyQuestionOptions">
+        <PropertyRef Name="QuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_ButtonFont">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="ButtonFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_FeedbackFont">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="FeedbackFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_ListFont">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="ListFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_SelectedFont">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="SelectedFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_SurveyQuestionTypes">
+    <End Role="SurveyQuestionTypes" Type="Self.SurveyQuestionTypes" Multiplicity="1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyQuestionTypes">
+        <PropertyRef Name="QuestionTypeId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="QuestionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_Surveys">
+    <End Role="Surveys" Type="Self.Surveys" Multiplicity="1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Surveys">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveyQuestions_TooltipFont">
+    <End Role="Fonts" Type="Self.Fonts" Multiplicity="0..1" />
+    <End Role="SurveyQuestions" Type="Self.SurveyQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fonts">
+        <PropertyRef Name="FontId" />
+      </Principal>
+      <Dependent Role="SurveyQuestions">
+        <PropertyRef Name="TooltipFontId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surveys_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="Surveys" Type="Self.Surveys" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="Surveys">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveySessions_Surveys">
+    <End Role="Surveys" Type="Self.Surveys" Multiplicity="1" />
+    <End Role="SurveySessions" Type="Self.SurveySessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Surveys">
+        <PropertyRef Name="SurveyId" />
+      </Principal>
+      <Dependent Role="SurveySessions">
+        <PropertyRef Name="SurveyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SurveySessions_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="SurveySessions" Type="Self.SurveySessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="SurveySessions">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItemNavigation_ItemNavigationTypes">
+    <End Role="ItemNavigationTypes" Type="Self.ItemNavigationTypes" Multiplicity="1" />
+    <End Role="ToolbarItemNavigation" Type="Self.ToolbarItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemNavigationTypes">
+        <PropertyRef Name="NavigationTypeId" />
+      </Principal>
+      <Dependent Role="ToolbarItemNavigation">
+        <PropertyRef Name="NavigationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItemNavigation_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="1" />
+    <End Role="ToolbarItemNavigation" Type="Self.ToolbarItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ToolbarItemNavigation">
+        <PropertyRef Name="TargetItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItemNavigation_ItemTransitionTypes">
+    <End Role="ItemTransitionTypes" Type="Self.ItemTransitionTypes" Multiplicity="1" />
+    <End Role="ToolbarItemNavigation" Type="Self.ToolbarItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTransitionTypes">
+        <PropertyRef Name="TransitionTypeId" />
+      </Principal>
+      <Dependent Role="ToolbarItemNavigation">
+        <PropertyRef Name="TransitionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItemNavigation_ToolbarItems">
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="1" />
+    <End Role="ToolbarItemNavigation" Type="Self.ToolbarItemNavigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToolbarItems">
+        <PropertyRef Name="ToolbarItemId" />
+      </Principal>
+      <Dependent Role="ToolbarItemNavigation">
+        <PropertyRef Name="ToolbarItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItems_ItemNavigationTypes">
+    <End Role="ItemNavigationTypes" Type="Self.ItemNavigationTypes" Multiplicity="0..1" />
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemNavigationTypes">
+        <PropertyRef Name="NavigationTypeId" />
+      </Principal>
+      <Dependent Role="ToolbarItems">
+        <PropertyRef Name="NavigationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItems_Items">
+    <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Items">
+        <PropertyRef Name="ItemId" />
+      </Principal>
+      <Dependent Role="ToolbarItems">
+        <PropertyRef Name="TargetItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItems_ItemTransitionTypes">
+    <End Role="ItemTransitionTypes" Type="Self.ItemTransitionTypes" Multiplicity="0..1" />
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTransitionTypes">
+        <PropertyRef Name="TransitionTypeId" />
+      </Principal>
+      <Dependent Role="ToolbarItems">
+        <PropertyRef Name="TransitionTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToolbarItems_ToolbarItemActions">
+    <End Role="ToolbarItemActions" Type="Self.ToolbarItemActions" Multiplicity="1" />
+    <End Role="ToolbarItems" Type="Self.ToolbarItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ToolbarItemActions">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="ToolbarItems">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserMedications_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="UserMedications" Type="Self.UserMedications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserMedications">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="AddAdmission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="admissionTypeId" Type="int" Mode="In" />
+    <Parameter Name="admissionDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="AddBloodGlucoseMeasurement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="glucoseLevel" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="model" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddBloodGlucoseMeasurementModified" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="glucoseLevel" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="modifiedBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddBloodPressureMeasurement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="systolic" Type="int" Mode="In" />
+    <Parameter Name="diastolic" Type="int" Mode="In" />
+    <Parameter Name="pulse" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="model" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddBloodPressureMeasurementWithModified" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="systolic" Type="int" Mode="In" />
+    <Parameter Name="diastolic" Type="int" Mode="In" />
+    <Parameter Name="pulse" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="modifiedBy" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddDeviceToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="tokenTypeId" Type="int" Mode="In" />
+    <Parameter Name="token" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddLoginInformation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="dateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="longitude" Type="nvarchar" Mode="In" />
+    <Parameter Name="latitude" Type="nvarchar" Mode="In" />
+    <Parameter Name="model" Type="nvarchar" Mode="In" />
+    <Parameter Name="os" Type="nvarchar" Mode="In" />
+    <Parameter Name="network" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneType" Type="nvarchar" Mode="In" />
+    <Parameter Name="appVersion" Type="nvarchar" Mode="In" />
+    <Parameter Name="dateCTZ" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddMedicationActivity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddMedicationActivityAdmitted" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="scheduleId" Type="int" Mode="In" />
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="scheduleId" Type="int" Mode="In" />
+    <Parameter Name="error" Type="nvarchar" Mode="In" />
+    <Parameter Name="tokenId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddNotificationMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="notificationTypeId" Type="int" Mode="In" />
+    <Parameter Name="tokenId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddPatientSMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="message" Type="nvarchar" Mode="In" />
+    <Parameter Name="sentBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumberUser" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddPersonalizedSurveyMessageHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patientId" Type="varchar" Mode="In" />
+    <Parameter Name="messageId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddSurveyAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+    <Parameter Name="questionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddSurveySession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateAllUserMedicationFromEPIC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AddUpdateItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+    <Parameter Name="itemTypeId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="templateId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateMedicationSchedules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="groupId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="AddUpdateNotificationPreference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="notificationPreferenceId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="notificationTypeId" Type="int" Mode="In" />
+    <Parameter Name="notificationDays" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurvey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="allowRestart" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyOption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="optionText" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyOptionGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyQuestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="questionTypeId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+    <Parameter Name="questionText" Type="nvarchar" Mode="In" />
+    <Parameter Name="questionImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="optionImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="body" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="required" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyQuestionCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoryId" Type="int" Mode="In" />
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyQuestionLogic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="logicId" Type="int" Mode="In" />
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="actionId" Type="int" Mode="In" />
+    <Parameter Name="actionQuestionId" Type="int" Mode="In" />
+    <Parameter Name="expression" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="components" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveyQuestionOption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="categoryId" Type="int" Mode="In" />
+    <Parameter Name="optionText" Type="nvarchar" Mode="In" />
+    <Parameter Name="optionImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="optionValue" Type="int" Mode="In" />
+    <Parameter Name="shapeType" Type="int" Mode="In" />
+    <Parameter Name="coordinates" Type="nvarchar" Mode="In" />
+    <Parameter Name="feedback" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateSurveySession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDateUTC" Type="datetime" Mode="In" />
+    <Parameter Name="startDateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="startDateCTZ" Type="nvarchar" Mode="In" />
+    <Parameter Name="endDateUTC" Type="datetime" Mode="In" />
+    <Parameter Name="endDateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="endDateCTZ" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleId" Type="nvarchar" Mode="In" />
+    <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="dob" Type="date" Mode="In" />
+    <Parameter Name="address" Type="nvarchar" Mode="In" />
+    <Parameter Name="apnsToken" Type="nvarchar" Mode="In" />
+    <Parameter Name="gcmToken" Type="nvarchar" Mode="In" />
+    <Parameter Name="mrn" Type="nvarchar" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="isActive" Type="bit" Mode="In" />
+    <Parameter Name="researchNumber" Type="int" Mode="In" />
+    <Parameter Name="disableMotivationalMessages" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateUserMedication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="route" Type="nvarchar" Mode="In" />
+    <Parameter Name="instructions" Type="nvarchar" Mode="In" />
+    <Parameter Name="daysSupply" Type="int" Mode="In" />
+    <Parameter Name="createdDateUTC" Type="datetime" Mode="In" />
+    <Parameter Name="createdDateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="createdDateCTZ" Type="nvarchar" Mode="In" />
+    <Parameter Name="updatedDateUTC" Type="datetime" Mode="In" />
+    <Parameter Name="updatedDateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="updatedDateCTZ" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateUserMedicationFromCurrentMed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="alphaId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateUserMedicationFromEPIC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MRN" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUpdateUserMedicationFromMedDispensed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="alphaId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="AddUserMedicationScheduleFromEpic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="BulkInsertAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BulkInsertCurrentMeds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BulkInsertMedsDispensed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BulkInsertRosterClarity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="BulkInsertTacrolimus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fileName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CalculateMedChanges" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="CalculateRefillAdherence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mrn" Type="varchar" Mode="In" />
+    <Parameter Name="score" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="CalculateRiskLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="ChangeSurveyOptionOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+    <Parameter Name="order" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ChangeSurveyQuestionCategoryOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="categoryId" Type="int" Mode="In" />
+    <Parameter Name="order" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ChangeSurveyQuestionOptionOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+    <Parameter Name="order" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ChangeSurveyQuestionOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="order" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CompleteSurveySession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+    <Parameter Name="endDateUTC" Type="datetime" Mode="In" />
+    <Parameter Name="endDateDTO" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="endDateCTZ" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CreateDailyUserMedicationSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+    <Parameter Name="time" Type="time" Mode="In" />
+  </Function>
+  <Function Name="Daily_CalculateCTL_SCN_MedAdh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Daily_CalculateInterventionMedAdhAndMsgs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DeleteBPReading" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bloodPressureId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteGlucoseReading" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="glucoseId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteMedicationSchedules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="DeleteSurvey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSurveyOption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSurveyOptionGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSurveyQuestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSurveyQuestionLogic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="logicId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteSurveyQuestionOption" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="optionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DeleteUserMedication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="EditBloodPressureMeasurement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="bloodPressureId" Type="int" Mode="In" />
+    <Parameter Name="systolic" Type="int" Mode="In" />
+    <Parameter Name="diastolic" Type="int" Mode="In" />
+    <Parameter Name="pulse" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="EditGlucoseMeasurement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="glucoseId" Type="int" Mode="In" />
+    <Parameter Name="glucoseLevel" Type="int" Mode="In" />
+    <Parameter Name="readingDate" Type="datetime" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="EmailTardyBPPatients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="EvaluateDynamicPlaceholder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="expression" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="EvaluateLogic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="expression" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="fnBuildDateTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+    <Parameter Name="date" Type="date" Mode="In" />
+    <Parameter Name="time" Type="time" Mode="In" />
+  </Function>
+  <Function Name="fnGetDailyNbrSchedules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="p_userID" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_medDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="fnGetMedDateTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+    <Parameter Name="v_date" Type="datetime" Mode="In" />
+    <Parameter Name="medTime" Type="time" Mode="In" />
+  </Function>
+  <Function Name="fnGetScheduleDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="startDate" Type="date" Mode="In" />
+    <Parameter Name="endDate" Type="date" Mode="In" />
+    <Parameter Name="dayOfWeek" Type="tinyint" Mode="In" />
+    <Parameter Name="scheduleTime" Type="time" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ScheduleDate" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnGetSubSchedScore180" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="subjectID" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTaken" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="fnGetSubSchedScore90" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="decimal">
+    <Parameter Name="userID" Type="nvarchar" Mode="In" />
+    <Parameter Name="DateTaken" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="fnGetUserMedicationScheduleDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="UserMedicationId" Type="int" />
+          <Property Name="ScheduleId" Type="int" />
+          <Property Name="ScheduleDate" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnGetUserTimeZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fnStripSmartQuotes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+    <Parameter Name="qString" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="GetAllDeviceTokensWithUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetAllMedicationsNotTakenWindow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="minuteWindow" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetAllUserNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetAppointments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mrn" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBloodGlucoseMeasurements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBloodPressureMeasurements" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetBloodPressureMeasurementsChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+    <Parameter Name="aggType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetCurrentSurveySession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetDeviceTokensByUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="tokenTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetEpicPatients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetExternalDrugData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mrn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetGlucoseMeasurementsChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+    <Parameter Name="aggType" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetIsAdmin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemLogic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemNavigation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemTemplates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemToolbarItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetItemTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetLatestAppVersionByAppId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="appId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMedAdhMsgs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetMedicationAdherenceByMed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetMedicationAdherenceOverAllScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="GetMedicationSchedules" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMedicationsNotTaken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetMedicationsNotTakenByHour" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="hour" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMedicationsNotTakenWindow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="minuteWindow" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetMessagesToSend_30" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNextPersonalizedMessage" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="messageTypeId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="langId" Type="int" Mode="In" />
+    <Parameter Name="messageBody" Type="nvarchar(max)" Mode="InOut" />
+    <Parameter Name="messageId" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="GetNextSequenceId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="GetNotificationPreferences" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetNotifications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="notificationTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetNotificationTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPatientSMSHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetPhoneNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetPlaceholders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetPrednisoneRefillData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mrn" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetRusselScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="startDate" Type="date" Mode="In" />
+    <Parameter Name="endDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="GetRusselScore24Hr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+    <Parameter Name="russelScore" Type="decimal" Mode="InOut" />
+  </Function>
+  <Function Name="GetSchedulesByUserMedicationId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+    <Parameter Name="inActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetSurvey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="categoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyOptionGroups" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSurveyOptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="groupId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestionCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestionLogic" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestionLogicActions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSurveyQuestionOptions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="questionId" Type="int" Mode="In" />
+    <Parameter Name="categoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyQuestionTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSurveyResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetSurveyResultsBySessionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetSurveys" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetSurveyScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+    <Parameter Name="score" Type="int" Mode="InOut" />
+    <Parameter Name="hasRiskAnswer" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="GetSurveyScoresForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetSurveySession" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sessionId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetTacrolimusResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mrn" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetTokenUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetToolbarItemNavigation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="toolbarItemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserAdmission" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserHasLatestAppVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserMedicationById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userMedicationId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetUserMedications" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="inActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetUserMedicationsAPIByUserId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+    <Parameter Name="inActive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetUserPersonalizedSurveyTaken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetUserTimeZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="InsertPatientMedPhase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="p_userID" Type="nvarchar" Mode="In" />
+    <Parameter Name="p_phaseID" Type="int" Mode="In" />
+    <Parameter Name="p_adhDate" Type="date" Mode="In" />
+    <Parameter Name="p_adherence" Type="bit" Mode="In" />
+    <Parameter Name="p_phaseDayCount" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertPatientMessageSent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patientID" Type="nvarchar" Mode="In" />
+    <Parameter Name="messageText" Type="varchar(max)" Mode="In" />
+    <Parameter Name="sentTime" Type="datetime" Mode="In" />
+    <Parameter Name="messageID" Type="int" Mode="In" />
+    <Parameter Name="twilioSID" Type="varchar" Mode="In" />
+    <Parameter Name="twilioStatus" Type="varchar" Mode="In" />
+    <Parameter Name="twilioError" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SetMedicationSchedulesInactive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inactive" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateAggregateMedReviewed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateAllUsersMedicationAdherenceOverAllScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="startDate" Type="datetime" Mode="In" />
+    <Parameter Name="endDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="UpdateAllUsersMedicationRefillAdherenceScores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateDateMedsReviewed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateItemDesign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemId" Type="int" Mode="In" />
+    <Parameter Name="headerTitle" Type="nvarchar" Mode="In" />
+    <Parameter Name="headerImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="headerFontId" Type="int" Mode="In" />
+    <Parameter Name="headerFontSize" Type="int" Mode="In" />
+    <Parameter Name="headerColor" Type="nchar" Mode="In" />
+    <Parameter Name="headerBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="headerBackgroundImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="headerEffect" Type="int" Mode="In" />
+    <Parameter Name="backButtonType" Type="int" Mode="In" />
+    <Parameter Name="backButtonColor" Type="nchar" Mode="In" />
+    <Parameter Name="backButtonBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="bodyFontId" Type="int" Mode="In" />
+    <Parameter Name="bodyFontSize" Type="int" Mode="In" />
+    <Parameter Name="bodyColor" Type="nchar" Mode="In" />
+    <Parameter Name="bodyBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="bodyBackgroundImage" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateMsgSendQueue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mqId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateNeedDischarge" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateSentMsgs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateSurveyData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateSurveyDesign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="surveyId" Type="int" Mode="In" />
+    <Parameter Name="listColor" Type="nchar" Mode="In" />
+    <Parameter Name="listBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="listBackgroundAlpha" Type="decimal" Mode="In" />
+    <Parameter Name="listFontId" Type="int" Mode="In" />
+    <Parameter Name="listFontSize" Type="int" Mode="In" />
+    <Parameter Name="selectedColor" Type="nchar" Mode="In" />
+    <Parameter Name="selectedBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="selectedBackgroundAlpha" Type="decimal" Mode="In" />
+    <Parameter Name="selectedFontId" Type="int" Mode="In" />
+    <Parameter Name="selectedFontSize" Type="int" Mode="In" />
+    <Parameter Name="selectedIconType" Type="int" Mode="In" />
+    <Parameter Name="selectedIconColor" Type="nchar" Mode="In" />
+    <Parameter Name="buttonColor" Type="nchar" Mode="In" />
+    <Parameter Name="buttonBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="buttonBackgroundAlpha" Type="decimal" Mode="In" />
+    <Parameter Name="buttonFontId" Type="int" Mode="In" />
+    <Parameter Name="buttonFontSize" Type="int" Mode="In" />
+    <Parameter Name="progressBarColor" Type="nchar" Mode="In" />
+    <Parameter Name="progressBarBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="progressBarBackgroundAlpha" Type="decimal" Mode="In" />
+    <Parameter Name="tooltipColor" Type="nchar" Mode="In" />
+    <Parameter Name="tooltipBackgroundColor" Type="nchar" Mode="In" />
+    <Parameter Name="tooltipBackgroundAlpha" Type="decimal" Mode="In" />
+    <Parameter Name="tooltipFontId" Type="int" Mode="In" />
+    <Parameter Name="tooltipFontSize" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UpdateTacrolimusValues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="AddLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb">
+    <Parameter Name="LinkZoneId" Type="int" Mode="In" />
+    <Parameter Name="CanonicalZoneId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="AddZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="ConvertZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="datetimeoffset">
+    <Parameter Name="dt" Type="datetime2" Mode="In" />
+    <Parameter Name="source_tz" Type="varchar" Mode="In" />
+    <Parameter Name="dest_tz" Type="varchar" Mode="In" />
+    <Parameter Name="SkipOnSpringForwardGap" Type="bit" Mode="In" />
+    <Parameter Name="FirstOnFallBackOverlap" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="GetZoneAbbreviation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="varchar">
+    <Parameter Name="dto" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="tz" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetZoneId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="int">
+    <Parameter Name="tz" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="LocalToUtc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="datetimeoffset">
+    <Parameter Name="local" Type="datetime2" Mode="In" />
+    <Parameter Name="tz" Type="varchar" Mode="In" />
+    <Parameter Name="SkipOnSpringForwardGap" Type="bit" Mode="In" />
+    <Parameter Name="FirstOnFallBackOverlap" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SetIntervals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb">
+    <Parameter Name="ZoneId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SetVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb">
+    <Parameter Name="Version" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SwitchZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="datetimeoffset">
+    <Parameter Name="dto" Type="datetimeoffset" Mode="In" />
+    <Parameter Name="tz" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UtcToLocal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Tzdb" ReturnType="datetimeoffset">
+    <Parameter Name="utc" Type="datetime2" Mode="In" />
+    <Parameter Name="tz" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="TransafeRxModelStoreContainer">
+    <EntitySet Name="AdherenceProtocol" EntityType="Self.AdherenceProtocol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admissions" EntityType="Self.Admissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppVersions" EntityType="Self.AppVersions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodGlucoseMeasurements" EntityType="Self.BloodGlucoseMeasurements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BloodPressureMeasurements" EntityType="Self.BloodPressureMeasurements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeviceTokens" EntityType="Self.DeviceTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fonts" EntityType="Self.Fonts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemLogic" EntityType="Self.ItemLogic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemLogicActions" EntityType="Self.ItemLogicActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemLogicEvents" EntityType="Self.ItemLogicEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemNavigation" EntityType="Self.ItemNavigation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemNavigationTemplates" EntityType="Self.ItemNavigationTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemNavigationTypes" EntityType="Self.ItemNavigationTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemTemplates" EntityType="Self.ItemTemplates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemToolbarItems" EntityType="Self.ItemToolbarItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemTransitionTypes" EntityType="Self.ItemTransitionTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemTypes" EntityType="Self.ItemTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginInformation" EntityType="Self.LoginInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_AdmissionTypes" EntityType="Self.LU_AdmissionTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_AppId" EntityType="Self.LU_AppId" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_DeviceTokenTypes" EntityType="Self.LU_DeviceTokenTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_MedicationActivityTypes" EntityType="Self.LU_MedicationActivityTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_NotificationType" EntityType="Self.LU_NotificationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedicationActivity" EntityType="Self.MedicationActivity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationMessages" EntityType="Self.NotificationMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotificationPreferences" EntityType="Self.NotificationPreferences" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientMedPhase" EntityType="Self.PatientMedPhase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientMessageSent" EntityType="Self.PatientMessageSent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSMSMessages" EntityType="Self.PatientSMSMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalizedMessageType" EntityType="Self.PersonalizedMessageType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalizedSurveyMessageHistory" EntityType="Self.PersonalizedSurveyMessageHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhoneNumbers" EntityType="Self.PhoneNumbers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Placeholders" EntityType="Self.Placeholders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RefreshTokens" EntityType="Self.RefreshTokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyAnswers" EntityType="Self.SurveyAnswers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyOptionGroups" EntityType="Self.SurveyOptionGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyOptions" EntityType="Self.SurveyOptions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestionCategories" EntityType="Self.SurveyQuestionCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestionLogic" EntityType="Self.SurveyQuestionLogic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestionLogicActions" EntityType="Self.SurveyQuestionLogicActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestionOptions" EntityType="Self.SurveyQuestionOptions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestions" EntityType="Self.SurveyQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyQuestionTypes" EntityType="Self.SurveyQuestionTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Surveys" EntityType="Self.Surveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveySessions" EntityType="Self.SurveySessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ToolbarItemActions" EntityType="Self.ToolbarItemActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ToolbarItemNavigation" EntityType="Self.ToolbarItemNavigation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ToolbarItems" EntityType="Self.ToolbarItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserMedications" EntityType="Self.UserMedications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Intervals" EntityType="Self.Intervals" Schema="Tzdb" store:Type="Tables" />
+    <EntitySet Name="Links" EntityType="Self.Links" Schema="Tzdb" store:Type="Tables" />
+    <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="Tzdb" store:Type="Tables" />
+    <EntitySet Name="Zones" EntityType="Self.Zones" Schema="Tzdb" store:Type="Tables" />
+    <EntitySet Name="Scores" EntityType="Self.Scores" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Scores].[Score] AS [Score]
+    FROM [dbo].[Scores] AS [Scores]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Sequencer" EntityType="Self.Sequencer" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Sequencer].[SeqID] AS [SeqID], 
+    [Sequencer].[SubID] AS [SubID]
+    FROM [dbo].[Sequencer] AS [Sequencer]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ApplicationSettings_Items" Association="Self.FK_ApplicationSettings_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ApplicationSettings" EntitySet="ApplicationSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationSettings_Themes" Association="Self.FK_ApplicationSettings_Themes">
+      <End Role="Themes" EntitySet="Themes" />
+      <End Role="ApplicationSettings" EntitySet="ApplicationSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloodGlucoseMeasurements_AspNetUsers" Association="Self.FK_BloodGlucoseMeasurements_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="BloodGlucoseMeasurements" EntitySet="BloodGlucoseMeasurements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloodPressureMeasurements_AspNetUsers" Association="Self.FK_BloodPressureMeasurements_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="BloodPressureMeasurements" EntitySet="BloodPressureMeasurements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceTokens_AspNetUsers" Association="Self.FK_DeviceTokens_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="DeviceTokens" EntitySet="DeviceTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeviceTokens_LU_DeviceTokenTypes" Association="Self.FK_DeviceTokens_LU_DeviceTokenTypes">
+      <End Role="LU_DeviceTokenTypes" EntitySet="LU_DeviceTokenTypes" />
+      <End Role="DeviceTokens" EntitySet="DeviceTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Intervals_Zones" Association="Self.FK_Intervals_Zones">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="Intervals" EntitySet="Intervals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLogic_ItemActions" Association="Self.FK_ItemLogic_ItemActions">
+      <End Role="ItemLogicActions" EntitySet="ItemLogicActions" />
+      <End Role="ItemLogic" EntitySet="ItemLogic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLogic_ItemEvents" Association="Self.FK_ItemLogic_ItemEvents">
+      <End Role="ItemLogicEvents" EntitySet="ItemLogicEvents" />
+      <End Role="ItemLogic" EntitySet="ItemLogic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLogic_Items" Association="Self.FK_ItemLogic_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemLogic" EntitySet="ItemLogic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemLogic_TargetItem" Association="Self.FK_ItemLogic_TargetItem">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemLogic" EntitySet="ItemLogic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemNavigation_ItemNavigationTemplates" Association="Self.FK_ItemNavigation_ItemNavigationTemplates">
+      <End Role="ItemNavigationTemplates" EntitySet="ItemNavigationTemplates" />
+      <End Role="ItemNavigation" EntitySet="ItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemNavigation_ItemNavigationTypes" Association="Self.FK_ItemNavigation_ItemNavigationTypes">
+      <End Role="ItemNavigationTypes" EntitySet="ItemNavigationTypes" />
+      <End Role="ItemNavigation" EntitySet="ItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemNavigation_Items" Association="Self.FK_ItemNavigation_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemNavigation" EntitySet="ItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemNavigation_ItemTransitionTypes" Association="Self.FK_ItemNavigation_ItemTransitionTypes">
+      <End Role="ItemTransitionTypes" EntitySet="ItemTransitionTypes" />
+      <End Role="ItemNavigation" EntitySet="ItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemNavigation_TargetItems" Association="Self.FK_ItemNavigation_TargetItems">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemNavigation" EntitySet="ItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_ItemTemplates" Association="Self.FK_Items_ItemTemplates">
+      <End Role="ItemTemplates" EntitySet="ItemTemplates" />
+      <End Role="Items" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_ItemTypes" Association="Self.FK_Items_ItemTypes">
+      <End Role="ItemTypes" EntitySet="ItemTypes" />
+      <End Role="Items" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemTemplates_ItemTypes" Association="Self.FK_ItemTemplates_ItemTypes">
+      <End Role="ItemTypes" EntitySet="ItemTypes" />
+      <End Role="ItemTemplates" EntitySet="ItemTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemToolbarItems_Items" Association="Self.FK_ItemToolbarItems_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ItemToolbarItems" EntitySet="ItemToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItemToolbarItems_ToolbarItems" Association="Self.FK_ItemToolbarItems_ToolbarItems">
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+      <End Role="ItemToolbarItems" EntitySet="ItemToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Links_Zones_1" Association="Self.FK_Links_Zones_1">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="Links" EntitySet="Links" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Links_Zones_2" Association="Self.FK_Links_Zones_2">
+      <End Role="Zones" EntitySet="Zones" />
+      <End Role="Links" EntitySet="Links" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginInformation_Users" Association="Self.FK_LoginInformation_Users">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="LoginInformation" EntitySet="LoginInformation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicationActivity_LU_MedicationActivityTypes" Association="Self.FK_MedicationActivity_LU_MedicationActivityTypes">
+      <End Role="LU_MedicationActivityTypes" EntitySet="LU_MedicationActivityTypes" />
+      <End Role="MedicationActivity" EntitySet="MedicationActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicationActivity_Schedules" Association="Self.FK_MedicationActivity_Schedules">
+      <End Role="Schedules" EntitySet="Schedules" />
+      <End Role="MedicationActivity" EntitySet="MedicationActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicationActivity_UserMedications" Association="Self.FK_MedicationActivity_UserMedications">
+      <End Role="UserMedications" EntitySet="UserMedications" />
+      <End Role="MedicationActivity" EntitySet="MedicationActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicationActivity_Users" Association="Self.FK_MedicationActivity_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="MedicationActivity" EntitySet="MedicationActivity" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_DeviceTokens" Association="Self.FK_Messages_DeviceTokens">
+      <End Role="DeviceTokens" EntitySet="DeviceTokens" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Messages_Schedules" Association="Self.FK_Messages_Schedules">
+      <End Role="Schedules" EntitySet="Schedules" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationMessages_AspNetUsers" Association="Self.FK_NotificationMessages_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="NotificationMessages" EntitySet="NotificationMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationMessages_DeviceTokens" Association="Self.FK_NotificationMessages_DeviceTokens">
+      <End Role="DeviceTokens" EntitySet="DeviceTokens" />
+      <End Role="NotificationMessages" EntitySet="NotificationMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationMessages_LU_NotificationType" Association="Self.FK_NotificationMessages_LU_NotificationType">
+      <End Role="LU_NotificationType" EntitySet="LU_NotificationType" />
+      <End Role="NotificationMessages" EntitySet="NotificationMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationPreferences_LU_NotificationType" Association="Self.FK_NotificationPreferences_LU_NotificationType">
+      <End Role="LU_NotificationType" EntitySet="LU_NotificationType" />
+      <End Role="NotificationPreferences" EntitySet="NotificationPreferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotificationPreferences_Users" Association="Self.FK_NotificationPreferences_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="NotificationPreferences" EntitySet="NotificationPreferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientMessageSent_Message" Association="Self.FK_PatientMessageSent_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="PatientMessageSent" EntitySet="PatientMessageSent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientMessageSent_Users" Association="Self.FK_PatientMessageSent_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PatientMessageSent" EntitySet="PatientMessageSent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSMSMessages_AspNetUsers" Association="Self.FK_PatientSMSMessages_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="PatientSMSMessages" EntitySet="PatientSMSMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalizedSurveyMessageHistory_Message" Association="Self.FK_PersonalizedSurveyMessageHistory_Message">
+      <End Role="Message" EntitySet="Message" />
+      <End Role="PersonalizedSurveyMessageHistory" EntitySet="PersonalizedSurveyMessageHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalizedSurveyMessageHistory_Users" Association="Self.FK_PersonalizedSurveyMessageHistory_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PersonalizedSurveyMessageHistory" EntitySet="PersonalizedSurveyMessageHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RefreshTokens_Clients" Association="Self.FK_RefreshTokens_Clients">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="RefreshTokens" EntitySet="RefreshTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedules_AspNetUsers" Association="Self.FK_Schedules_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedules_UserMedications" Association="Self.FK_Schedules_UserMedications">
+      <End Role="UserMedications" EntitySet="UserMedications" />
+      <End Role="Schedules" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_SurveyQuestionCategories" Association="Self.FK_SurveyAnswers_SurveyQuestionCategories">
+      <End Role="SurveyQuestionCategories" EntitySet="SurveyQuestionCategories" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_SurveyQuestionOptions" Association="Self.FK_SurveyAnswers_SurveyQuestionOptions">
+      <End Role="SurveyQuestionOptions" EntitySet="SurveyQuestionOptions" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_SurveyQuestions" Association="Self.FK_SurveyAnswers_SurveyQuestions">
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_Surveys" Association="Self.FK_SurveyAnswers_Surveys">
+      <End Role="Surveys" EntitySet="Surveys" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_SurveySessions" Association="Self.FK_SurveyAnswers_SurveySessions">
+      <End Role="SurveySessions" EntitySet="SurveySessions" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyAnswers_Users" Association="Self.FK_SurveyAnswers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SurveyAnswers" EntitySet="SurveyAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyOptions_SurveyOptionGroups" Association="Self.FK_SurveyOptions_SurveyOptionGroups">
+      <End Role="SurveyOptionGroups" EntitySet="SurveyOptionGroups" />
+      <End Role="SurveyOptions" EntitySet="SurveyOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestionCategories_SurveyQuestions" Association="Self.FK_SurveyQuestionCategories_SurveyQuestions">
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+      <End Role="SurveyQuestionCategories" EntitySet="SurveyQuestionCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestionLogic_SurveyQuestionLogicActions" Association="Self.FK_SurveyQuestionLogic_SurveyQuestionLogicActions">
+      <End Role="SurveyQuestionLogicActions" EntitySet="SurveyQuestionLogicActions" />
+      <End Role="SurveyQuestionLogic" EntitySet="SurveyQuestionLogic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestionOptions_Fonts" Association="Self.FK_SurveyQuestionOptions_Fonts">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestionOptions" EntitySet="SurveyQuestionOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestionOptions_SurveyQuestionCategories" Association="Self.FK_SurveyQuestionOptions_SurveyQuestionCategories">
+      <End Role="SurveyQuestionCategories" EntitySet="SurveyQuestionCategories" />
+      <End Role="SurveyQuestionOptions" EntitySet="SurveyQuestionOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestionOptions_SurveyQuestions" Association="Self.FK_SurveyQuestionOptions_SurveyQuestions">
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+      <End Role="SurveyQuestionOptions" EntitySet="SurveyQuestionOptions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_ButtonFont" Association="Self.FK_SurveyQuestions_ButtonFont">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_FeedbackFont" Association="Self.FK_SurveyQuestions_FeedbackFont">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_ListFont" Association="Self.FK_SurveyQuestions_ListFont">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_SelectedFont" Association="Self.FK_SurveyQuestions_SelectedFont">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_SurveyQuestionTypes" Association="Self.FK_SurveyQuestions_SurveyQuestionTypes">
+      <End Role="SurveyQuestionTypes" EntitySet="SurveyQuestionTypes" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_Surveys" Association="Self.FK_SurveyQuestions_Surveys">
+      <End Role="Surveys" EntitySet="Surveys" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveyQuestions_TooltipFont" Association="Self.FK_SurveyQuestions_TooltipFont">
+      <End Role="Fonts" EntitySet="Fonts" />
+      <End Role="SurveyQuestions" EntitySet="SurveyQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surveys_Items" Association="Self.FK_Surveys_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="Surveys" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveySessions_Surveys" Association="Self.FK_SurveySessions_Surveys">
+      <End Role="Surveys" EntitySet="Surveys" />
+      <End Role="SurveySessions" EntitySet="SurveySessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SurveySessions_Users" Association="Self.FK_SurveySessions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SurveySessions" EntitySet="SurveySessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItemNavigation_ItemNavigationTypes" Association="Self.FK_ToolbarItemNavigation_ItemNavigationTypes">
+      <End Role="ItemNavigationTypes" EntitySet="ItemNavigationTypes" />
+      <End Role="ToolbarItemNavigation" EntitySet="ToolbarItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItemNavigation_Items" Association="Self.FK_ToolbarItemNavigation_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ToolbarItemNavigation" EntitySet="ToolbarItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItemNavigation_ItemTransitionTypes" Association="Self.FK_ToolbarItemNavigation_ItemTransitionTypes">
+      <End Role="ItemTransitionTypes" EntitySet="ItemTransitionTypes" />
+      <End Role="ToolbarItemNavigation" EntitySet="ToolbarItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItemNavigation_ToolbarItems" Association="Self.FK_ToolbarItemNavigation_ToolbarItems">
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+      <End Role="ToolbarItemNavigation" EntitySet="ToolbarItemNavigation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItems_ItemNavigationTypes" Association="Self.FK_ToolbarItems_ItemNavigationTypes">
+      <End Role="ItemNavigationTypes" EntitySet="ItemNavigationTypes" />
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItems_Items" Association="Self.FK_ToolbarItems_Items">
+      <End Role="Items" EntitySet="Items" />
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItems_ItemTransitionTypes" Association="Self.FK_ToolbarItems_ItemTransitionTypes">
+      <End Role="ItemTransitionTypes" EntitySet="ItemTransitionTypes" />
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToolbarItems_ToolbarItemActions" Association="Self.FK_ToolbarItems_ToolbarItemActions">
+      <End Role="ToolbarItemActions" EntitySet="ToolbarItemActions" />
+      <End Role="ToolbarItems" EntitySet="ToolbarItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserMedications_AspNetUsers" Association="Self.FK_UserMedications_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="UserMedications" EntitySet="UserMedications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_AspNetUsers" Association="Self.FK_Users_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,11 @@
+﻿@model TransafeRx.Models.SurveyQuestionCategoryViewModel
+
+@(
+    Html.Kendo().DropDownListFor(x => x)
+        .DataValueField("CategoryId")
+        .DataTextField("Name")
+        .DataSource(source =>
+        {
+            source.Read(x => x.Action("SurveyQuestionCategories", "Item").Data("questionCategories_data"));
+        })
+)

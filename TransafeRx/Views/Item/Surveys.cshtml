@@ -1,0 +1,2055 @@
+﻿@model SurveysViewModel
+
+@{
+    ViewBag.Title = "Surveys";
+}
+
+<style>
+    #QuestionsGrid, #QuestionOptionsGrid, #QuestionCategoriesGrid, #CategoryOptionsGrid, #QuestionLogicGrid {
+        height: 100%;
+    }
+
+    .x-shadow {
+        z-index: 900000 !important;
+    }
+
+    .x-window {
+        z-index: 900001 !important;
+    }
+
+    .x-resizable-proxy, .x-unselectable {
+        z-index: 900002 !important;
+    }
+
+    .x-layer, .x-combo-list {
+        z-index: 900003 !important;
+    }
+
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .img-container {
+        display: none;
+    }
+
+    table.k-editor {
+        height: 100%;
+    }
+
+    .k-VideoButton {
+        background: transparent url(../Content/Images/video.png) no-repeat 0% 50%;
+    }
+
+    .k-ItemButton {
+        background: transparent url(../Content/Images/item.png) no-repeat 0% 50%;
+    }
+
+    .k-PlaceholderButton {
+        background: transparent url(../Content/Images/placeholder.png) no-repeat 0% 50%;
+    }
+
+    .k-SpacingButton {
+        background: transparent url(../Content/Images/pad.png) no-repeat 0% 50%;
+    }
+
+    #PaddingDiv, #MarginDiv {
+        width: 50%;
+    }
+
+        #PaddingDiv label, #MarginDiv label {
+            display: block;
+        }
+
+        #PaddingDiv input, #MarginDiv input {
+            width: 100px;
+        }
+
+        #PaddingDiv > div, #MarginDiv > div {
+            margin-bottom: 10px;
+        }
+
+    #ImagePreviewWindow {
+        padding: 0;
+        overflow: hidden;
+    }
+</style>
+
+<h2>Surveys</h2>
+
+@(
+ Html.Kendo().Grid<SurveyViewModel>()
+        .Name("SurveysGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(x => x.Name).EditorTemplateName("String");
+            columns.ForeignKey(x => x.TemplateId, Model.TemplateSelectList).Title("Template");
+            columns.Bound(x => x.AllowRestart)
+                .ClientTemplate("<input type='checkbox' #= AllowRestart ? 'checked=checked' : '' # disabled='disabled' ></input>");
+            columns.Command(command => { command.Edit(); command.Destroy(); command.Custom("Questions").Click("questions_show"); command.Custom("Logic").Click("logic_show"); command.Custom("Design").Click("design_show"); });
+        })
+        .ToolBar(toolbar => toolbar.Create().Text("Add Survey"))
+        .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+        .Sortable()
+        .Scrollable()
+        .Resizable(resize => resize.Columns(true))
+        .Filterable(filter => filter
+            .Extra(false)
+            .Operators(operators => operators.ForString(str => str.Clear().Contains("Contains"))))
+        .HtmlAttributes(new { style = "height: 800px;" })
+        .Events(events => events.Edit("surveys_edit").Save("surveys_save"))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Events(events => events.Error("surveys_error"))
+            .Sort(sort => sort.Add("Name").Ascending())
+            .Model(model =>
+            {
+                model.Id(x => x.SurveyId);
+                model.Field(x => x.Name);
+                model.Field(x => x.TemplateId);
+                model.Field(x => x.BodyBackgroundColor);
+                model.Field(x => x.BodyColor);
+                model.Field(x => x.AllowRestart);
+            })
+            .Create(update => update.Action("Surveys_Create", "Item"))
+            .Read(read => read.Action("Surveys_Read", "Item"))
+            .Update(update => update.Action("Surveys_Update", "Item"))
+            .Destroy(destroy => destroy.Action("Surveys_Destroy", "Item"))
+        )
+)
+
+@{
+    Html.Kendo().Window()
+        .Name("LogicWindow")
+        .Title("Survey Logic")
+        .Content(@<text>
+            @{
+                Html.Kendo().Grid<SurveyLogicViewModel>()
+                    .Name("LogicGrid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.Expression).ClientTemplate("...");
+                        columns.Bound(x => x.LogicAction).ClientTemplate("#= LogicAction.Name #").Title("Action");
+                        columns.Command(command => { command.Edit(); command.Destroy(); });
+                    })
+                    .ToolBar(toolbar => toolbar.Create().Text("Add Logic"))
+                    .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+                    .Events(events => events.Edit("logic_edit").Save("logic_save"))
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .Events(events => events.Error("logic_error"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.LogicId);
+                            model.Field(x => x.Expression);
+                            model.Field(x => x.LogicAction).DefaultValue(new SurveyLogicActionViewModel());
+                            model.Field(x => x.Components);
+                        })
+                        .Create(create => create.Action("SurveyLogic_Create", "Item"))
+                        .Read(read => read.Action("SurveyLogic_Read", "Item").Data("logic_data"))
+                        .Update(update => update.Action("SurveyLogic_Update", "Item"))
+                        .Destroy(destroy => destroy.Action("SurveyLogic_Destroy", "Item"))
+                    )
+                    .AutoBind(false)
+                    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("logic_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("QuestionsWindow")
+        .Title("Questions")
+        .Content(@<text>
+            @{
+                Html.Kendo().Grid<SurveyQuestionViewModel>()
+                    .Name("QuestionsGrid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.QuestionType).ClientTemplate("#= QuestionType.Name #").Title("Question Type").Width(250);
+                        columns.Bound(x => x.Name).EditorTemplateName("String");
+                        columns.Bound(x => x.QuestionText).Title("Question").Encoded(false).Width(250);
+                        columns.Bound(x => x.QuestionImage).EditorTemplateName("SurveyQuestionImageUpload")
+                            .ClientTemplate("# if (QuestionImage == null) {##} else {# <img src='" + @Url.Content("~/Images/") + "#: QuestionImage #' style='max-width: 200px; max-height: 200px;'> #} #").Title("Image");
+                        columns.Bound(x => x.OptionImage).EditorTemplateName("SurveyOptionImageUpload")
+                            .ClientTemplate("# if (QuestionType.QuestionTypeId == 12) {# #= buildImageMap(QuestionId, OptionImage, Options) # #} #").Title("Option Image");
+                        columns.Bound(x => x.QuestionOrder).Title("Order");
+                        columns.Bound(x => x.Body).ClientTemplate("# if (QuestionType.QuestionTypeId == 14) {# <a href='javascript:target = \"Question\"; previewContent(#= QuestionId #);'>Preview</a> #} #");
+                        columns.Bound(x => x.Required)
+                            .ClientTemplate("<input type='checkbox' #= Required ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                        columns.Command(command => { command.Edit(); command.Destroy(); command.Custom("Categories").Click("questionCategories_show"); command.Custom("Options").Click("questionOptions_show"); command.Custom("Logic").Click("questionLogic_show"); });
+                    })
+                    .ToolBar(toolbar => toolbar.Create().Text("Add Question"))
+                    .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+                    .Events(events => events.Edit("questions_edit").DataBound("questions_dataBound").Cancel("questions_cancel").Save("questions_save"))
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .Sort(sort => sort.Add("QuestionOrder").Ascending())
+                        .Events(events => events.Error("questions_error").RequestEnd("questions_requestEnd"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.QuestionId);
+                            model.Field(x => x.SurveyId);
+                            model.Field(x => x.QuestionType).DefaultValue(new SurveyQuestionTypeViewModel());
+                            model.Field(x => x.Name);
+                            model.Field(x => x.QuestionText);
+                            model.Field(x => x.QuestionImage);
+                            model.Field(x => x.QuestionOrder);
+                            model.Field(x => x.OptionImage);
+                            model.Field(x => x.Body);
+                            model.Field(x => x.Required).DefaultValue(true);
+                        })
+                        .Create(create => create.Action("SurveyQuestions_Create", "Item"))
+                        .Read(read => read.Action("SurveyQuestions_Read", "Item").Data("questions_data"))
+                        .Update(update => update.Action("SurveyQuestions_Update", "Item"))
+                        .Destroy(destroy => destroy.Action("SurveyQuestions_Destroy", "Item"))
+                    )
+                    .AutoBind(false)
+                    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("questions_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@helper RenderQuestionOptionsToolbar()
+{
+    <a class='k-button k-button-icontext k-grid-add' href='#'><span class='k-icon k-add'></span>Add Option</a>
+    <div style="float: right;">
+        <label for="QuestionSelect">Add options:</label>
+        @(
+ Html.Kendo().DropDownList()
+                .Name("QuestionSelect")
+                .OptionLabel("None")
+                .DataTextField("Name")
+                .DataValueField("QuestionId")
+                .AutoBind(false)
+                .HtmlAttributes(new { style = "width: 150px;" })
+                .DataSource(source =>
+                {
+                    source.Read(read =>
+                    {
+                        read.Action("SurveyQuestions", "Item").Data("questionSelect_data");
+                    });
+                })
+        )
+
+        @(
+ Html.Kendo().Button()
+                .Name("QuestionSelectSubmit")
+                .Content("Add")
+                .Events(ev => ev.Click("questionSelect_click"))
+        )
+    </div>
+}
+
+@helper RenderQuestionOptionsGrid()
+{
+Html.Kendo().Grid<SurveyQuestionOptionViewModel>()
+    .Name("QuestionOptionsGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.OptionText).EditorTemplateName("TextArea").Title("Option");
+        columns.Bound(x => x.OptionImage).EditorTemplateName("ImageUpload");
+        columns.Bound(x => x.OptionValue).EditorTemplateName("Integer").Title("Value");
+        columns.Bound(x => x.OptionOrder).Title("Order");
+        columns.Bound(x => x.Feedback).ClientTemplate("<a href='javascript:target = \"Option\"; previewContent(#= OptionId #);'>Preview</a>");
+        columns.Command(command => { command.Edit(); command.Destroy(); });
+    })
+    .ToolBar(toolbar =>
+    {
+    toolbar.Template(@<text>
+        @RenderQuestionOptionsToolbar()
+    </text>);
+    })
+        .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+        .Events(events => events.Edit("questionOptions_edit").DataBound("questionOptions_dataBound").Cancel("questionOptions_cancel").Save("questionOptions_save"))
+        .Sortable()
+        .Scrollable(scroll => scroll.Height(500))
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .Sort(sort => sort.Add("OptionOrder").Ascending())
+            .Events(events => events.Error("questionOptions_error").RequestEnd("questionOptions_requestEnd"))
+            .Model(model =>
+            {
+                model.Id(x => x.OptionId);
+                model.Field(x => x.QuestionId);
+                model.Field(x => x.OptionText);
+                model.Field(x => x.OptionImage);
+                model.Field(x => x.OptionValue);
+                model.Field(x => x.OptionOrder);
+                model.Field(x => x.Feedback);
+            })
+            .Create(create => create.Action("SurveyQuestionOptions_Create", "Item"))
+            .Read(read => read.Action("SurveyQuestionOptions_Read", "Item").Data("questionOptions_data"))
+            .Update(update => update.Action("SurveyQuestionOptions_Update", "Item"))
+            .Destroy(destroy => destroy.Action("SurveyQuestionOptions_Destroy", "Item"))
+        )
+        .AutoBind(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("QuestionOptionsWindow")
+        .Title("Options")
+        .Content(@<text>
+            @RenderQuestionOptionsGrid()
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("questionOptions_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("QuestionCategoriesWindow")
+        .Title("Categories")
+        .Content(@<text>
+            @{
+                Html.Kendo().Grid<SurveyQuestionCategoryViewModel>()
+                    .Name("QuestionCategoriesGrid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.Name).EditorTemplateName("String");
+                        columns.Bound(x => x.CategoryOrder).Title("Order");
+                        columns.Command(command => { command.Edit(); command.Custom("Options").Click("categoryOptions_show"); });
+                    })
+                    .ToolBar(toolbar => toolbar.Create().Text("Add Category"))
+                    .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+                    .Events(events => events.Edit("questionCategories_edit").Save("questionCategories_save"))
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .Sort(sort => sort.Add("CategoryOrder").Ascending())
+                        .Events(events => events.Error("questionCategories_error").RequestEnd("questionCategories_requestEnd"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.CategoryId);
+                            model.Field(x => x.QuestionId);
+                            model.Field(x => x.Name);
+                            model.Field(x => x.CategoryOrder);
+                        })
+                        .Create(create => create.Action("SurveyQuestionCategories_Create", "Item"))
+                        .Read(read => read.Action("SurveyQuestionCategories_Read", "Item").Data("questionCategories_data"))
+                        .Update(update => update.Action("SurveyQuestionCategories_Update", "Item"))
+                        .Destroy(destroy => destroy.Action("SurveyQuestionCategories_Destroy", "Item"))
+                    )
+                    .AutoBind(false)
+                    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("questionCategories_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("CategoryOptionsWindow")
+        .Title("Options")
+        .Content(@<text>
+            @{
+                Html.Kendo().Grid<SurveyQuestionOptionViewModel>()
+                    .Name("CategoryOptionsGrid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.OptionText).EditorTemplateName("TextArea").Title("Option");
+                        columns.Bound(x => x.OptionValue).EditorTemplateName("Integer").Title("Value");
+                        columns.Bound(x => x.OptionOrder).Title("Order");
+                        columns.Command(command => { command.Edit(); });
+                    })
+                    .ToolBar(toolbar => toolbar.Create().Text("Add Option"))
+                    .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+                    .Events(events => events.Edit("categoryOptions_edit").Save("categoryOptions_save"))
+                    //.Pageable()
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        //.PageSize(10)
+                        .Sort(sort => sort.Add("OptionOrder").Ascending())
+                        .Events(events => events.Error("categoryOptions_error").RequestEnd("categoryOptions_requestEnd"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.OptionId);
+                            model.Field(x => x.QuestionId);
+                            model.Field(x => x.CategoryId);
+                            model.Field(x => x.OptionText);
+                            model.Field(x => x.OptionValue);
+                            model.Field(x => x.OptionOrder);
+                        })
+                        .Create(create => create.Action("SurveyQuestionOptions_Create", "Item"))
+                        .Read(read => read.Action("SurveyQuestionOptions_Read", "Item").Data("categoryOptions_data"))
+                        .Update(update => update.Action("SurveyQuestionOptions_Update", "Item"))
+                        .Destroy(destroy => destroy.Action("SurveyQuestionOptions_Destroy", "Item"))
+                    )
+                    .AutoBind(false)
+                    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("categoryOptions_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("QuestionLogicWindow")
+        .Title("Question Logic")
+        .Content(@<text>
+            @{
+                Html.Kendo().Grid<SurveyQuestionLogicViewModel>()
+                    .Name("QuestionLogicGrid")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.LogicAction).ClientTemplate("#= LogicAction.Name #").Title("Action");
+                        columns.Bound(x => x.LogicActionQuestion).ClientTemplate("#= LogicActionQuestion.Name == null ? '' : LogicActionQuestion.Name #").Title("Question");
+                        columns.Bound(x => x.Expression).ClientTemplate("...");
+                        columns.Command(command => { command.Edit(); command.Destroy(); });
+                    })
+                    .ToolBar(toolbar => toolbar.Create().Text("Add Logic"))
+                    .Editable(editable => editable.Mode(GridEditMode.InLine).CreateAt(GridInsertRowPosition.Bottom))
+                    .Events(events => events.Edit("questionLogic_edit").Save("questionLogic_save"))
+                    //.Pageable()
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        //.PageSize(10)
+                        //.Sort(sort => sort.Add("AnswerOrder").Ascending())
+                        .Events(events => events.Error("questionLogic_error"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.LogicId);
+                            model.Field(x => x.LogicAction).DefaultValue(new SurveyQuestionLogicActionViewModel());
+                            model.Field(x => x.LogicActionQuestion).DefaultValue(new SurveyLogicActionQuestionViewModel());
+                            model.Field(x => x.Expression);
+                            model.Field(x => x.Components);
+                        })
+                        .Create(create => create.Action("SurveyQuestionLogic_Create", "Item"))
+                        .Read(read => read.Action("SurveyQuestionLogic_Read", "Item").Data("questionLogic_data"))
+                        .Update(update => update.Action("SurveyQuestionLogic_Update", "Item"))
+                        .Destroy(destroy => destroy.Action("SurveyQuestionLogic_Destroy", "Item"))
+                    )
+                    .AutoBind(false)
+                    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("questionLogic_open"))
+        .Width(1000)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("QuestionContentWindow")
+        .Title("Question")
+        .Content(@<text>
+            @(
+ Html.Kendo().Editor()
+                    .Name("QuestionContentEditor")
+                    .Tools(tools => tools
+                        .Clear()
+                        .Formatting()
+                        .Bold()
+                        .Italic()
+                        .Underline()
+                        .Strikethrough()
+                        .JustifyLeft()
+                        .JustifyCenter()
+                        .JustifyRight()
+                        .JustifyFull()
+                        .Indent()
+                        .Outdent()
+                        .FontName()
+                        .FontSize()
+                        .FontColor()
+                    )
+            )
+        </text>)
+        .Events(events => events.Open("questionContentWindow_open").Close("questionContentWindow_close"))
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Height(800)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("ContentWindow")
+        .Title("Content")
+        .Content(@<text>
+            @(
+ Html.Kendo().Editor()
+                    .Name("ContentEditor")
+                    .Tools(tools => tools
+                        .CustomButton(button => button
+                            .Name("VideoButton")
+                            .ToolTip("Insert video")
+                            .Exec("videos_exec")
+                        )
+                        .CustomButton(button => button
+                            .Name("ItemButton")
+                            .ToolTip("Item Selector")
+                            .Exec("items_exec")
+                        )
+                        .CustomButton(button => button
+                            .Name("PlaceholderButton")
+                            .ToolTip("Placeholder Selector")
+                            .Exec("placeholders_exec")
+                        )
+                        .CustomButton(button => button
+                            .Name("SpacingButton")
+                            .ToolTip("Edit Spacing")
+                            .Exec("spacing_exec")
+                        )
+                        //.CustomTemplate(ct => ct.Template(
+                        //    "<label for='BackgroundColor' style='vertical-align: middle;'>Background:</label> " +
+                        //    "<input id='BackgroundColor' style='width: 100px;'></input>" +
+                        //    "<button type='button' id='BackgroundColorSubmit'>Submit</button>"))
+                        .FontName()
+                        .FontSize()
+                        .FontColor()
+                        .Print()
+                        .ViewHtml()
+                    )
+                    .ImageBrowser(imageBrowser => imageBrowser
+                        .Image(Url.Content("~/Images/", true) + "{0}")
+                        .Read("Read", "ImageBrowser")
+                        .Create("Create", "ImageBrowser")
+                        .Destroy("Destroy", "ImageBrowser")
+                        .Upload("Upload", "ImageBrowser")
+                        .Thumbnail("Thumbnail", "ImageBrowser")
+                    )
+            )
+        </text>)
+        .Events(events => events.Open("contentWindow_open").Close("contentWindow_close"))
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Height(800)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("VideoWindow")
+        .Title("Videos")
+        .Content(@<text>
+            @(
+ Html.Kendo().DropDownList()
+                    .Name("VideoSelect")
+                    .DataTextField("Name")
+                    .DataValueField("VideoId")
+                    .DataSource(source =>
+                    {
+                        source.Read(x => x.Action("VideoItems", "Item"));
+                    })
+                    .AutoBind(false)
+            )
+            @(
+                Html.Kendo().CheckBox()
+                    .Name("Autoplay")
+                    .Label("Autoplay")
+            )
+
+            @(
+ Html.Kendo().Button()
+                    .Name("InsertVideo")
+                    .Content("Insert")
+                    .Events(events => events.Click("insertVideo_click"))
+            )
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Height(100)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("ItemWindow")
+        .Title("Items")
+        .Content(@<text>
+            @(
+ Html.Kendo().DropDownList()
+                    .Name("ItemSelect")
+                    .DataTextField("Name")
+                    .DataValueField("ItemId")
+                    .DataSource(source =>
+                    {
+                        source.Read(x => x.Action("Items", "Item"));
+                    })
+                    .AutoBind(false)
+            )
+
+            @(
+ Html.Kendo().TextBox()
+        .Name("ItemText")
+            )
+
+            @(
+ Html.Kendo().Button()
+                    .Name("InsertItem")
+                    .Content("Insert")
+                    .Events(events => events.Click("insertItem_click"))
+                    .HtmlAttributes(new { style = "display: block;" })
+            )
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("PlaceholderWindow")
+        .Title("Placeholders")
+        .Content(@<text>
+            @(
+ Html.Kendo().DropDownList()
+                    .Name("PlaceholderSelect")
+                    .DataTextField("Name")
+                    .DataValueField("PlaceholderId")
+                    .DataSource(source =>
+                    {
+                        source.Read(x => x.Action("PlaceholderItems", "Settings"));
+                    })
+                    .AutoBind(false)
+            )
+
+            @(
+ Html.Kendo().Button()
+                    .Name("InsertPlaceholder")
+                    .Content("Insert")
+                    .Events(events => events.Click("insertPlaceholder_click"))
+            )
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Height(100)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("SpacingWindow")
+        .Title("Spacing")
+        .Content(@<text>
+            <div id="PaddingDiv" style="float:left;">
+                <h3 style="text-align:center;">Padding</h3>
+                <div>
+                    @Html.Label("Top")
+                    @Html.Kendo().TextBox().Name("PaddingTop")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Right")
+                    @Html.Kendo().TextBox().Name("PaddingRight")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Bottom")
+                    @Html.Kendo().TextBox().Name("PaddingBottom")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Left")
+                    @Html.Kendo().TextBox().Name("PaddingLeft")
+                    <span>px</span>
+                </div>
+            </div>
+
+            <div id="MarginDiv" style="float:right;">
+                <h3 style="text-align:center;">Margin</h3>
+                <div>
+                    @Html.Label("Top")
+                    @Html.Kendo().TextBox().Name("MarginTop")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Right")
+                    @Html.Kendo().TextBox().Name("MarginRight")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Bottom")
+                    @Html.Kendo().TextBox().Name("MarginBottom")
+                    <span>px</span>
+                </div>
+                <div>
+                    @Html.Label("Left")
+                    @Html.Kendo().TextBox().Name("MarginLeft")
+                    <span>px</span>
+                </div>
+            </div>
+            @(
+ Html.Kendo().Button()
+                    .Name("InsertSpacing")
+                    .Content("Update")
+                    .Events(events => events.Click("insertSpacing_click"))
+            )
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("LogicBuilderWindow")
+        .Title("Logic Builder")
+        .Content(@Html.Partial("../Logic/_ExpressionBuilder").ToHtmlString())
+        .Events(events => events.Open("logicBuilder_open"))
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(1200)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("ContentPreviewWindow")
+        .Title("Content Preview")
+        .Content(@<text>
+            <div id="ContentPreview"></div>
+        </text>)
+            .Draggable()
+            .Resizable()
+            .Actions(actions => actions.Minimize().Maximize().Close())
+            .Width(350)
+            .Height(600)
+            .Modal(true)
+            .Visible(false)
+            .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("ImagePreviewWindow")
+        .Title("Image Preview")
+        .Content(@<text>
+            <iframe src="" class="k-content-frame" id="ImagePreview"></iframe>
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(350)
+        .Height(600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@(
+ Html.Kendo().Sortable()
+        .For("#QuestionsGrid")
+        .Filter("table > tbody > tr")
+        .Cursor("move")
+        .HintHandler("noHint")
+        .PlaceholderHandler("placeholder")
+        .ContainerSelector("#QuestionsGrid tbody")
+        .Events(events => events.Change("questions_changeOrder"))
+        .Ignore("td *")
+)
+
+@(
+ Html.Kendo().Sortable()
+        .For("#QuestionOptionsGrid")
+        .Filter("table > tbody > tr")
+        .Cursor("move")
+        .HintHandler("noHint")
+        .PlaceholderHandler("placeholder")
+        .ContainerSelector("#QuestionOptionsGrid tbody")
+        .Events(events => events.Change("questionOptions_changeOrder"))
+        .Ignore("td *")
+)
+
+@(
+ Html.Kendo().Sortable()
+        .For("#QuestionCategoriesGrid")
+        .Filter("table > tbody > tr")
+        .Cursor("move")
+        .HintHandler("noHint")
+        .PlaceholderHandler("placeholder")
+        .ContainerSelector("#QuestionCategoriesGrid tbody")
+        .Events(events => events.Change("questionCategories_changeOrder"))
+        .Ignore("td *")
+)
+
+@(
+ Html.Kendo().Sortable()
+        .For("#CategoryOptionsGrid")
+        .Filter("table > tbody > tr")
+        .Cursor("move")
+        .HintHandler("noHint")
+        .PlaceholderHandler("placeholder")
+        .ContainerSelector("#CategoryOptionsGrid tbody")
+        .Events(events => events.Change("categoryOptions_changeOrder"))
+        .Ignore("td *")
+)
+
+@{
+    Html.Kendo().Window()
+           .Name("SurveyDesignWindow")
+           .Title("Survey Design")
+           .Content(@<text>
+            <div id="SurveyDesign"></div>
+        </text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(1100)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@section styles
+{
+    <link href="@Url.Content("~/Content/extjs/resources/css/ext-all.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/imgmap/imgmap.css")" rel="stylesheet" type="text/css" />
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/extjs")
+    @Scripts.Render("~/bundles/imgmap_survey")
+
+    <script>
+        var surveyId;
+        var questionId;
+        var questionTypeId;
+        var categoryId;
+        var surveyModel;
+        var questionModel;
+        var optionModel;
+        var imageMapWin;
+        var image;
+        var components;
+        var target;
+        var noHint = $.noop;
+
+        (function ($, kendo) {
+            $.extend(true, kendo.ui.validator, {
+                rules: {
+                    logicactionquestionvalidation: function (input, params) {
+                        if (input.is("[name='LogicActionQuestion']") && input.val() == "") {
+                            input.attr("data-logicactionquestionvalidation-msg", "Question is required");
+                            return $('#LogicAction').val() != "2";
+                        }
+
+                        return true;
+                    },
+                    categoryvalidation: function (input, params) {
+                        if (input.is("[name='Category']") && input.val() == "") {
+                            input.attr("data-categoryvalidation-msg", "Category is required");
+                            return questionTypeId != "11";
+                        }
+
+                        return true;
+                    }
+                },
+                messages: {
+                    logicactionquestionvalidation: function (input) {
+                        return input.attr("data-val-logicactionquestionvalidation");
+                    },
+                    categoryvalidation: function (input) {
+                        return input.attr("data-val-categoryvalidation");
+                    }
+                }
+            });
+        })(jQuery, kendo);
+
+        function placeholder(element) {
+            return element.clone().addClass("k-state-hover").css("opacity", 0.65);
+        }
+
+        function surveys_error(e) {
+            if (e.errors) {
+                var grid = $('#SurveysGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function surveys_edit(e) {
+            //if (e.model.isNew() == false) {
+            //    $('#Email').prop("readonly", true);
+            //    $('#Password').prop("readonly", true).hide();
+            //    $('#PasswordVerify').prop("readonly", true).hide();
+            //}
+
+            surveyModel = e.model;
+        }
+
+        function surveys_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function logic_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var window = $("#LogicWindow").data("kendoWindow");
+
+            surveyId = dataItem.SurveyId;
+            window.center().open();
+        }
+
+        function logic_open() {
+            $('#LogicGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function logic_data() {
+            return {
+                SurveyId: surveyId
+            };
+        }
+
+        function logic_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function logic_error(e) {
+            if (e.errors) {
+                var grid = $('#LogicGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function logic_edit(e) {
+            $('#Expression').click(function () {
+                var window = $("#LogicBuilderWindow").data("kendoWindow");
+                window.center().open();
+            }).prop("readonly", true);
+
+            e.model.set("SurveyId", surveyId);
+            logicModel = e.model;
+        }
+
+        function questions_data() {
+            return {
+                SurveyId: surveyId
+            };
+        }
+
+        function questions_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var window = $("#QuestionsWindow").data("kendoWindow");
+
+            surveyId = dataItem.SurveyId;
+            surveyModel = $("#SurveysGrid").data("kendoGrid").dataSource.get(surveyId);
+            window.center().open();
+        }
+
+        function questions_open() {
+            $('#QuestionsGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function questions_edit(e) {
+            $('#QuestionText').click(function () {
+                var window = $("#QuestionContentWindow").data("kendoWindow");
+                window.center().open();
+            }).prop("readonly", true);
+
+            $('#Body').click(function () {
+                var window = $("#ContentWindow").data("kendoWindow");
+                window.center().open();
+            }).prop("readonly", true);
+
+            if (e.model.isNew() == false) {
+                $('#QuestionType').data("kendoDropDownList").enable(false);
+            }
+
+            $('#QuestionOrder').prop("readonly", true).hide();
+            e.model.set("SurveyId", surveyId);
+
+            var questionType = $('#QuestionType').data("kendoDropDownList").value();
+
+            if (questionType == "12") {
+                $("#QuestionsGrid").data("kendoGrid").showColumn("OptionImage");
+
+            }
+            else {
+                $("#QuestionsGrid").data("kendoGrid").hideColumn("OptionImage");
+            }
+
+            questionModel = e.model;
+            target = "Question";
+        }
+
+        function questionType_change() {
+            var questionType = $('#QuestionType').data("kendoDropDownList").value();
+
+            if (questionType == "12") {
+                $("#QuestionsGrid").data("kendoGrid").showColumn("OptionImage");
+
+            }
+            else {
+                $("#QuestionsGrid").data("kendoGrid").hideColumn("OptionImage");
+            }
+        }
+
+        function questions_dataBound(e) {
+            var grid = this;
+            var model;
+
+            grid.tbody.find("tr[role='row']").each(function () {
+                model = grid.dataItem(this);
+
+                if (model.QuestionTypeId != 1 &&
+                    model.QuestionTypeId != 2 &&
+                    model.QuestionTypeId != 3 &&
+                    model.QuestionTypeId != 6 &&
+                    model.QuestionTypeId != 7 &&
+                    model.QuestionTypeId != 8 &&
+                    model.QuestionTypeId != 12 &&
+                    model.QuestionTypeId != 15) {
+                    $(this).find(".k-grid-Options").remove();
+                }
+
+                if (model.QuestionTypeId != 11) {
+                    $(this).find(".k-grid-Categories").remove();
+                }
+            });
+        }
+
+        function questions_cancel(e) {
+            $('#QuestionsGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function questions_requestEnd(e) {
+            if (e.type == "create" || e.type == "update") {
+                if (!e.response.Errors) {
+                    $('#QuestionsGrid').data('kendoGrid').dataSource.read();
+                }
+            }
+        }
+
+        function questions_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function questions_error(e) {
+            if (e.errors) {
+                var grid = $('#QuestionsGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function questions_changeOrder(e) {
+            var grid = $("#QuestionsGrid").data("kendoGrid"),
+            oldIndex = e.oldIndex,
+            newIndex = e.newIndex,
+            data = grid.dataSource.data(),
+            dataItem = grid.dataSource.getByUid(e.item.data("uid")),
+            dest = grid.dataSource.at(e.newIndex);
+
+            $.ajax({
+                url: '@Url.Action("SurveyQuestions_ChangeOrder", "Item")',
+                type: 'POST',
+                data: {
+                    QuestionId: dataItem.get("QuestionId"),
+                    Order: dest.get("QuestionOrder")
+                },
+                success: function () {
+                    grid.dataSource.read();
+                }
+            })
+        }
+
+        function questionOptions_data() {
+            return {
+                QuestionId: questionId
+            };
+        }
+
+        function questionOptions_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+            questionId = dataItem.QuestionId;
+            questionTypeId = dataItem.QuestionType.QuestionTypeId;
+
+            var optionsToRemove = [];
+
+            if (questionTypeId == 12) {
+                image = document.getElementById('image_' + questionId);
+                imageMapWin = new Ext.Window({
+                    layout: 'fit',
+                    title: 'Image Map Editor',
+                    id: 'image_map_editor',
+                    closeAction: 'close',
+                    width: 800,
+                    height: 600,
+                    items: {
+                        xtype: 'imagemappanel'
+                    },
+                    buttonAlign: 'center',
+                    buttons: [
+                        {
+                            text: 'Save',
+                            handler: function () {
+                                for (var i = 0; i < imageMapWin.items.get(0).imageMap.areas.length; i++) {
+                                    var option = {};
+                                    var area = imageMapWin.items.get(0).imageMap.areas[i];
+
+                                    if (area != null) {
+                                        if (area.atitle == null || area.atitle == "" || area.aalt == undefined) {
+                                            alert("Option is required for area # " + area.aid + ".  Double click the area to edit.");
+                                            return;
+                                        }
+
+                                        option.OptionId = area.aalt || 0;
+                                        option.QuestionId = questionId;
+                                        option.OptionText = unescape(area.atitle);
+                                        option.OptionValue = (area.atarget);
+                                        option.ShapeType = area.shape;
+                                        option.Coordinates = area.lastInput;
+                                        //option.FeedbackItem = {};
+                                        //option.FeedbackItem.ItemId = (area.atarget);
+                                        $.post("SurveyQuestionOptions_Update", option)
+                                            .done(function (msg) {
+                                                if (msg.Errors) {
+                                                    var message = "Errors:\n";
+                                                    $.each(msg.Errors, function (key, value) {
+                                                        if ('errors' in value) {
+                                                            $.each(value.errors, function () {
+                                                                message += this + "\n";
+                                                            });
+                                                        }
+                                                    });
+                                                    alert(message);
+                                                }
+                                            });
+                                    }
+                                }
+
+                                $.each(optionsToRemove, function (index, option) {
+                                    $.post("SurveyQuestionOptions_Destroy", option);
+                                });
+
+                                imageMapWin.items.get(0).saveMap();
+                                imageMapWin.close();
+
+                                $('#QuestionsGrid').data('kendoGrid').dataSource.read();
+                            }
+                        },
+                        {
+                            text: 'Cancel',
+                            handler: function () {
+                                imageMapWin.items.get(0).cleanUp();
+                                imageMapWin.close();
+                                $('#QuestionsGrid').data('kendoGrid').dataSource.read();
+                            },
+                            scope: this
+                        }
+                    ],
+                    listeners: {
+                        'close': function () {
+                            $('#imgcontainer_' + questionId).hide();
+                        }
+                    }
+                });
+
+                imageMapWin.items.get(0).onRemoveArea = function (area) {
+                    if (area != null) {
+                        var option = {};
+                        option.OptionId = area.aalt || 0;
+                        optionsToRemove.push(option);
+                    }
+                }
+
+                $('#imgcontainer_' + questionId).show();
+
+                imageMapWin.show();
+                imageMapWin.items.get(0).loadImage(image);
+            }
+            else {
+                $("#QuestionOptionsWindow").data("kendoWindow").center().open();
+
+                if (questionTypeId != 11) {
+                    $('#QuestionOptionsGrid').data('kendoGrid').hideColumn("Category");
+                }
+                else {
+                    $('#QuestionOptionsGrid').data('kendoGrid').showColumn("Category");
+                }
+
+                $('#QuestionSelect').data('kendoDropDownList').dataSource.read();
+            }
+        }
+
+        function questionOptions_open() {
+            if (questionTypeId == 1 || questionTypeId == 2) {
+                $('#QuestionOptionsGrid').find(".k-grid-toolbar").hide();
+            }
+            else {
+                $('#QuestionOptionsGrid').find(".k-grid-toolbar").show();
+            }
+
+            $('#QuestionOptionsGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function questionOptions_edit(e) {
+            $('#Feedback').click(function () {
+                var window = $("#ContentWindow").data("kendoWindow");
+                window.center().open();
+            }).prop("readonly", true);
+
+            if (e.model.isNew() == true) {
+                $('#OptionValue').data("kendoNumericTextBox").wrapper.hide();
+            }
+
+            $('#OptionOrder').prop("readonly", true).hide();
+            e.model.set("QuestionId", questionId);
+
+            if (questionTypeId == 1 || questionTypeId == 2) {
+                $('#OptionText').hide();
+                $('#OptionValue').data("kendoNumericTextBox").wrapper.hide();
+            }
+
+            optionModel = e.model;
+            target = "Option";
+        }
+
+        function questionOptions_dataBound(e) {
+            if (questionTypeId == 1 || questionTypeId == 2) {
+                $('#QuestionOptionsGrid').find(".k-grid-delete").remove();
+            }
+        }
+
+        function questionOptions_cancel(e) {
+            setTimeout(function () {
+                if (questionTypeId == 1 || questionTypeId == 2) {
+                    $('#QuestionOptionsGrid').find(".k-grid-delete").remove();
+                }
+            });
+        }
+
+        function questionOptions_requestEnd(e) {
+            var grid = $('#QuestionOptionsGrid').data('kendoGrid');
+
+            if (e.type == "create" || e.type == "update") {
+                if (!e.response.Errors) {
+                    grid.dataSource.read();
+                }
+            }
+        }
+
+        function questionOptions_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function questionOptions_error(e) {
+            if (e.errors) {
+                var grid = $('#QuestionOptionsGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function questionOptions_changeOrder(e) {
+            var grid = $("#QuestionOptionsGrid").data("kendoGrid"),
+            oldIndex = e.oldIndex,
+            newIndex = e.newIndex,
+            data = grid.dataSource.data(),
+            dataItem = grid.dataSource.getByUid(e.item.data("uid")),
+            dest = grid.dataSource.at(e.newIndex);
+
+            $.ajax({
+                url: '@Url.Action("SurveyQuestionOptions_ChangeOrder", "Item")',
+                type: 'POST',
+                data: {
+                    OptionId: dataItem.get("OptionId"),
+                    Order: dest.get("OptionOrder")
+                },
+                success: function () {
+                    grid.dataSource.read();
+                }
+            })
+        }
+
+        function questionCategories_data() {
+            return {
+                QuestionId: questionId
+            };
+        }
+
+        function questionCategories_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var window = $("#QuestionCategoriesWindow").data("kendoWindow");
+
+            questionId = dataItem.QuestionId;
+            window.center().open();
+        }
+
+        function questionCategories_open() {
+            $('#QuestionCategoriesGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function questionCategories_edit(e) {
+            //if (e.model.isNew() == false) {
+            $('#CategoryOrder').prop("readonly", true).hide();
+            //}
+
+            e.model.set("QuestionId", questionId);
+        }
+
+        function questionCategories_requestEnd(e) {
+            var grid = $('#QuestionCategoriesGrid').data('kendoGrid');
+
+            if (e.type == "create" || e.type == "update") {
+                if (!e.response.Errors) {
+                    grid.dataSource.read();
+                }
+            }
+        }
+
+        function questionCategories_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function questionCategories_error(e) {
+            if (e.errors) {
+                var grid = $('#QuestionCategoriesGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function questionCategories_changeOrder(e) {
+            var grid = $("#QuestionCategoriesGrid").data("kendoGrid"),
+            oldIndex = e.oldIndex,
+            newIndex = e.newIndex,
+            data = grid.dataSource.data(),
+            dataItem = grid.dataSource.getByUid(e.item.data("uid")),
+            dest = grid.dataSource.at(e.newIndex);
+
+            $.ajax({
+                url: '@Url.Action("SurveyQuestionCategories_ChangeOrder", "Item")',
+                type: 'POST',
+                data: {
+                    CategoryId: dataItem.get("CategoryId"),
+                    Order: dest.get("CategoryOrder")
+                },
+                success: function () {
+                    grid.dataSource.read();
+                }
+            })
+        }
+
+        function categoryOptions_data() {
+            return {
+                QuestionId: questionId,
+                CategoryId: categoryId
+            };
+        }
+
+        function categoryOptions_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var window = $("#CategoryOptionsWindow").data("kendoWindow");
+
+            categoryId = dataItem.CategoryId;
+            window.center().open();
+        }
+
+        function categoryOptions_open() {
+            $('#CategoryOptionsGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function categoryOptions_edit(e) {
+            if (e.model.isNew() == true) {
+                $('#OptionValue').data("kendoNumericTextBox").wrapper.hide();
+            }
+
+            $('#OptionOrder').prop("readonly", true).hide();
+            e.model.set("QuestionId", questionId);
+            e.model.set("CategoryId", categoryId);
+        }
+
+        function categoryOptions_requestEnd(e) {
+            var grid = $('#CategoryOptionsGrid').data('kendoGrid');
+
+            if (e.type == "create" || e.type == "update") {
+                if (!e.response.Errors) {
+                    grid.dataSource.read();
+                }
+            }
+        }
+
+        function categoryOptions_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function categoryOptions_error(e) {
+            if (e.errors) {
+                var grid = $('#CategoryOptionsGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function categoryOptions_changeOrder(e) {
+            var grid = $("#CategoryOptionsGrid").data("kendoGrid"),
+            oldIndex = e.oldIndex,
+            newIndex = e.newIndex,
+            data = grid.dataSource.data(),
+            dataItem = grid.dataSource.getByUid(e.item.data("uid")),
+            dest = grid.dataSource.at(e.newIndex);
+
+            $.ajax({
+                url: '@Url.Action("SurveyQuestionOptions_ChangeOrder", "Item")',
+                type: 'POST',
+                data: {
+                    OptionId: dataItem.get("OptionId"),
+                    Order: dest.get("OptionOrder")
+                },
+                success: function () {
+                    grid.dataSource.read();
+                }
+            })
+        }
+
+        function questionLogic_show(e) {
+            e.preventDefault();
+
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var window = $("#QuestionLogicWindow").data("kendoWindow");
+
+            questionId = dataItem.QuestionId;
+            window.center().open();
+        }
+
+        function questionLogic_open() {
+            $('#QuestionLogicGrid').data('kendoGrid').dataSource.read();
+        }
+
+        function questionLogic_data() {
+            return {
+                QuestionId: questionId
+            };
+        }
+
+        function questionLogicCondition_data() {
+            return {
+                components: components
+            };
+        }
+
+        function questionLogic_save(e) {
+            var grid = this;
+            grid._progress(true);
+            this.dataSource.one("change", function (e) {
+                grid._progress(false);
+            });
+        }
+
+        function questionLogic_error(e) {
+            if (e.errors) {
+                var grid = $('#QuestionLogicGrid').data('kendoGrid');
+
+                grid.one("dataBinding", function (x) {
+                    x.preventDefault();
+
+                    var message = "Errors:\n";
+                    $.each(e.errors, function (key, value) {
+                        if ('errors' in value) {
+                            $.each(value.errors, function () {
+                                message += this + "\n";
+                            });
+                        }
+                    });
+                    alert(message);
+                });
+            }
+        }
+
+        function questionLogic_edit(e) {
+            $('#Expression').click(function () {
+                var window = $("#LogicBuilderWindow").data("kendoWindow");
+                window.center().open();
+            }).prop("readonly", true);
+
+            e.model.set("QuestionId", questionId);
+            logicModel = e.model;
+
+            var action = $('#LogicAction').data("kendoDropDownList").value();
+
+            if (action == "2") {
+                $('#LogicActionQuestion').data("kendoDropDownList").wrapper.show();
+            }
+            else {
+                $('#LogicActionQuestion').data("kendoDropDownList").wrapper.hide();
+            }
+        }
+
+        function questionLogicAction_change() {
+            if (this.value() == "2") {
+                $('#LogicActionQuestion').data("kendoDropDownList").wrapper.show();
+            }
+            else {
+                $('#LogicActionQuestion').data("kendoDropDownList").wrapper.hide();
+            }
+        }
+
+        function logicActionQuestions_data() {
+            return {
+                SurveyId: surveyId,
+                QuestionId: questionId
+            };
+        }
+
+        function logicBuilder_open() {
+            $('#ExpressionContainer').html("");
+            components = logicModel.get("Components");
+            on_load(components);
+        }
+
+        function save_expression(expression, components) {
+            $('#Expression').val(expression);
+            logicModel.set("Expression", expression);
+            logicModel.set("Components", components);
+            $("#LogicBuilderWindow").data("kendoWindow").close();
+        }
+
+        function upload_success(e) {
+            var model = $('#QuestionsGrid').data('kendoGrid').dataItem(this.element.closest("tr"));
+            model.ImagePath = e.response;
+            model.dirty = true;
+        }
+
+        function buildImageMap(questionId, imagePath, options) {
+            var html = "<div class='img-container' id='imgcontainer_" + questionId + "'>";
+            if (imagePath != null) {
+                html += "<img id='image_" + questionId + "' src='../Images/" + imagePath + "' usemap='#imgmap_" + questionId + "'>";
+
+                if (options.length > 0) {
+                    html += "<map id='imgmap_" + questionId + "' name='imgmap_" + questionId + "'>";
+
+                    $.each(options, function (index, option) {
+                        html += "<area href='javascript:alert(\"" + escape(option.OptionText) + "\");' target='" + option.OptionValue + "' shape='" + option.ShapeTypeString + "' alt='" + option.OptionId + "' title='" + escape(option.OptionText) + "' coords='" + option.Coordinates + "' />";
+                    });
+
+                    html += "</map>";
+                }
+            }
+
+            html += "</div>";
+
+            if (imagePath != null) {
+                html += "<a href='javascript:previewImage(" + questionId + ");'>Preview</a>";
+            }
+
+            return html;
+        }
+
+        function previewImage(questionId) {
+            $('#ImagePreview').prop("src", "@Url.Action("SurveyQuestionImageMap_Preview", "Item")" + "/" + questionId + "?os=1");
+            $("#ImagePreviewWindow").data("kendoWindow").center().open();
+
+            //var regex = new RegExp("_" + questionId, "g");
+            //$('#ImagePreview').html($('#imgcontainer_' + questionId).html().replace(regex, "_preview"));
+            //$("#ImagePreviewWindow").data("kendoWindow").center().open();
+        }
+
+        function questionSelect_data() {
+            return {
+                SurveyId: surveyId
+            };
+        }
+
+        function questionSelect_click(e) {
+            var questionSelectId = $('#QuestionSelect').data('kendoDropDownList').value();
+
+            if (questionSelectId != "") {
+                $.post("@Url.Action("SurveyQuestionOptions_CreateExisting", "Item")", { questionId: questionId, existingQuestionId: questionSelectId }, function () {
+                    $('#QuestionOptionsGrid').data("kendoGrid").dataSource.read();
+                });
+            }
+        }
+
+        function questionContentWindow_open() {
+            var editor = $('#QuestionContentEditor').data("kendoEditor");
+
+            if (surveyModel.BodyBackgroundColor) {
+                $(editor.body).css('backgroundColor', surveyModel.BodyBackgroundColor);
+            }
+            if (surveyModel.BodyColor) {
+                $(editor.body).css('color', surveyModel.BodyColor);
+            }
+
+            editor.value(questionModel.QuestionText);
+        }
+
+        function questionContentWindow_close() {
+            var editor = $("#QuestionContentEditor").data("kendoEditor");
+            $('#QuestionText').val(editor.value());
+            questionModel.set("QuestionText", editor.value());
+        }
+
+        function contentWindow_open() {
+            var editor = $('#ContentEditor').data("kendoEditor");
+
+            if (surveyModel.BodyBackgroundColor) {
+                $(editor.body).css('backgroundColor', surveyModel.BodyBackgroundColor);
+            }
+            if (surveyModel.BodyColor) {
+                $(editor.body).css('color', surveyModel.BodyColor);
+            }
+
+            if (target == "Question") {
+                editor.value(questionModel.Body);
+            }
+            else if (target == "Option") {
+                editor.value(optionModel.Feedback);
+            }
+        }
+
+        function contentWindow_close() {
+            if (target == "Question") {
+                var editor = $("#ContentEditor").data("kendoEditor");
+                $('#Body').val(editor.value());
+                questionModel.set("Body", editor.value());
+            }
+            else if (target == "Option") {
+                var editor = $("#ContentEditor").data("kendoEditor");
+                $('#Feedback').val(editor.value());
+                optionModel.set("Feedback", editor.value());
+            }
+        }
+
+        function videos_exec() {
+            $('#VideoSelect').data("kendoDropDownList").dataSource.read();
+            $("#VideoWindow").data("kendoWindow").center().open();
+        }
+
+        function insertVideo_click() {
+            var autoplay = $("#Autoplay").is(":checked");
+
+            var video = $('<video></video');
+            video.attr('width', '100%');
+            video.attr('height', 'auto');
+            video.attr('preload', 'auto');
+            video.attr('controls', '');
+            video.attr('poster', '@Url.Content("~/Content/Images/poster.png", true)');
+            if (autoplay)
+                video.attr('autoplay', '');
+
+            var source = $('<source>');
+            source.attr('src', '@Url.Content("~/api/Content/Video/", true)' + $('#VideoSelect').val());
+            source.attr('type', 'video/mp4');
+
+            var p = $('<p></p>');
+            video.append(source);
+            p.append(video);
+
+            $('#ContentEditor').data("kendoEditor").exec("inserthtml", { value: p.html() });
+            $("#VideoWindow").data("kendoWindow").close();
+        }
+
+        function items_exec() {
+            $('#ItemSelect').data("kendoDropDownList").dataSource.read();
+            $("#ItemWindow").data("kendoWindow").center().open();
+        }
+
+        function insertItem_click() {
+            var dataItem = $('#ItemSelect').data("kendoDropDownList").dataItem($('#ItemSelect').data("kendoDropDownList").select());
+
+            $('#ContentEditor').data("kendoEditor").exec("inserthtml", { value: "<a href='item://" + dataItem.ItemId + "?typeId=" + dataItem.ItemTypeId + "'>" + $('#ItemText').val() + "</a>" });
+            $("#ItemWindow").data("kendoWindow").close();
+        }
+
+        function placeholders_exec() {
+            $('#PlaceholderSelect').data("kendoDropDownList").dataSource.read();
+            $('#PlaceholderWindow').data("kendoWindow").center().open();
+        }
+
+        function insertPlaceholder_click() {
+            var dataItem = $('#PlaceholderSelect').data("kendoDropDownList").dataItem($('#PlaceholderSelect').data("kendoDropDownList").select());
+
+            $('#ContentEditor').data("kendoEditor").exec("inserthtml", { value: dataItem.UniqueName });
+            $("#PlaceholderWindow").data("kendoWindow").close();
+        }
+
+        function spacing_findContainer(editor) {
+            var el = editor.getRange().commonAncestorContainer;
+
+            //may have to expand on this list
+            var tags = ["P", "DIV", "BUTTON", "INPUT", "IMG", "LABEL", "LI", "UL", "OL", "TABLE", "TR", "TD", "TH", "VIDEO", "BODY"];
+
+            while ($.inArray(el.nodeName, tags) == -1 && el != null) {
+                el = el.parentElement;
+            }
+
+            //wrap body in div if body is common ancestor
+            if (el.nodeName == "BODY") {
+                $(el).wrapInner($('<div></div>'));
+
+                editor.update();
+
+                var range = editor.createRange();
+                range.selectNodeContents(editor.body.children[0]);
+                editor.selectRange(range);
+
+                return $(editor.body.children[0]);
+            }
+
+            return $(el);
+        }
+
+        function spacing_exec() {
+            var editor = $('#ContentEditor').data("kendoEditor");
+
+            var element = spacing_findContainer(editor);
+
+            var padding = element.css('padding'), margin = element.css('margin');
+            var paddingTop, paddingRight, paddingBottom, paddingLeft, marginTop, marginRight, marginBottom, marginLeft;
+
+            if (!padding)
+                padding = '0px';
+
+            if (!margin)
+                margin = '0px';
+
+            paddingTop = element.css('paddingTop');
+            paddingRight = element.css('paddingRight');
+            paddingBottom = element.css('paddingBottom');
+            paddingLeft = element.css('paddingLeft');
+
+            marginTop = element.css('marginTop');
+            marginRight = element.css('marginRight');
+            marginBottom = element.css('marginBottom');
+            marginLeft = element.css('marginLeft');
+
+            if (!paddingTop)
+                paddingTop = padding;
+            if (!paddingRight)
+                paddingRight = padding;
+            if (!paddingBottom)
+                paddingBottom = padding;
+            if (!paddingLeft)
+                paddingLeft = padding;
+
+            if (!marginTop)
+                marginTop = margin;
+            if (!marginRight)
+                marginRight = margin;
+            if (!marginBottom)
+                marginBottom = margin;
+            if (!marginLeft)
+                marginLeft = margin;
+
+            $('#PaddingTop').val(parseInt(paddingTop));
+            $('#PaddingRight').val(parseInt(paddingRight));
+            $('#PaddingBottom').val(parseInt(paddingBottom));
+            $('#PaddingLeft').val(parseInt(paddingLeft));
+
+            $('#MarginTop').val(parseInt(marginTop));
+            $('#MarginRight').val(parseInt(marginRight));
+            $('#MarginBottom').val(parseInt(marginBottom));
+            $('#MarginLeft').val(parseInt(marginLeft));
+
+            $('#SpacingWindow').data("kendoWindow").center().open();
+        }
+
+        function insertSpacing_click() {
+            var editor = $('#ContentEditor').data("kendoEditor");
+
+            var paddingTop = $('#PaddingTop').val();
+            var paddingRight = $('#PaddingRight').val();
+            var paddingBottom = $('#PaddingBottom').val();
+            var paddingLeft = $('#PaddingLeft').val();
+
+            var marginTop = $('#MarginTop').val();
+            var marginRight = $('#MarginRight').val();
+            var marginBottom = $('#MarginBottom').val();
+            var marginLeft = $('#MarginLeft').val();
+
+            var element = spacing_findContainer(editor);
+
+            if (paddingTop)
+                element.css('paddingTop', paddingTop + "px");
+            if (paddingRight)
+                element.css('paddingRight', paddingRight + "px");
+            if (paddingBottom)
+                element.css('paddingBottom', paddingBottom + "px");
+            if (paddingLeft)
+                element.css('paddingLeft', paddingLeft + "px");
+
+            if (marginTop)
+                element.css('marginTop', marginTop + "px");
+            if (marginRight)
+                element.css('marginRight', marginRight + "px");
+            if (marginBottom)
+                element.css('marginBottom', marginBottom + "px");
+            if (marginLeft)
+                element.css('marginLeft', marginLeft + "px");
+
+            editor.update();
+            $('#SpacingWindow').data("kendoWindow").close();
+        }
+
+        function surveyQuestionImageUpload_success(e) {
+            var model = $('#QuestionsGrid').data('kendoGrid').dataItem(this.element.closest("tr"));
+            model.QuestionImage = e.response;
+            model.dirty = true;
+        }
+
+        function surveyOptionImageUpload_success(e) {
+            var model = $('#QuestionsGrid').data('kendoGrid').dataItem(this.element.closest("tr"));
+            model.OptionImage = e.response;
+            model.dirty = true;
+        }
+
+        function previewContent(targetId) {
+            if (target == "Question") {
+                var data = $('#QuestionsGrid').data("kendoGrid").dataSource.data();
+
+                $.each(data, function (index, question) {
+                    if (question.QuestionId == targetId) {
+                        $('#ContentPreview').html(question.Body);
+                        $("#ContentPreviewWindow").data("kendoWindow").center().open();
+                        return;
+                    }
+                });
+            }
+            else if (target == "Option") {
+                var data = $('#QuestionOptionsGrid').data("kendoGrid").dataSource.data();
+
+                $.each(data, function (index, option) {
+                    if (option.OptionId == targetId) {
+                        $('#ContentPreview').html(option.Feedback);
+                        $("#ContentPreviewWindow").data("kendoWindow").center().open();
+                        return;
+                    }
+                });
+            }
+        }
+
+        function editor_paste(e) {
+            e.html = $(e.html).text();
+        }
+
+        function design_show(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            surveyId = dataItem.SurveyId;
+
+            $('#SurveyDesign').load("SurveyDesign?surveyId=" + surveyId);
+            $('#SurveyDesign').focus();
+            var window = $("#SurveyDesignWindow").data("kendoWindow");
+            window.center().open();
+        }
+
+        function onSelectHeaderImage(e) {
+            $("#HeaderImg").attr("src", "@Url.Content("~/Images/", true)" + e.response);
+            $("#HeaderImage").val(e.response);
+        }
+
+        function onSelectHeaderBackgroundImage(e) {
+            $("#HeaderBackImg").attr("src", "@Url.Content("~/Images/", true)" + e.response);
+            $("#HeaderBackgroundImage").val(e.response);
+        }
+
+        function onSelectBodyBackgroundPortraitImage(e) {
+            $("#BodyBackImg").attr("src", "@Url.Content("~/Images/", true)" + e.response);
+            $("#BodyBackgroundPortraitImage").val(e.response);
+        }
+
+        $(document).on('submit', 'form.design-form', function () {
+            var form = $(this);
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function () {
+                    var window = form.closest("div[data-role='window']");
+                    if (window)
+                        window.data('kendoWindow').close();
+                },
+                error: function (response) {
+                    alert(JSON.stringify(response));
+                }
+            });
+            return false;
+        });
+
+    </script>
+}

@@ -1,0 +1,284 @@
+﻿@model TransafeRx.Models.AdherenceViewModel
+
+@{
+    ViewBag.Title = "Adherence";
+
+    if (Request.UserAgent.ToLower().Contains("ipad"))
+    {
+        Layout = null;
+    }
+}
+
+@if (!Request.UserAgent.ToLower().Contains("ipad"))
+{
+}
+else
+{
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Summary Report</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+
+        <!--This bundle was moved by the Telerik VS Extensions for compatibility reasons-->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/kendo/2016.1.412/jquery.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/jszip.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo.all.min.testing.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo/2016.1.412/kendo.aspnetmvc.min.js")"></script>
+        <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    </head>
+}
+
+<h2>Adherence</h2>
+<br />
+
+<div class="row">
+    <div class="col-sm-2">
+        @(
+ Html.Kendo().DropDownList()
+        .Name("UserId")
+        .HtmlAttributes(new { required = "required", data_required_msg = "Select user", style = "width: 175px" })
+        .OptionLabel("Select user")
+        .BindTo(Model.UserSelectList)
+        .Events(e => e.Change("user_change"))
+        )
+    </div>
+
+    <div class="col-sm-5 inline">
+        @Html.Label("Start Date") &nbsp;
+        @Html.Kendo().DatePickerFor(model => model.StartDate).Name("StartDate").HtmlAttributes(new { style = "width: 100px" }).Events(e => e.Change("user_change"))&nbsp;&nbsp;&nbsp;
+        @Html.Label("End Date")&nbsp;
+        @Html.Kendo().DatePickerFor(model => model.EndDate).Name("EndDate").HtmlAttributes(new { style = "width: 100px" }).Events(e => e.Change("user_change"))
+    </div>
+
+</div>
+
+<br /><br />
+<div class="SummaryReportDiv" style="display:none">
+    @if (!Request.UserAgent.ToLower().Contains("ipad"))
+    {
+        <button id="export" class="k-button"><span class="k-icon k-i-excel"></span>Export to Excel</button>
+    }
+    <br />
+    <h4>Medication Adherence</h4>
+
+    @*<div class="box">
+            <div class="box-col">
+                <button id="ExportAdherence" class='k-button k-primary'>Save as PDF</button>
+            </div>
+        </div>*@
+
+    <div id="AdherenceChartDiv"></div>
+
+    @(Html.Kendo().Grid<dynamic>()
+                    .Name("AdherenceSummaryGrid")
+                    .Columns(columns =>
+                    {
+                        foreach (System.Data.DataColumn column in Model.MedAdherenceTable.Columns)
+                        {
+                            columns.Bound(column.DataType, column.ColumnName).Title(column.Caption)
+                                .FooterTemplate(x =>
+                                {
+                                });
+                        }
+                    })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(50)
+                        .Model(model =>
+                        {
+                            foreach (System.Data.DataColumn column in Model.MedAdherenceTable.Columns)
+                            {
+                                model.Field(column.ColumnName, column.DataType);
+                            }
+                        })
+                        .Read(read => read.Action("MedAdherence_Read", "Reports").Data("function() { return { userId: $('#UserId').val(), StartDate: $('#StartDate').val(), EndDate: $('#EndDate').val() } }"))
+                    )
+                    .AutoBind(true)
+                    .Groupable()
+                    .Sortable(s => s.AllowUnsort(true))
+                    .Filterable(ftb => ftb.Mode(GridFilterMode.Menu))
+                    .Pageable(pageable => pageable
+                        .Refresh(true)
+                        .PageSizes(true)
+                        .ButtonCount(5)
+                    )
+                    .Scrollable(scr => scr.Height("auto"))
+                    .Events(events => events.ExcelExport("adherence_excelExport"))
+    )
+
+    <br />
+    <h4>Refill Adherence</h4>
+    <br />
+
+    <div id="RefillAdherenceChartDiv"></div>
+    @(Html.Kendo().Grid<dynamic>()
+                    .Name("RefillAdherenceSummaryGrid")
+                    .Columns(columns =>
+                    {
+                        foreach (System.Data.DataColumn column in Model.RefillAdherenceTable.Columns)
+                        {
+                            columns.Bound(column.DataType, column.ColumnName).Title(column.Caption)
+                                .FooterTemplate(x =>
+                                {
+                                });
+                        }
+                    })
+                    .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(50)
+                        .Model(model =>
+                        {
+                            foreach (System.Data.DataColumn column in Model.RefillAdherenceTable.Columns)
+                            {
+                                model.Field(column.ColumnName, column.DataType);
+                            }
+                        })
+                     .Read(read => read.Action("RefillAdherence_Read", "Reports").Data("function() { return { userId: $('#UserId').val(), StartDate: $('#StartDate').val(), EndDate: $('#EndDate').val() } }"))
+                    )
+                    .AutoBind(true)
+                    .Groupable()
+                    .Sortable(s => s.AllowUnsort(true))
+                    .Filterable(ftb => ftb.Mode(GridFilterMode.Menu))
+                    .Pageable(pageable => pageable
+                        .Refresh(true)
+                        .PageSizes(true)
+                        .ButtonCount(5)
+                    )
+                    .Scrollable(scr => scr.Height("auto"))
+                    .Events(events => events.ExcelExport("refill_excelExport"))
+    )
+</div>
+@section scripts
+{
+    <script>
+            var actualDate = new Date($('#StartDate').val()); // convert to actual date
+
+            //FOR NEXT DAY
+            var nextDate = new Date(actualDate.getFullYear(), actualDate.getMonth() + 1, actualDate.getDate() + 1);
+            var day = nextDate.getDate();
+            var month = nextDate.getMonth();
+            var year = nextDate.getFullYear();
+
+            $('#EndDate').val(month + '/' + day + '/' + year);
+
+            //FOR NEXT MONTH
+            var nextMonth = new Date(actualDate.getFullYear(), actualDate.getMonth() + 2, actualDate.getDate());
+
+            function user_change() {
+                if ($('#UserId').data("kendoDropDownList").value() == "") {
+                }
+                else {
+
+                    if ($('#StartDate').val() != '' && $('#EndDate').val() != '') {
+                        if (Date.parse($('#StartDate').val()) > Date.parse($('#EndDate').val())) {
+                            alert('End date should be before start date');
+                            $('#EndDate').val($('#StartDate').val());
+                        }
+                    }
+                    $(".SummaryReportDiv").show();
+
+                    //$('#AdherenceChart').data("kendoChart").dataSource.read();
+                    $('#AdherenceSummaryGrid').data("kendoGrid").dataSource.read();
+                    $('#RefillAdherenceSummaryGrid').data("kendoGrid").dataSource.read();
+
+                    $('#AdherenceChartDiv').load("AdherenceChart?userId=" + $('#UserId').val() + "&StartDate=" + $('#StartDate').val() + "&EndDate=" + $('#EndDate').val());
+                    $('#RefillAdherenceChartDiv').load("RefillAdherenceChart?userId=" + $('#UserId').val() + "&StartDate=" + $('#StartDate').val() + "&EndDate=" + $('#EndDate').val());
+                    $('#AdherenceChartDiv').focus();
+                }
+            }
+
+    </script>
+}
+<script type="text/javascript">
+    var promises = [
+        $.Deferred()
+    ];
+
+    $('#export').click(function (e) {
+        $('#AdherenceSummaryGrid').data('kendoGrid').saveAsExcel();
+
+        $.when.apply(null, promises)
+         .then(function (adherenceWorkbook) {
+             var sheets = [
+                 adherenceWorkbook.sheets[0]
+             ];
+
+             sheets[0].title = "Adherence";
+
+             var workbook = new kendo.ooxml.Workbook({
+                 sheets: sheets
+             });
+
+             kendo.saveAs({
+                 dataURI: workbook.toDataURL(),
+                 fileName: "Summary Report.xlsx",
+                 proxyURL: "@Url.Action("SaveSummaryReport", "Reports")"
+             })
+         });
+    });
+
+    $("#ExportAdherence").click(function () {
+        $("#AdherenceChart").getKendoChart().saveAsPDF();
+    });
+
+    $("#ExportRefillAdherence").click(function () {
+        $("#AdherenceChart").getKendoChart().saveAsPDF();
+    });
+
+    function adherence_excelExport(e) {
+        e.preventDefault();
+        promises[0].resolve(e.workbook);
+    }
+
+    function refill_excelExport(e) {
+        e.preventDefault();
+        promises[0].resolve(e.workbook);
+    }
+
+</script>
+
+@if (!Request.UserAgent.ToLower().Contains("ipad"))
+{
+    <style>
+        .k-tabstrip .k-content {
+            padding: 5px 10px;
+        }
+
+        .box {
+            text-align: right;
+            padding-right: 5px;
+        }
+
+        #export {
+            margin: 10px 0;
+        }
+    </style>
+}
+else
+{
+    <style>
+        body {
+            padding-top: 0;
+        }
+
+        .k-grid {
+            font-size: 12px;
+        }
+
+            .k-grid .k-header {
+                font-size: 12px;
+            }
+
+            .k-grid td {
+                font-size: 12px;
+            }
+    </style>
+}

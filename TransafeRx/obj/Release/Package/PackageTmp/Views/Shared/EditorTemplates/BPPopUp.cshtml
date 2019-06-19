@@ -1,0 +1,37 @@
+﻿@model TransafeRx.Models.BloodPressureViewModel
+
+@Html.HiddenFor(model => model.BloodPressureId)
+@Html.HiddenFor(model => model.UserId)
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Systolic)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Systolic)
+    @Html.ValidationMessageFor(model => model.Systolic)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Diastolic)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Diastolic)
+    @Html.ValidationMessageFor(model => model.Diastolic)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Pulse)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Pulse)
+    @Html.ValidationMessageFor(model => model.Pulse)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ReadingDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ReadingDate)
+    @Html.ValidationMessageFor(model => model.ReadingDate)
+</div>

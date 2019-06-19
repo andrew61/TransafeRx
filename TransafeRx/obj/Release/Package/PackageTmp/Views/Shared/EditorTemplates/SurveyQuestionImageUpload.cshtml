@@ -1,0 +1,13 @@
+﻿@model object
+
+@(
+ Html.Kendo().Upload()
+        .Name("SurveyQuestionImageUpload")
+        .Messages(m => m.Select("Select Image..."))
+        .Async(async => async
+            .Save("UploadImage", "Upload")
+            .SaveField("image")
+            .AutoUpload(true)
+        )
+        .Events(x => x.Success("surveyQuestionImageUpload_success"))
+)

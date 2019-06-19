@@ -1,0 +1,121 @@
+    ======  ======
+    Time:6/4/2018 11:10:03 AM
+    Title: Initiate log
+    Message: 
+    Time:6/4/2018 11:10:03 AM
+    Title: Initiate InternalManager
+    Message: Trying to Validate License
+    Time:6/4/2018 11:10:03 AM
+    Title: Requesting EVT
+    Message: EVTP
+    Time:6/4/2018 11:10:03 AM
+    Title: Requesting Validation
+    Message: ILMValidate
+    Time:6/4/2018 11:10:03 AM
+    Title: LICENSER
+    Message: READ REGS START
+    Time:6/4/2018 11:10:03 AM
+    Title: LIC TS_KEY
+    Message: NULL
+    Time:6/4/2018 11:10:03 AM
+    Title: LICENSER
+    Message: READ REGS SUCCESS
+    Time:6/4/2018 11:10:03 AM
+    Title: LICENSER
+    Message: TRL MODE
+    Time:6/4/2018 11:10:03 AM
+    Title: LICENSER
+    Message: DS LEFT2
+    Time:6/4/2018 11:10:03 AM
+    Title: LICENSER
+    Message: DT MARK PASSED2.00:00:00
+    Time:6/4/2018 11:10:07 AM
+    Title: Requesting Validation
+    Message: ILMValidate True
+    Time:6/4/2018 11:10:07 AM
+    Title: Requesting Validation
+    Message: ILMValidate True Trial
+    Time:6/4/2018 11:10:07 AM
+    Title: Requested registry access is not allowed.
+    Message:    at System.ThrowHelper.ThrowSecurityException(ExceptionResource resource)
+   at Microsoft.Win32.RegistryKey.OpenSubKey(String name, Boolean writable)
+   at Telerik.Licensing.Licenser.CheckRegistryTimeStamp()
+   at Telerik.Licensing.Licenser.TryCheckLicenseExists()
+    Entering constructor for: Telerik.Reporting.VsPackage.VsPackage
+    Entering Initialize() of: Telerik.Reporting.VsPackage.VsPackage
+    No Telerik Reporting products found in registry
+    Entering constructor for: Telerik.CommonPackage.Telerik_CommonPackagePackage
+    Entering Initialize() of: Telerik.CommonPackage.Telerik_CommonPackagePackage
+    Entering constructor for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering constructor for: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering Initialize() of: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering constructor for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering constructor for: Telerik.Web.UI.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.Web.UI.VSPackage.VSPackage
+    Entering constructor for: Telerik.WinControls.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.VSPackage.VSPackage
+    Entering constructor for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering constructor for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering constructor for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Entering constructor for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering constructor for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.Mvc.VSPackage.VsPackage
+    Assembly resolution failed: Telerik.JustMock.AddIn.XmlSerializers, Version=2017.3.913.1, Culture=neutral, PublicKeyToken=602a9bfd8c8c4ad7
+    Assembly resolution failed: Telerik.UserSettings.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.UserSettings.2018.2.531.1.XmlSerializers, Version=2018.2.531.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.UserSettings.2018.2.514.1.XmlSerializers, Version=2018.2.514.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    devenv.exe Information: 0 : 6/4/2018 3:11:06 PM:  - TokenCache: Deserialized 3 items to token cache.
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2018.2.514.1.XmlSerializers, Version=2018.2.514.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2018.2.531.1.XmlSerializers, Version=2018.2.531.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/ProcessDailyEpicFiles/Program.cs    2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>] 488 ms
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fProgram.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fProgram.cs@2752] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fProgram.cs@2752] (GET)filesummaries[codelens] 286 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\App.config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/ProcessDailyEpicFiles/App.config    2042
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fApp.config@2042
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fApp.config@2042] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fProcessDailyEpicFiles%2fApp.config@2042] (GET)filesummaries[codelens] 361 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\ProcessDailyEpicFiles\Program.cs    CSharpMethod : ProcessDailyEpicFiles.Program.ExecuteProc(string,object)
+    Entering Dispose() of: Telerik.Reporting.VsPackage.VsPackage

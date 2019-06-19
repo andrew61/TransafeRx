@@ -1,0 +1,2124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TransafeRxModelStoreContainer" CdmEntityContainer="TransafeRxEntities">
+    <EntitySetMapping Name="AdherenceProtocols">
+      <EntityTypeMapping TypeName="TransafeRxModel.AdherenceProtocol">
+        <MappingFragment StoreEntitySet="AdherenceProtocol">
+          <ScalarProperty Name="smaID" ColumnName="smaID" />
+          <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+          <ScalarProperty Name="PhaseNext" ColumnName="PhaseNext" />
+          <ScalarProperty Name="AdhScoreLL" ColumnName="AdhScoreLL" />
+          <ScalarProperty Name="DaysBtMsgs" ColumnName="DaysBtMsgs" />
+          <ScalarProperty Name="ReqDaysAdh" ColumnName="ReqDaysAdh" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="PhaseRelapse" ColumnName="PhaseRelapse" />
+          <ScalarProperty Name="DaysToAvg" ColumnName="DaysToAvg" />
+          <ScalarProperty Name="Relapse" ColumnName="Relapse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admissions">
+      <EntityTypeMapping TypeName="TransafeRxModel.Admission">
+        <MappingFragment StoreEntitySet="Admissions">
+          <ScalarProperty Name="AdmissionId" ColumnName="AdmissionId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AdmissionTypeId" ColumnName="AdmissionTypeId" />
+          <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationSettings">
+      <EntityTypeMapping TypeName="TransafeRxModel.ApplicationSetting">
+        <MappingFragment StoreEntitySet="ApplicationSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+          <ScalarProperty Name="RootItemId" ColumnName="RootItemId" />
+          <ScalarProperty Name="ThemeId" ColumnName="ThemeId" />
+          <ScalarProperty Name="HeaderTitle" ColumnName="HeaderTitle" />
+          <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+          <ScalarProperty Name="HeaderFontId" ColumnName="HeaderFontId" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="HeaderColor" ColumnName="HeaderColor" />
+          <ScalarProperty Name="HeaderBackgroundColor" ColumnName="HeaderBackgroundColor" />
+          <ScalarProperty Name="HeaderBackgroundImage" ColumnName="HeaderBackgroundImage" />
+          <ScalarProperty Name="HeaderBackgroundAlpha" ColumnName="HeaderBackgroundAlpha" />
+          <ScalarProperty Name="HeaderBackgroundImageAlpha" ColumnName="HeaderBackgroundImageAlpha" />
+          <ScalarProperty Name="HeaderEffect" ColumnName="HeaderEffect" />
+          <ScalarProperty Name="BackButtonType" ColumnName="BackButtonType" />
+          <ScalarProperty Name="BackButtonColor" ColumnName="BackButtonColor" />
+          <ScalarProperty Name="BackButtonBackgroundColor" ColumnName="BackButtonBackgroundColor" />
+          <ScalarProperty Name="BackButtonBackgroundAlpha" ColumnName="BackButtonBackgroundAlpha" />
+          <ScalarProperty Name="MenuButtonType" ColumnName="MenuButtonType" />
+          <ScalarProperty Name="MenuButtonColor" ColumnName="MenuButtonColor" />
+          <ScalarProperty Name="MenuButtonBackgroundColor" ColumnName="MenuButtonBackgroundColor" />
+          <ScalarProperty Name="MenuButtonBackgroundAlpha" ColumnName="MenuButtonBackgroundAlpha" />
+          <ScalarProperty Name="SelectedMenuButtonColor" ColumnName="SelectedMenuButtonColor" />
+          <ScalarProperty Name="SelectedMenuButtonBackgroundColor" ColumnName="SelectedMenuButtonBackgroundColor" />
+          <ScalarProperty Name="SelectedMenuButtonBackgroundAlpha" ColumnName="SelectedMenuButtonBackgroundAlpha" />
+          <ScalarProperty Name="BodyFontId" ColumnName="BodyFontId" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="BodyFontSizeLg" ColumnName="BodyFontSizeLg" />
+          <ScalarProperty Name="BodyFontSizeSm" ColumnName="BodyFontSizeSm" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="SelectedBodyColor" ColumnName="SelectedBodyColor" />
+          <ScalarProperty Name="BodyBackgroundColor" ColumnName="BodyBackgroundColor" />
+          <ScalarProperty Name="BodyBackgroundPortraitImage" ColumnName="BodyBackgroundPortraitImage" />
+          <ScalarProperty Name="BodyBackgroundLandscapeImage" ColumnName="BodyBackgroundLandscapeImage" />
+          <ScalarProperty Name="BodyBackgroundAlpha" ColumnName="BodyBackgroundAlpha" />
+          <ScalarProperty Name="BodyBackgroundImageAlpha" ColumnName="BodyBackgroundImageAlpha" />
+          <ScalarProperty Name="SelectedBodyBackgroundColor" ColumnName="SelectedBodyBackgroundColor" />
+          <ScalarProperty Name="SelectedBodyBackgroundAlpha" ColumnName="SelectedBodyBackgroundAlpha" />
+          <ScalarProperty Name="BodySeparatorType" ColumnName="BodySeparatorType" />
+          <ScalarProperty Name="BodySeparatorColor" ColumnName="BodySeparatorColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="LabelColor" ColumnName="LabelColor" />
+          <ScalarProperty Name="ValidationColor" ColumnName="ValidationColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppVersions">
+      <EntityTypeMapping TypeName="TransafeRxModel.AppVersion">
+        <MappingFragment StoreEntitySet="AppVersions">
+          <ScalarProperty Name="AppVersionId" ColumnName="AppVersionId" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="TransafeRxModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="TransafeRxModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="TransafeRxModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="TransafeRxModel.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="TransafeRxModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodGlucoseMeasurements">
+      <EntityTypeMapping TypeName="TransafeRxModel.BloodGlucoseMeasurement">
+        <MappingFragment StoreEntitySet="BloodGlucoseMeasurements">
+          <ScalarProperty Name="BloodGlucoseId" ColumnName="BloodGlucoseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GlucoseLevel" ColumnName="GlucoseLevel" />
+          <ScalarProperty Name="ReadingDate" ColumnName="ReadingDate" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="TransferDateUTC" ColumnName="TransferDateUTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BloodPressureMeasurements">
+      <EntityTypeMapping TypeName="TransafeRxModel.BloodPressureMeasurement">
+        <MappingFragment StoreEntitySet="BloodPressureMeasurements">
+          <ScalarProperty Name="BloodPressureId" ColumnName="BloodPressureId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Systolic" ColumnName="Systolic" />
+          <ScalarProperty Name="Diastolic" ColumnName="Diastolic" />
+          <ScalarProperty Name="Pulse" ColumnName="Pulse" />
+          <ScalarProperty Name="ReadingDate" ColumnName="ReadingDate" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="TransferDateUTC" ColumnName="TransferDateUTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="TransafeRxModel.Calendar">
+        <MappingFragment StoreEntitySet="Calendar">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Weekday" ColumnName="Weekday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="TransafeRxModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Secret" ColumnName="Secret" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="RefreshTokenLifeTime" ColumnName="RefreshTokenLifeTime" />
+          <ScalarProperty Name="AllowedOrigin" ColumnName="AllowedOrigin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeviceTokens">
+      <EntityTypeMapping TypeName="TransafeRxModel.DeviceToken">
+        <MappingFragment StoreEntitySet="DeviceTokens">
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TokenTypeId" ColumnName="TokenTypeId" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="TokenCreateDate" ColumnName="TokenCreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fonts">
+      <EntityTypeMapping TypeName="TransafeRxModel.Font">
+        <MappingFragment StoreEntitySet="Fonts">
+          <ScalarProperty Name="FontId" ColumnName="FontId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLogics">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemLogic">
+        <MappingFragment StoreEntitySet="ItemLogic">
+          <ScalarProperty Name="LogicId" ColumnName="LogicId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLogicActions">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemLogicAction">
+        <MappingFragment StoreEntitySet="ItemLogicActions">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLogicEvents">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemLogicEvent">
+        <MappingFragment StoreEntitySet="ItemLogicEvents">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemNavigations">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemNavigation">
+        <MappingFragment StoreEntitySet="ItemNavigation">
+          <ScalarProperty Name="NavigationId" ColumnName="NavigationId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+          <ScalarProperty Name="LogicComponents" ColumnName="LogicComponents" />
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+          <ScalarProperty Name="ButtonImage" ColumnName="ButtonImage" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemNavigationTemplates">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemNavigationTemplate">
+        <MappingFragment StoreEntitySet="ItemNavigationTemplates">
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemNavigationTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemNavigationType">
+        <MappingFragment StoreEntitySet="ItemNavigationTypes">
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="TransafeRxModel.Item">
+        <MappingFragment StoreEntitySet="Items">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="HeaderTitle" ColumnName="HeaderTitle" />
+          <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+          <ScalarProperty Name="HeaderFontId" ColumnName="HeaderFontId" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="HeaderColor" ColumnName="HeaderColor" />
+          <ScalarProperty Name="HeaderBackgroundColor" ColumnName="HeaderBackgroundColor" />
+          <ScalarProperty Name="HeaderBackgroundImage" ColumnName="HeaderBackgroundImage" />
+          <ScalarProperty Name="HeaderBackgroundAlpha" ColumnName="HeaderBackgroundAlpha" />
+          <ScalarProperty Name="HeaderBackgroundImageAlpha" ColumnName="HeaderBackgroundImageAlpha" />
+          <ScalarProperty Name="HeaderEffect" ColumnName="HeaderEffect" />
+          <ScalarProperty Name="BackButtonType" ColumnName="BackButtonType" />
+          <ScalarProperty Name="BackButtonColor" ColumnName="BackButtonColor" />
+          <ScalarProperty Name="BackButtonBackgroundColor" ColumnName="BackButtonBackgroundColor" />
+          <ScalarProperty Name="BackButtonBackgroundAlpha" ColumnName="BackButtonBackgroundAlpha" />
+          <ScalarProperty Name="BodyFontId" ColumnName="BodyFontId" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="BodyBackgroundColor" ColumnName="BodyBackgroundColor" />
+          <ScalarProperty Name="BodyBackgroundPortraitImage" ColumnName="BodyBackgroundPortraitImage" />
+          <ScalarProperty Name="BodyBackgroundLandscapeImage" ColumnName="BodyBackgroundLandscapeImage" />
+          <ScalarProperty Name="BodyBackgroundAlpha" ColumnName="BodyBackgroundAlpha" />
+          <ScalarProperty Name="BodyBackgroundImageAlpha" ColumnName="BodyBackgroundImageAlpha" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="LastUpdatedDateUTC" ColumnName="LastUpdatedDateUTC" />
+          <ScalarProperty Name="LastUpdatedById" ColumnName="LastUpdatedById" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTemplates">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemTemplate">
+        <MappingFragment StoreEntitySet="ItemTemplates">
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemToolbarItems">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemToolbarItem">
+        <MappingFragment StoreEntitySet="ItemToolbarItems">
+          <ScalarProperty Name="ToolbarItemId" ColumnName="ToolbarItemId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+          <ScalarProperty Name="LogicComponents" ColumnName="LogicComponents" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTransitionTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemTransitionType">
+        <MappingFragment StoreEntitySet="ItemTransitionTypes">
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.ItemType">
+        <MappingFragment StoreEntitySet="ItemTypes">
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LogicBuilder" ColumnName="LogicBuilder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginInformations">
+      <EntityTypeMapping TypeName="TransafeRxModel.LoginInformation">
+        <MappingFragment StoreEntitySet="LoginInformation">
+          <ScalarProperty Name="LoginInformationId" ColumnName="LoginInformationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DateDTO" ColumnName="DateDTO" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="Network" ColumnName="Network" />
+          <ScalarProperty Name="PhoneType" ColumnName="PhoneType" />
+          <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+          <ScalarProperty Name="DateCTZ" ColumnName="DateCTZ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LU_AdmissionTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.LU_AdmissionTypes">
+        <MappingFragment StoreEntitySet="LU_AdmissionTypes">
+          <ScalarProperty Name="AdmissionTypeId" ColumnName="AdmissionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LU_AppId">
+      <EntityTypeMapping TypeName="TransafeRxModel.LU_AppId">
+        <MappingFragment StoreEntitySet="LU_AppId">
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LU_DeviceTokenTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.LU_DeviceTokenTypes">
+        <MappingFragment StoreEntitySet="LU_DeviceTokenTypes">
+          <ScalarProperty Name="TokenTypeId" ColumnName="TokenTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LU_MedicationActivityTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.LU_MedicationActivityTypes">
+        <MappingFragment StoreEntitySet="LU_MedicationActivityTypes">
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LU_NotificationType">
+      <EntityTypeMapping TypeName="TransafeRxModel.LU_NotificationType">
+        <MappingFragment StoreEntitySet="LU_NotificationType">
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedicationActivities">
+      <EntityTypeMapping TypeName="TransafeRxModel.MedicationActivity">
+        <MappingFragment StoreEntitySet="MedicationActivity">
+          <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="ActivityUTC" ColumnName="ActivityUTC" />
+          <ScalarProperty Name="ActivityDTO" ColumnName="ActivityDTO" />
+          <ScalarProperty Name="ActivityCTZ" ColumnName="ActivityCTZ" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="TransafeRxModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="MessageTypeID" ColumnName="MessageTypeID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="LangID" ColumnName="LangID" />
+          <ScalarProperty Name="ResponseReq" ColumnName="ResponseReq" />
+          <ScalarProperty Name="UploadFilePath" ColumnName="UploadFilePath" />
+          <ScalarProperty Name="SendTypeID" ColumnName="SendTypeID" />
+          <ScalarProperty Name="PersonalizedNodeId" ColumnName="PersonalizedNodeId" />
+          <ScalarProperty Name="PersonalizedGroupNodeId" ColumnName="PersonalizedGroupNodeId" />
+          <ScalarProperty Name="InactiveDate" ColumnName="InactiveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages1">
+      <EntityTypeMapping TypeName="TransafeRxModel.Message1">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="Error" ColumnName="Error" />
+          <ScalarProperty Name="DateSentUTC" ColumnName="DateSentUTC" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationMessages">
+      <EntityTypeMapping TypeName="TransafeRxModel.NotificationMessage">
+        <MappingFragment StoreEntitySet="NotificationMessages">
+          <ScalarProperty Name="NotificationMessageId" ColumnName="NotificationMessageId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationDateUTC" ColumnName="NotificationDateUTC" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationPreferences">
+      <EntityTypeMapping TypeName="TransafeRxModel.NotificationPreference">
+        <MappingFragment StoreEntitySet="NotificationPreferences">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationDays" ColumnName="NotificationDays" />
+          <ScalarProperty Name="NotificationPreferencesId" ColumnName="NotificationPreferencesId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientMedPhases">
+      <EntityTypeMapping TypeName="TransafeRxModel.PatientMedPhase">
+        <MappingFragment StoreEntitySet="PatientMedPhase">
+          <ScalarProperty Name="sphID" ColumnName="sphID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="phaseID" ColumnName="phaseID" />
+          <ScalarProperty Name="adhDate" ColumnName="adhDate" />
+          <ScalarProperty Name="adherence" ColumnName="adherence" />
+          <ScalarProperty Name="phaseDayCount" ColumnName="phaseDayCount" />
+          <ScalarProperty Name="dateEntered" ColumnName="dateEntered" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientMessageSents">
+      <EntityTypeMapping TypeName="TransafeRxModel.PatientMessageSent">
+        <MappingFragment StoreEntitySet="PatientMessageSent">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="PatMessID" ColumnName="PatMessID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="TwilioMessageSID" ColumnName="TwilioMessageSID" />
+          <ScalarProperty Name="TwilioMsgError" ColumnName="TwilioMsgError" />
+          <ScalarProperty Name="TwilioMessageStatus" ColumnName="TwilioMessageStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSMSMessages">
+      <EntityTypeMapping TypeName="TransafeRxModel.PatientSMSMessage">
+        <MappingFragment StoreEntitySet="PatientSMSMessages">
+          <ScalarProperty Name="SMSMessageId" ColumnName="SMSMessageId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="SentBy" ColumnName="SentBy" />
+          <ScalarProperty Name="PhoneNumberUsed" ColumnName="PhoneNumberUsed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalizedMessageTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.PersonalizedMessageType">
+        <MappingFragment StoreEntitySet="PersonalizedMessageType">
+          <ScalarProperty Name="MessageTypeID" ColumnName="MessageTypeID" />
+          <ScalarProperty Name="MessageTypeName" ColumnName="MessageTypeName" />
+          <ScalarProperty Name="MessageTypeDesc" ColumnName="MessageTypeDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhoneNumbers">
+      <EntityTypeMapping TypeName="TransafeRxModel.PhoneNumber">
+        <MappingFragment StoreEntitySet="PhoneNumbers">
+          <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Transplant" ColumnName="Transplant" />
+          <ScalarProperty Name="Study" ColumnName="Study" />
+          <ScalarProperty Name="Pharmacy" ColumnName="Pharmacy" />
+          <ScalarProperty Name="Refill" ColumnName="Refill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Placeholders">
+      <EntityTypeMapping TypeName="TransafeRxModel.Placeholder">
+        <MappingFragment StoreEntitySet="Placeholders">
+          <ScalarProperty Name="PlaceholderId" ColumnName="PlaceholderId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UniqueName" ColumnName="UniqueName" />
+          <ScalarProperty Name="IsStatic" ColumnName="IsStatic" />
+          <ScalarProperty Name="ReplacementText" ColumnName="ReplacementText" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefreshTokens">
+      <EntityTypeMapping TypeName="TransafeRxModel.RefreshToken">
+        <MappingFragment StoreEntitySet="RefreshTokens">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="IssuedUtc" ColumnName="IssuedUtc" />
+          <ScalarProperty Name="ExpiresUtc" ColumnName="ExpiresUtc" />
+          <ScalarProperty Name="ProtectedTicket" ColumnName="ProtectedTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="TransafeRxModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedules">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyAnswers">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyAnswer">
+        <MappingFragment StoreEntitySet="SurveyAnswers">
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+          <ScalarProperty Name="AnswerDateDTO" ColumnName="AnswerDateDTO" />
+          <ScalarProperty Name="AnswerDateUTC" ColumnName="AnswerDateUTC" />
+          <ScalarProperty Name="AnswerDateCTZ" ColumnName="AnswerDateCTZ" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyOptionGroups">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyOptionGroup">
+        <MappingFragment StoreEntitySet="SurveyOptionGroups">
+          <ScalarProperty Name="OptionGroupId" ColumnName="OptionGroupId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyOptions">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyOption">
+        <MappingFragment StoreEntitySet="SurveyOptions">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="OptionOrder" ColumnName="OptionOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestionCategories">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestionCategory">
+        <MappingFragment StoreEntitySet="SurveyQuestionCategories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryOrder" ColumnName="CategoryOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestionLogics">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestionLogic">
+        <MappingFragment StoreEntitySet="SurveyQuestionLogic">
+          <ScalarProperty Name="LogicId" ColumnName="LogicId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="ActionQuestionId" ColumnName="ActionQuestionId" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestionLogicActions">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestionLogicAction">
+        <MappingFragment StoreEntitySet="SurveyQuestionLogicActions">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestionOptions">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestionOption">
+        <MappingFragment StoreEntitySet="SurveyQuestionOptions">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+          <ScalarProperty Name="OptionImage" ColumnName="OptionImage" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="OptionOrder" ColumnName="OptionOrder" />
+          <ScalarProperty Name="ShapeType" ColumnName="ShapeType" />
+          <ScalarProperty Name="Coordinates" ColumnName="Coordinates" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestions">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestion">
+        <MappingFragment StoreEntitySet="SurveyQuestions">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QuestionImage" ColumnName="QuestionImage" />
+          <ScalarProperty Name="QuestionOrder" ColumnName="QuestionOrder" />
+          <ScalarProperty Name="OptionImage" ColumnName="OptionImage" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Required" ColumnName="Required" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyQuestionTypes">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveyQuestionType">
+        <MappingFragment StoreEntitySet="SurveyQuestionTypes">
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HasOptions" ColumnName="HasOptions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Surveys">
+      <EntityTypeMapping TypeName="TransafeRxModel.Survey">
+        <MappingFragment StoreEntitySet="Surveys">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="AllowRestart" ColumnName="AllowRestart" />
+          <ScalarProperty Name="AutoSubmit" ColumnName="AutoSubmit" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveySessions">
+      <EntityTypeMapping TypeName="TransafeRxModel.SurveySession">
+        <MappingFragment StoreEntitySet="SurveySessions">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StartDateUTC" ColumnName="StartDateUTC" />
+          <ScalarProperty Name="StartDateDTO" ColumnName="StartDateDTO" />
+          <ScalarProperty Name="StartDateCTZ" ColumnName="StartDateCTZ" />
+          <ScalarProperty Name="EndDateUTC" ColumnName="EndDateUTC" />
+          <ScalarProperty Name="EndDateDTO" ColumnName="EndDateDTO" />
+          <ScalarProperty Name="EndDateCTZ" ColumnName="EndDateCTZ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Themes">
+      <EntityTypeMapping TypeName="TransafeRxModel.Theme">
+        <MappingFragment StoreEntitySet="Themes">
+          <ScalarProperty Name="ThemeId" ColumnName="ThemeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PrimaryColor" ColumnName="PrimaryColor" />
+          <ScalarProperty Name="SecondaryColor" ColumnName="SecondaryColor" />
+          <ScalarProperty Name="TertiaryColor" ColumnName="TertiaryColor" />
+          <ScalarProperty Name="FontId" ColumnName="FontId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToolbarItemActions">
+      <EntityTypeMapping TypeName="TransafeRxModel.ToolbarItemAction">
+        <MappingFragment StoreEntitySet="ToolbarItemActions">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToolbarItemNavigations">
+      <EntityTypeMapping TypeName="TransafeRxModel.ToolbarItemNavigation">
+        <MappingFragment StoreEntitySet="ToolbarItemNavigation">
+          <ScalarProperty Name="NavigationId" ColumnName="NavigationId" />
+          <ScalarProperty Name="ToolbarItemId" ColumnName="ToolbarItemId" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+          <ScalarProperty Name="LogicComponents" ColumnName="LogicComponents" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToolbarItems">
+      <EntityTypeMapping TypeName="TransafeRxModel.ToolbarItem">
+        <MappingFragment StoreEntitySet="ToolbarItems">
+          <ScalarProperty Name="ToolbarItemId" ColumnName="ToolbarItemId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMedications">
+      <EntityTypeMapping TypeName="TransafeRxModel.UserMedication">
+        <MappingFragment StoreEntitySet="UserMedications">
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="InActive" ColumnName="InActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="GPI" ColumnName="GPI" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="dosage" ColumnName="dosage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TransafeRxModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubjectNbr" ColumnName="SubjectNbr" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="APNSToken" ColumnName="APNSToken" />
+          <ScalarProperty Name="GCMToken" ColumnName="GCMToken" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateMedsReviewed" ColumnName="DateMedsReviewed" />
+          <ScalarProperty Name="PersonalizedSurveyTaken" ColumnName="PersonalizedSurveyTaken" />
+          <ScalarProperty Name="ResearchNumber" ColumnName="ResearchNumber" />
+          <ScalarProperty Name="DisableMotivationalMessages" ColumnName="DisableMotivationalMessages" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Intervals">
+      <EntityTypeMapping TypeName="TransafeRxModel.Interval">
+        <MappingFragment StoreEntitySet="Intervals">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="UtcStart" ColumnName="UtcStart" />
+          <ScalarProperty Name="UtcEnd" ColumnName="UtcEnd" />
+          <ScalarProperty Name="LocalStart" ColumnName="LocalStart" />
+          <ScalarProperty Name="LocalEnd" ColumnName="LocalEnd" />
+          <ScalarProperty Name="OffsetMinutes" ColumnName="OffsetMinutes" />
+          <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VersionInfoes">
+      <EntityTypeMapping TypeName="TransafeRxModel.VersionInfo">
+        <MappingFragment StoreEntitySet="VersionInfo">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Loaded" ColumnName="Loaded" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="TransafeRxModel.Zone">
+        <MappingFragment StoreEntitySet="Zones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Scores">
+      <EntityTypeMapping TypeName="TransafeRxModel.Score">
+        <MappingFragment StoreEntitySet="Scores">
+          <ScalarProperty Name="Score1" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sequencers">
+      <EntityTypeMapping TypeName="TransafeRxModel.Sequencer">
+        <MappingFragment StoreEntitySet="Sequencer">
+          <ScalarProperty Name="SeqID" ColumnName="SeqID" />
+          <ScalarProperty Name="SubID" ColumnName="SubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonalizedSurveyMessageHistory" TypeName="TransafeRxModel.PersonalizedSurveyMessageHistory" StoreEntitySet="PersonalizedSurveyMessageHistory">
+      <EndProperty Name="Message">
+        <ScalarProperty Name="MessageID" ColumnName="MessageId" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Links" TypeName="TransafeRxModel.Links" StoreEntitySet="Links">
+      <EndProperty Name="Zones">
+        <ScalarProperty Name="Id" ColumnName="LinkZoneId" />
+      </EndProperty>
+      <EndProperty Name="Zones1">
+        <ScalarProperty Name="Id" ColumnName="CanonicalZoneId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AddAdmission" FunctionName="TransafeRxModel.Store.AddAdmission" />
+    <FunctionImportMapping FunctionImportName="AddBloodGlucoseMeasurement" FunctionName="TransafeRxModel.Store.AddBloodGlucoseMeasurement" />
+    <FunctionImportMapping FunctionImportName="AddBloodGlucoseMeasurementModified" FunctionName="TransafeRxModel.Store.AddBloodGlucoseMeasurementModified" />
+    <FunctionImportMapping FunctionImportName="AddBloodPressureMeasurement" FunctionName="TransafeRxModel.Store.AddBloodPressureMeasurement" />
+    <FunctionImportMapping FunctionImportName="AddBloodPressureMeasurementWithModified" FunctionName="TransafeRxModel.Store.AddBloodPressureMeasurementWithModified" />
+    <FunctionImportMapping FunctionImportName="AddDeviceToken" FunctionName="TransafeRxModel.Store.AddDeviceToken" />
+    <FunctionImportMapping FunctionImportName="AddLoginInformation" FunctionName="TransafeRxModel.Store.AddLoginInformation" />
+    <FunctionImportMapping FunctionImportName="AddMedicationActivity" FunctionName="TransafeRxModel.Store.AddMedicationActivity" />
+    <FunctionImportMapping FunctionImportName="AddMedicationActivityAdmitted" FunctionName="TransafeRxModel.Store.AddMedicationActivityAdmitted" />
+    <FunctionImportMapping FunctionImportName="AddMessage" FunctionName="TransafeRxModel.Store.AddMessage" />
+    <FunctionImportMapping FunctionImportName="AddNotificationMessage" FunctionName="TransafeRxModel.Store.AddNotificationMessage" />
+    <FunctionImportMapping FunctionImportName="AddPatientSMS" FunctionName="TransafeRxModel.Store.AddPatientSMS" />
+    <FunctionImportMapping FunctionImportName="AddPersonalizedSurveyMessageHistory" FunctionName="TransafeRxModel.Store.AddPersonalizedSurveyMessageHistory" />
+    <FunctionImportMapping FunctionImportName="AddSurveyAnswers" FunctionName="TransafeRxModel.Store.AddSurveyAnswers" />
+    <FunctionImportMapping FunctionImportName="AddSurveySession" FunctionName="TransafeRxModel.Store.AddSurveySession" />
+    <FunctionImportMapping FunctionImportName="AddUpdateAllUserMedicationFromEPIC" FunctionName="TransafeRxModel.Store.AddUpdateAllUserMedicationFromEPIC" />
+    <FunctionImportMapping FunctionImportName="AddUpdateItem" FunctionName="TransafeRxModel.Store.AddUpdateItem" />
+    <FunctionImportMapping FunctionImportName="AddUpdateMedicationSchedules" FunctionName="TransafeRxModel.Store.AddUpdateMedicationSchedules" />
+    <FunctionImportMapping FunctionImportName="AddUpdateNotificationPreference" FunctionName="TransafeRxModel.Store.AddUpdateNotificationPreference" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurvey" FunctionName="TransafeRxModel.Store.AddUpdateSurvey" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyOption" FunctionName="TransafeRxModel.Store.AddUpdateSurveyOption" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyOptionGroup" FunctionName="TransafeRxModel.Store.AddUpdateSurveyOptionGroup" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyQuestion" FunctionName="TransafeRxModel.Store.AddUpdateSurveyQuestion" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyQuestionCategory" FunctionName="TransafeRxModel.Store.AddUpdateSurveyQuestionCategory" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyQuestionLogic" FunctionName="TransafeRxModel.Store.AddUpdateSurveyQuestionLogic" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveyQuestionOption" FunctionName="TransafeRxModel.Store.AddUpdateSurveyQuestionOption" />
+    <FunctionImportMapping FunctionImportName="AddUpdateSurveySession" FunctionName="TransafeRxModel.Store.AddUpdateSurveySession">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.AddUpdateSurveySession_Result">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StartDateUTC" ColumnName="StartDateUTC" />
+          <ScalarProperty Name="StartDateDTO" ColumnName="StartDateDTO" />
+          <ScalarProperty Name="StartDateCTZ" ColumnName="StartDateCTZ" />
+          <ScalarProperty Name="EndDateUTC" ColumnName="EndDateUTC" />
+          <ScalarProperty Name="EndDateDTO" ColumnName="EndDateDTO" />
+          <ScalarProperty Name="EndDateCTZ" ColumnName="EndDateCTZ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddUpdateUser" FunctionName="TransafeRxModel.Store.AddUpdateUser" />
+    <FunctionImportMapping FunctionImportName="AddUpdateUserMedication" FunctionName="TransafeRxModel.Store.AddUpdateUserMedication" />
+    <FunctionImportMapping FunctionImportName="AddUpdateUserMedicationFromCurrentMed" FunctionName="TransafeRxModel.Store.AddUpdateUserMedicationFromCurrentMed" />
+    <FunctionImportMapping FunctionImportName="AddUpdateUserMedicationFromEPIC" FunctionName="TransafeRxModel.Store.AddUpdateUserMedicationFromEPIC" />
+    <FunctionImportMapping FunctionImportName="AddUpdateUserMedicationFromMedDispensed" FunctionName="TransafeRxModel.Store.AddUpdateUserMedicationFromMedDispensed" />
+    <FunctionImportMapping FunctionImportName="AddUserMedicationScheduleFromEpic" FunctionName="TransafeRxModel.Store.AddUserMedicationScheduleFromEpic" />
+    <FunctionImportMapping FunctionImportName="BulkInsertAppointments" FunctionName="TransafeRxModel.Store.BulkInsertAppointments" />
+    <FunctionImportMapping FunctionImportName="BulkInsertCurrentMeds" FunctionName="TransafeRxModel.Store.BulkInsertCurrentMeds" />
+    <FunctionImportMapping FunctionImportName="BulkInsertMedsDispensed" FunctionName="TransafeRxModel.Store.BulkInsertMedsDispensed" />
+    <FunctionImportMapping FunctionImportName="BulkInsertRosterClarity" FunctionName="TransafeRxModel.Store.BulkInsertRosterClarity" />
+    <FunctionImportMapping FunctionImportName="BulkInsertTacrolimus" FunctionName="TransafeRxModel.Store.BulkInsertTacrolimus" />
+    <FunctionImportMapping FunctionImportName="CalculateMedChanges" FunctionName="TransafeRxModel.Store.CalculateMedChanges" />
+    <FunctionImportMapping FunctionImportName="CalculateRefillAdherence" FunctionName="TransafeRxModel.Store.CalculateRefillAdherence" />
+    <FunctionImportMapping FunctionImportName="CalculateRiskLevel" FunctionName="TransafeRxModel.Store.CalculateRiskLevel" />
+    <FunctionImportMapping FunctionImportName="ChangeSurveyOptionOrder" FunctionName="TransafeRxModel.Store.ChangeSurveyOptionOrder" />
+    <FunctionImportMapping FunctionImportName="ChangeSurveyQuestionCategoryOrder" FunctionName="TransafeRxModel.Store.ChangeSurveyQuestionCategoryOrder" />
+    <FunctionImportMapping FunctionImportName="ChangeSurveyQuestionOptionOrder" FunctionName="TransafeRxModel.Store.ChangeSurveyQuestionOptionOrder" />
+    <FunctionImportMapping FunctionImportName="ChangeSurveyQuestionOrder" FunctionName="TransafeRxModel.Store.ChangeSurveyQuestionOrder" />
+    <FunctionImportMapping FunctionImportName="CompleteSurveySession" FunctionName="TransafeRxModel.Store.CompleteSurveySession" />
+    <FunctionImportMapping FunctionImportName="CreateDailyUserMedicationSchedule" FunctionName="TransafeRxModel.Store.CreateDailyUserMedicationSchedule" />
+    <FunctionImportMapping FunctionImportName="Daily_CalculateCTL_SCN_MedAdh" FunctionName="TransafeRxModel.Store.Daily_CalculateCTL_SCN_MedAdh" />
+    <FunctionImportMapping FunctionImportName="Daily_CalculateInterventionMedAdhAndMsgs" FunctionName="TransafeRxModel.Store.Daily_CalculateInterventionMedAdhAndMsgs" />
+    <FunctionImportMapping FunctionImportName="DeleteBPReading" FunctionName="TransafeRxModel.Store.DeleteBPReading" />
+    <FunctionImportMapping FunctionImportName="DeleteGlucoseReading" FunctionName="TransafeRxModel.Store.DeleteGlucoseReading" />
+    <FunctionImportMapping FunctionImportName="DeleteMedicationSchedules" FunctionName="TransafeRxModel.Store.DeleteMedicationSchedules" />
+    <FunctionImportMapping FunctionImportName="DeleteSurvey" FunctionName="TransafeRxModel.Store.DeleteSurvey" />
+    <FunctionImportMapping FunctionImportName="DeleteSurveyOption" FunctionName="TransafeRxModel.Store.DeleteSurveyOption" />
+    <FunctionImportMapping FunctionImportName="DeleteSurveyOptionGroup" FunctionName="TransafeRxModel.Store.DeleteSurveyOptionGroup" />
+    <FunctionImportMapping FunctionImportName="DeleteSurveyQuestion" FunctionName="TransafeRxModel.Store.DeleteSurveyQuestion" />
+    <FunctionImportMapping FunctionImportName="DeleteSurveyQuestionLogic" FunctionName="TransafeRxModel.Store.DeleteSurveyQuestionLogic" />
+    <FunctionImportMapping FunctionImportName="DeleteSurveyQuestionOption" FunctionName="TransafeRxModel.Store.DeleteSurveyQuestionOption" />
+    <FunctionImportMapping FunctionImportName="DeleteUserMedication" FunctionName="TransafeRxModel.Store.DeleteUserMedication" />
+    <FunctionImportMapping FunctionImportName="EditBloodPressureMeasurement" FunctionName="TransafeRxModel.Store.EditBloodPressureMeasurement" />
+    <FunctionImportMapping FunctionImportName="EditGlucoseMeasurement" FunctionName="TransafeRxModel.Store.EditGlucoseMeasurement" />
+    <FunctionImportMapping FunctionImportName="EmailTardyBPPatients" FunctionName="TransafeRxModel.Store.EmailTardyBPPatients" />
+    <FunctionImportMapping FunctionImportName="EvaluateDynamicPlaceholder" FunctionName="TransafeRxModel.Store.EvaluateDynamicPlaceholder" />
+    <FunctionImportMapping FunctionImportName="EvaluateLogic" FunctionName="TransafeRxModel.Store.EvaluateLogic" />
+    <FunctionImportMapping FunctionImportName="fnGetScheduleDates" FunctionName="TransafeRxModel.Store.fnGetScheduleDates" />
+    <FunctionImportMapping FunctionImportName="fnGetUserMedicationScheduleDates" FunctionName="TransafeRxModel.Store.fnGetUserMedicationScheduleDates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.fnGetUserMedicationScheduleDates_Result">
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllDeviceTokensWithUser" FunctionName="TransafeRxModel.Store.GetAllDeviceTokensWithUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetAllDeviceTokensWithUser_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubjectNbr" ColumnName="SubjectNbr" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="APNSToken" ColumnName="APNSToken" />
+          <ScalarProperty Name="GCMToken" ColumnName="GCMToken" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateMedsReviewed" ColumnName="DateMedsReviewed" />
+          <ScalarProperty Name="PersonalizedSurveyTaken" ColumnName="PersonalizedSurveyTaken" />
+          <ScalarProperty Name="ResearchNumber" ColumnName="ResearchNumber" />
+          <ScalarProperty Name="DisableMotivationalMessages" ColumnName="DisableMotivationalMessages" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="AdmissionTypeId" ColumnName="AdmissionTypeId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllMedicationsNotTakenWindow" FunctionName="TransafeRxModel.Store.GetAllMedicationsNotTakenWindow">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetAllMedicationsNotTakenWindow_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllUserNotifications" FunctionName="TransafeRxModel.Store.GetAllUserNotifications">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetAllUserNotifications_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BpNotificationTypeId" ColumnName="BpNotificationTypeId" />
+          <ScalarProperty Name="BpNotificationDays" ColumnName="BpNotificationDays" />
+          <ScalarProperty Name="BpDaysSinceLastNotification" ColumnName="BpDaysSinceLastNotification" />
+          <ScalarProperty Name="BpDaysSinceLastReading" ColumnName="BpDaysSinceLastReading" />
+          <ScalarProperty Name="BgNotificationTypeId" ColumnName="BgNotificationTypeId" />
+          <ScalarProperty Name="BgNotificationDays" ColumnName="BgNotificationDays" />
+          <ScalarProperty Name="BgDaysSinceLastNotification" ColumnName="BgDaysSinceLastNotification" />
+          <ScalarProperty Name="BgDaysSinceLastReading" ColumnName="BgDaysSinceLastReading" />
+          <ScalarProperty Name="SnNotificationTypeId" ColumnName="SnNotificationTypeId" />
+          <ScalarProperty Name="SnNotificationDays" ColumnName="SnNotificationDays" />
+          <ScalarProperty Name="SnDaysSinceLastNotification" ColumnName="SnDaysSinceLastNotification" />
+          <ScalarProperty Name="SnDaysSinceLastReading" ColumnName="SnDaysSinceLastReading" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAppointments" FunctionName="TransafeRxModel.Store.GetAppointments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetAppointments_Result">
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="mrtxdate" ColumnName="mrtxdate" />
+          <ScalarProperty Name="CONTACT_DATE" ColumnName="CONTACT_DATE" />
+          <ScalarProperty Name="ENC_TYPE_NAME" ColumnName="ENC_TYPE_NAME" />
+          <ScalarProperty Name="APPT_STATUS_NAME" ColumnName="APPT_STATUS_NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBloodGlucoseMeasurements" FunctionName="TransafeRxModel.Store.GetBloodGlucoseMeasurements">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetBloodGlucoseMeasurements_Result">
+          <ScalarProperty Name="BloodGlucoseId" ColumnName="BloodGlucoseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="GlucoseLevel" ColumnName="GlucoseLevel" />
+          <ScalarProperty Name="ReadingDate" ColumnName="ReadingDate" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="TransferDateUTC" ColumnName="TransferDateUTC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBloodPressureMeasurements" FunctionName="TransafeRxModel.Store.GetBloodPressureMeasurements">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetBloodPressureMeasurements_Result">
+          <ScalarProperty Name="BloodPressureId" ColumnName="BloodPressureId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Systolic" ColumnName="Systolic" />
+          <ScalarProperty Name="Diastolic" ColumnName="Diastolic" />
+          <ScalarProperty Name="Pulse" ColumnName="Pulse" />
+          <ScalarProperty Name="ReadingDate" ColumnName="ReadingDate" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="TransferDateUTC" ColumnName="TransferDateUTC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetBloodPressureMeasurementsChart" FunctionName="TransafeRxModel.Store.GetBloodPressureMeasurementsChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetBloodPressureMeasurementsChart_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ReadingDateUTC" ColumnName="ReadingDateUTC" />
+          <ScalarProperty Name="Systolic" ColumnName="Systolic" />
+          <ScalarProperty Name="Diastolic" ColumnName="Diastolic" />
+          <ScalarProperty Name="Pulse" ColumnName="Pulse" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCurrentSurveySession" FunctionName="TransafeRxModel.Store.GetCurrentSurveySession">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetCurrentSurveySession_Result">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StartDateUTC" ColumnName="StartDateUTC" />
+          <ScalarProperty Name="StartDateDTO" ColumnName="StartDateDTO" />
+          <ScalarProperty Name="StartDateCTZ" ColumnName="StartDateCTZ" />
+          <ScalarProperty Name="EndDateUTC" ColumnName="EndDateUTC" />
+          <ScalarProperty Name="EndDateDTO" ColumnName="EndDateDTO" />
+          <ScalarProperty Name="EndDateCTZ" ColumnName="EndDateCTZ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDeviceTokensByUser" FunctionName="TransafeRxModel.Store.GetDeviceTokensByUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetDeviceTokensByUser_Result">
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TokenTypeId" ColumnName="TokenTypeId" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="TokenCreateDate" ColumnName="TokenCreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetEpicPatients" FunctionName="TransafeRxModel.Store.GetEpicPatients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetEpicPatients_Result">
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="RECIPIENT_NAME" ColumnName="RECIPIENT NAME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetExternalDrugData" FunctionName="TransafeRxModel.Store.GetExternalDrugData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetExternalDrugData_Result">
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="DispenseDate" ColumnName="DispenseDate" />
+          <ScalarProperty Name="DaysSuppy" ColumnName="DaysSuppy" />
+          <ScalarProperty Name="DispenseAmount" ColumnName="DispenseAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetGlucoseMeasurementsChart" FunctionName="TransafeRxModel.Store.GetGlucoseMeasurementsChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetGlucoseMeasurementsChart_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ReadingDateUTC" ColumnName="ReadingDateUTC" />
+          <ScalarProperty Name="Glucose" ColumnName="Glucose" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetIsAdmin" FunctionName="TransafeRxModel.Store.GetIsAdmin" />
+    <FunctionImportMapping FunctionImportName="GetItem" FunctionName="TransafeRxModel.Store.GetItem">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItem_Result">
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="HeaderTitle" ColumnName="HeaderTitle" />
+          <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+          <ScalarProperty Name="HeaderFontId" ColumnName="HeaderFontId" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="HeaderColor" ColumnName="HeaderColor" />
+          <ScalarProperty Name="HeaderBackgroundColor" ColumnName="HeaderBackgroundColor" />
+          <ScalarProperty Name="HeaderBackgroundImage" ColumnName="HeaderBackgroundImage" />
+          <ScalarProperty Name="HeaderBackgroundAlpha" ColumnName="HeaderBackgroundAlpha" />
+          <ScalarProperty Name="HeaderBackgroundImageAlpha" ColumnName="HeaderBackgroundImageAlpha" />
+          <ScalarProperty Name="HeaderEffect" ColumnName="HeaderEffect" />
+          <ScalarProperty Name="BackButtonType" ColumnName="BackButtonType" />
+          <ScalarProperty Name="BackButtonColor" ColumnName="BackButtonColor" />
+          <ScalarProperty Name="BackButtonBackgroundColor" ColumnName="BackButtonBackgroundColor" />
+          <ScalarProperty Name="BackButtonBackgroundAlpha" ColumnName="BackButtonBackgroundAlpha" />
+          <ScalarProperty Name="BodyFontId" ColumnName="BodyFontId" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="BodyBackgroundColor" ColumnName="BodyBackgroundColor" />
+          <ScalarProperty Name="BodyBackgroundPortraitImage" ColumnName="BodyBackgroundPortraitImage" />
+          <ScalarProperty Name="BodyBackgroundLandscapeImage" ColumnName="BodyBackgroundLandscapeImage" />
+          <ScalarProperty Name="BodyBackgroundAlpha" ColumnName="BodyBackgroundAlpha" />
+          <ScalarProperty Name="BodyBackgroundImageAlpha" ColumnName="BodyBackgroundImageAlpha" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="LastUpdatedDateUTC" ColumnName="LastUpdatedDateUTC" />
+          <ScalarProperty Name="LastUpdatedById" ColumnName="LastUpdatedById" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetItemLogic" FunctionName="TransafeRxModel.Store.GetItemLogic">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItemLogic_Result">
+          <ScalarProperty Name="LogicId" ColumnName="LogicId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetItemNavigation" FunctionName="TransafeRxModel.Store.GetItemNavigation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItemNavigation_Result">
+          <ScalarProperty Name="NavigationId" ColumnName="NavigationId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+          <ScalarProperty Name="LogicComponents" ColumnName="LogicComponents" />
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+          <ScalarProperty Name="ButtonImage" ColumnName="ButtonImage" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetItemTemplates" FunctionName="TransafeRxModel.Store.GetItemTemplates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItemTemplates_Result">
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetItemToolbarItems" FunctionName="TransafeRxModel.Store.GetItemToolbarItems">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItemToolbarItems_Result">
+          <ScalarProperty Name="ToolbarItemId" ColumnName="ToolbarItemId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="TargetItemTypeId" ColumnName="TargetItemTypeId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetItemTypes" FunctionName="TransafeRxModel.Store.GetItemTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetItemTypes_Result">
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LogicBuilder" ColumnName="LogicBuilder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetLatestAppVersionByAppId" FunctionName="TransafeRxModel.Store.GetLatestAppVersionByAppId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetLatestAppVersionByAppId_Result">
+          <ScalarProperty Name="AppVersionId" ColumnName="AppVersionId" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedAdhMsgs" FunctionName="TransafeRxModel.Store.GetMedAdhMsgs">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedAdhMsgs_Result">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MobPhone" ColumnName="MobPhone" />
+          <ScalarProperty Name="SubText" ColumnName="SubText" />
+          <ScalarProperty Name="TransText" ColumnName="TransText" />
+          <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicationAdherenceByMed" FunctionName="TransafeRxModel.Store.GetMedicationAdherenceByMed">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedicationAdherenceByMed_Result">
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicationAdherenceOverAllScore" FunctionName="TransafeRxModel.Store.GetMedicationAdherenceOverAllScore" />
+    <FunctionImportMapping FunctionImportName="GetMedicationSchedules" FunctionName="TransafeRxModel.Store.GetMedicationSchedules">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedicationSchedules_Result">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicationsNotTaken" FunctionName="TransafeRxModel.Store.GetMedicationsNotTaken">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedicationsNotTaken_Result">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicationsNotTakenByHour" FunctionName="TransafeRxModel.Store.GetMedicationsNotTakenByHour">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedicationsNotTakenByHour_Result">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicationsNotTakenWindow" FunctionName="TransafeRxModel.Store.GetMedicationsNotTakenWindow">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMedicationsNotTakenWindow_Result">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMessagesToSend_30" FunctionName="TransafeRxModel.Store.GetMessagesToSend_30">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetMessagesToSend_30_Result">
+          <ScalarProperty Name="mqID" ColumnName="mqID" />
+          <ScalarProperty Name="MsgID" ColumnName="MsgID" />
+          <ScalarProperty Name="MsgText" ColumnName="MsgText" />
+          <ScalarProperty Name="MsgTranslate" ColumnName="MsgTranslate" />
+          <ScalarProperty Name="MobPhone" ColumnName="MobPhone" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="MsgType" ColumnName="MsgType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNextPersonalizedMessage" FunctionName="TransafeRxModel.Store.GetNextPersonalizedMessage" />
+    <FunctionImportMapping FunctionImportName="GetNextSequenceId" FunctionName="TransafeRxModel.Store.GetNextSequenceId" />
+    <FunctionImportMapping FunctionImportName="GetNotificationPreferences" FunctionName="TransafeRxModel.Store.GetNotificationPreferences">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetNotificationPreferences_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationDays" ColumnName="NotificationDays" />
+          <ScalarProperty Name="NotificationPreferencesId" ColumnName="NotificationPreferencesId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNotifications" FunctionName="TransafeRxModel.Store.GetNotifications">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetNotifications_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationDays" ColumnName="NotificationDays" />
+          <ScalarProperty Name="NotificationPreferencesId" ColumnName="NotificationPreferencesId" />
+          <ScalarProperty Name="NotificationDateUTC" ColumnName="NotificationDateUTC" />
+          <ScalarProperty Name="DaysSinceLastNotification" ColumnName="DaysSinceLastNotification" />
+          <ScalarProperty Name="DaysSinceLastReading" ColumnName="DaysSinceLastReading" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetNotificationTypes" FunctionName="TransafeRxModel.Store.GetNotificationTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetNotificationTypes_Result">
+          <ScalarProperty Name="NotificationTypeId" ColumnName="NotificationTypeId" />
+          <ScalarProperty Name="NotificationTypeName" ColumnName="NotificationTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPatientSMSHistory" FunctionName="TransafeRxModel.Store.GetPatientSMSHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetPatientSMSHistory_Result">
+          <ScalarProperty Name="SMSMessageId" ColumnName="SMSMessageId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+          <ScalarProperty Name="SentBy" ColumnName="SentBy" />
+          <ScalarProperty Name="PhoneNumberUsed" ColumnName="PhoneNumberUsed" />
+          <ScalarProperty Name="SentByName" ColumnName="SentByName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPhoneNumber" FunctionName="TransafeRxModel.Store.GetPhoneNumber">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetPhoneNumber_Result">
+          <ScalarProperty Name="PhoneNumberId" ColumnName="PhoneNumberId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Transplant" ColumnName="Transplant" />
+          <ScalarProperty Name="Study" ColumnName="Study" />
+          <ScalarProperty Name="Pharmacy" ColumnName="Pharmacy" />
+          <ScalarProperty Name="Refill" ColumnName="Refill" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPlaceholders" FunctionName="TransafeRxModel.Store.GetPlaceholders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetPlaceholders_Result">
+          <ScalarProperty Name="PlaceholderId" ColumnName="PlaceholderId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UniqueName" ColumnName="UniqueName" />
+          <ScalarProperty Name="IsStatic" ColumnName="IsStatic" />
+          <ScalarProperty Name="ReplacementText" ColumnName="ReplacementText" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetPrednisoneRefillData" FunctionName="TransafeRxModel.Store.GetPrednisoneRefillData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetPrednisoneRefillData_Result">
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="DispenseDate" ColumnName="DispenseDate" />
+          <ScalarProperty Name="DaysSuppy" ColumnName="DaysSuppy" />
+          <ScalarProperty Name="DispenseAmount" ColumnName="DispenseAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetRusselScore" FunctionName="TransafeRxModel.Store.GetRusselScore" />
+    <FunctionImportMapping FunctionImportName="GetRusselScore24Hr" FunctionName="TransafeRxModel.Store.GetRusselScore24Hr" />
+    <FunctionImportMapping FunctionImportName="GetSchedulesByUserMedicationId" FunctionName="TransafeRxModel.Store.GetSchedulesByUserMedicationId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSchedulesByUserMedicationId_Result">
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurvey" FunctionName="TransafeRxModel.Store.GetSurvey">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurvey_Result">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="AllowRestart" ColumnName="AllowRestart" />
+          <ScalarProperty Name="AutoSubmit" ColumnName="AutoSubmit" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="HeaderTitle" ColumnName="HeaderTitle" />
+          <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+          <ScalarProperty Name="HeaderFontId" ColumnName="HeaderFontId" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="HeaderColor" ColumnName="HeaderColor" />
+          <ScalarProperty Name="HeaderBackgroundColor" ColumnName="HeaderBackgroundColor" />
+          <ScalarProperty Name="HeaderBackgroundImage" ColumnName="HeaderBackgroundImage" />
+          <ScalarProperty Name="HeaderBackgroundAlpha" ColumnName="HeaderBackgroundAlpha" />
+          <ScalarProperty Name="HeaderBackgroundImageAlpha" ColumnName="HeaderBackgroundImageAlpha" />
+          <ScalarProperty Name="HeaderEffect" ColumnName="HeaderEffect" />
+          <ScalarProperty Name="BackButtonType" ColumnName="BackButtonType" />
+          <ScalarProperty Name="BackButtonColor" ColumnName="BackButtonColor" />
+          <ScalarProperty Name="BackButtonBackgroundColor" ColumnName="BackButtonBackgroundColor" />
+          <ScalarProperty Name="BackButtonBackgroundAlpha" ColumnName="BackButtonBackgroundAlpha" />
+          <ScalarProperty Name="BodyFontId" ColumnName="BodyFontId" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="BodyBackgroundColor" ColumnName="BodyBackgroundColor" />
+          <ScalarProperty Name="BodyBackgroundPortraitImage" ColumnName="BodyBackgroundPortraitImage" />
+          <ScalarProperty Name="BodyBackgroundLandscapeImage" ColumnName="BodyBackgroundLandscapeImage" />
+          <ScalarProperty Name="BodyBackgroundAlpha" ColumnName="BodyBackgroundAlpha" />
+          <ScalarProperty Name="BodyBackgroundImageAlpha" ColumnName="BodyBackgroundImageAlpha" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="LastUpdatedDateUTC" ColumnName="LastUpdatedDateUTC" />
+          <ScalarProperty Name="LastUpdatedById" ColumnName="LastUpdatedById" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TotalQuestions" ColumnName="TotalQuestions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyAnswers" FunctionName="TransafeRxModel.Store.GetSurveyAnswers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyAnswers_Result">
+          <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+          <ScalarProperty Name="AnswerDateDTO" ColumnName="AnswerDateDTO" />
+          <ScalarProperty Name="AnswerDateUTC" ColumnName="AnswerDateUTC" />
+          <ScalarProperty Name="AnswerDateCTZ" ColumnName="AnswerDateCTZ" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyOptionGroups" FunctionName="TransafeRxModel.Store.GetSurveyOptionGroups">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyOptionGroups_Result">
+          <ScalarProperty Name="OptionGroupId" ColumnName="OptionGroupId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyOptions" FunctionName="TransafeRxModel.Store.GetSurveyOptions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyOptions_Result">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="OptionOrder" ColumnName="OptionOrder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestion" FunctionName="TransafeRxModel.Store.GetSurveyQuestion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestion_Result">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QuestionImage" ColumnName="QuestionImage" />
+          <ScalarProperty Name="QuestionOrder" ColumnName="QuestionOrder" />
+          <ScalarProperty Name="OptionImage" ColumnName="OptionImage" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Required" ColumnName="Required" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+          <ScalarProperty Name="HasOptions" ColumnName="HasOptions" />
+          <ScalarProperty Name="QuestionTypeName" ColumnName="QuestionTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestionCategories" FunctionName="TransafeRxModel.Store.GetSurveyQuestionCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestionCategories_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryOrder" ColumnName="CategoryOrder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestionLogic" FunctionName="TransafeRxModel.Store.GetSurveyQuestionLogic">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestionLogic_Result">
+          <ScalarProperty Name="LogicId" ColumnName="LogicId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="ActionQuestionId" ColumnName="ActionQuestionId" />
+          <ScalarProperty Name="Expression" ColumnName="Expression" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ActionQuestionName" ColumnName="ActionQuestionName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestionLogicActions" FunctionName="TransafeRxModel.Store.GetSurveyQuestionLogicActions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestionLogicActions_Result">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestionOptions" FunctionName="TransafeRxModel.Store.GetSurveyQuestionOptions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestionOptions_Result">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="OptionText" ColumnName="OptionText" />
+          <ScalarProperty Name="OptionImage" ColumnName="OptionImage" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="OptionOrder" ColumnName="OptionOrder" />
+          <ScalarProperty Name="ShapeType" ColumnName="ShapeType" />
+          <ScalarProperty Name="Coordinates" ColumnName="Coordinates" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryOrder" ColumnName="CategoryOrder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestions" FunctionName="TransafeRxModel.Store.GetSurveyQuestions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestions_Result">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="QuestionImage" ColumnName="QuestionImage" />
+          <ScalarProperty Name="QuestionOrder" ColumnName="QuestionOrder" />
+          <ScalarProperty Name="OptionImage" ColumnName="OptionImage" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Feedback" ColumnName="Feedback" />
+          <ScalarProperty Name="Required" ColumnName="Required" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+          <ScalarProperty Name="HasOptions" ColumnName="HasOptions" />
+          <ScalarProperty Name="QuestionTypeName" ColumnName="QuestionTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyQuestionTypes" FunctionName="TransafeRxModel.Store.GetSurveyQuestionTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyQuestionTypes_Result">
+          <ScalarProperty Name="QuestionTypeId" ColumnName="QuestionTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HasOptions" ColumnName="HasOptions" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyResults" FunctionName="TransafeRxModel.Store.GetSurveyResults">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyResults_Result">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="AnswerDateUTC" ColumnName="AnswerDateUTC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyResultsBySessionId" FunctionName="TransafeRxModel.Store.GetSurveyResultsBySessionId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyResultsBySessionId_Result">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
+          <ScalarProperty Name="AnswerText" ColumnName="AnswerText" />
+          <ScalarProperty Name="OptionValue" ColumnName="OptionValue" />
+          <ScalarProperty Name="AnswerDateUTC" ColumnName="AnswerDateUTC" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveys" FunctionName="TransafeRxModel.Store.GetSurveys">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveys_Result">
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="AllowRestart" ColumnName="AllowRestart" />
+          <ScalarProperty Name="AutoSubmit" ColumnName="AutoSubmit" />
+          <ScalarProperty Name="ListColor" ColumnName="ListColor" />
+          <ScalarProperty Name="ListBackgroundColor" ColumnName="ListBackgroundColor" />
+          <ScalarProperty Name="ListBackgroundAlpha" ColumnName="ListBackgroundAlpha" />
+          <ScalarProperty Name="ListFontId" ColumnName="ListFontId" />
+          <ScalarProperty Name="ListFontSize" ColumnName="ListFontSize" />
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedBackgroundColor" ColumnName="SelectedBackgroundColor" />
+          <ScalarProperty Name="SelectedBackgroundAlpha" ColumnName="SelectedBackgroundAlpha" />
+          <ScalarProperty Name="SelectedFontId" ColumnName="SelectedFontId" />
+          <ScalarProperty Name="SelectedFontSize" ColumnName="SelectedFontSize" />
+          <ScalarProperty Name="SelectedIconType" ColumnName="SelectedIconType" />
+          <ScalarProperty Name="SelectedIconColor" ColumnName="SelectedIconColor" />
+          <ScalarProperty Name="ButtonColor" ColumnName="ButtonColor" />
+          <ScalarProperty Name="ButtonBackgroundColor" ColumnName="ButtonBackgroundColor" />
+          <ScalarProperty Name="ButtonBackgroundAlpha" ColumnName="ButtonBackgroundAlpha" />
+          <ScalarProperty Name="ButtonFontId" ColumnName="ButtonFontId" />
+          <ScalarProperty Name="ButtonFontSize" ColumnName="ButtonFontSize" />
+          <ScalarProperty Name="ProgressBarColor" ColumnName="ProgressBarColor" />
+          <ScalarProperty Name="ProgressBarBackgroundColor" ColumnName="ProgressBarBackgroundColor" />
+          <ScalarProperty Name="ProgressBarBackgroundAlpha" ColumnName="ProgressBarBackgroundAlpha" />
+          <ScalarProperty Name="TooltipColor" ColumnName="TooltipColor" />
+          <ScalarProperty Name="TooltipBackgroundColor" ColumnName="TooltipBackgroundColor" />
+          <ScalarProperty Name="TooltipBackgroundAlpha" ColumnName="TooltipBackgroundAlpha" />
+          <ScalarProperty Name="TooltipFontId" ColumnName="TooltipFontId" />
+          <ScalarProperty Name="TooltipFontSize" ColumnName="TooltipFontSize" />
+          <ScalarProperty Name="FeedbackColor" ColumnName="FeedbackColor" />
+          <ScalarProperty Name="FeedbackBackgroundColor" ColumnName="FeedbackBackgroundColor" />
+          <ScalarProperty Name="FeedbackBackgroundAlpha" ColumnName="FeedbackBackgroundAlpha" />
+          <ScalarProperty Name="FeedbackFontId" ColumnName="FeedbackFontId" />
+          <ScalarProperty Name="FeedbackFontSize" ColumnName="FeedbackFontSize" />
+          <ScalarProperty Name="SeparatorColor" ColumnName="SeparatorColor" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="HeaderTitle" ColumnName="HeaderTitle" />
+          <ScalarProperty Name="HeaderImage" ColumnName="HeaderImage" />
+          <ScalarProperty Name="HeaderFontId" ColumnName="HeaderFontId" />
+          <ScalarProperty Name="HeaderFontSize" ColumnName="HeaderFontSize" />
+          <ScalarProperty Name="HeaderColor" ColumnName="HeaderColor" />
+          <ScalarProperty Name="HeaderBackgroundColor" ColumnName="HeaderBackgroundColor" />
+          <ScalarProperty Name="HeaderBackgroundImage" ColumnName="HeaderBackgroundImage" />
+          <ScalarProperty Name="HeaderBackgroundAlpha" ColumnName="HeaderBackgroundAlpha" />
+          <ScalarProperty Name="HeaderBackgroundImageAlpha" ColumnName="HeaderBackgroundImageAlpha" />
+          <ScalarProperty Name="HeaderEffect" ColumnName="HeaderEffect" />
+          <ScalarProperty Name="BackButtonType" ColumnName="BackButtonType" />
+          <ScalarProperty Name="BackButtonColor" ColumnName="BackButtonColor" />
+          <ScalarProperty Name="BackButtonBackgroundColor" ColumnName="BackButtonBackgroundColor" />
+          <ScalarProperty Name="BackButtonBackgroundAlpha" ColumnName="BackButtonBackgroundAlpha" />
+          <ScalarProperty Name="BodyFontId" ColumnName="BodyFontId" />
+          <ScalarProperty Name="BodyFontSize" ColumnName="BodyFontSize" />
+          <ScalarProperty Name="BodyColor" ColumnName="BodyColor" />
+          <ScalarProperty Name="BodyBackgroundColor" ColumnName="BodyBackgroundColor" />
+          <ScalarProperty Name="BodyBackgroundPortraitImage" ColumnName="BodyBackgroundPortraitImage" />
+          <ScalarProperty Name="BodyBackgroundLandscapeImage" ColumnName="BodyBackgroundLandscapeImage" />
+          <ScalarProperty Name="BodyBackgroundAlpha" ColumnName="BodyBackgroundAlpha" />
+          <ScalarProperty Name="BodyBackgroundImageAlpha" ColumnName="BodyBackgroundImageAlpha" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+          <ScalarProperty Name="LastUpdatedDateUTC" ColumnName="LastUpdatedDateUTC" />
+          <ScalarProperty Name="LastUpdatedById" ColumnName="LastUpdatedById" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveyScore" FunctionName="TransafeRxModel.Store.GetSurveyScore" />
+    <FunctionImportMapping FunctionImportName="GetSurveyScoresForUser" FunctionName="TransafeRxModel.Store.GetSurveyScoresForUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveyScoresForUser_Result">
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSurveySession" FunctionName="TransafeRxModel.Store.GetSurveySession">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetSurveySession_Result">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="StartDateUTC" ColumnName="StartDateUTC" />
+          <ScalarProperty Name="StartDateDTO" ColumnName="StartDateDTO" />
+          <ScalarProperty Name="StartDateCTZ" ColumnName="StartDateCTZ" />
+          <ScalarProperty Name="EndDateUTC" ColumnName="EndDateUTC" />
+          <ScalarProperty Name="EndDateDTO" ColumnName="EndDateDTO" />
+          <ScalarProperty Name="EndDateCTZ" ColumnName="EndDateCTZ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTacrolimusResults" FunctionName="TransafeRxModel.Store.GetTacrolimusResults">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetTacrolimusResults_Result">
+          <ScalarProperty Name="PATIENTEXTERNALID" ColumnName="PATIENTEXTERNALID" />
+          <ScalarProperty Name="ORDERCLASSDESC" ColumnName="ORDERCLASSDESC" />
+          <ScalarProperty Name="RESULTNUMERIC" ColumnName="RESULTNUMERIC" />
+          <ScalarProperty Name="SPECIMENTAKENTIME" ColumnName="SPECIMENTAKENTIME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetTokenUsers" FunctionName="TransafeRxModel.Store.GetTokenUsers" />
+    <FunctionImportMapping FunctionImportName="GetToolbarItemNavigation" FunctionName="TransafeRxModel.Store.GetToolbarItemNavigation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetToolbarItemNavigation_Result">
+          <ScalarProperty Name="NavigationId" ColumnName="NavigationId" />
+          <ScalarProperty Name="ToolbarItemId" ColumnName="ToolbarItemId" />
+          <ScalarProperty Name="TargetItemId" ColumnName="TargetItemId" />
+          <ScalarProperty Name="SelectedMenuItemId" ColumnName="SelectedMenuItemId" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="NavigationTypeId" ColumnName="NavigationTypeId" />
+          <ScalarProperty Name="TransitionTypeId" ColumnName="TransitionTypeId" />
+          <ScalarProperty Name="LogicExpression" ColumnName="LogicExpression" />
+          <ScalarProperty Name="LogicComponents" ColumnName="LogicComponents" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUser" FunctionName="TransafeRxModel.Store.GetUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUser_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubjectNbr" ColumnName="SubjectNbr" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="APNSToken" ColumnName="APNSToken" />
+          <ScalarProperty Name="GCMToken" ColumnName="GCMToken" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateMedsReviewed" ColumnName="DateMedsReviewed" />
+          <ScalarProperty Name="PersonalizedSurveyTaken" ColumnName="PersonalizedSurveyTaken" />
+          <ScalarProperty Name="ResearchNumber" ColumnName="ResearchNumber" />
+          <ScalarProperty Name="DisableMotivationalMessages" ColumnName="DisableMotivationalMessages" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserAdmission" FunctionName="TransafeRxModel.Store.GetUserAdmission" />
+    <FunctionImportMapping FunctionImportName="GetUserHasLatestAppVersion" FunctionName="TransafeRxModel.Store.GetUserHasLatestAppVersion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUserHasLatestAppVersion_Result">
+          <ScalarProperty Name="UserAppVersion" ColumnName="UserAppVersion" />
+          <ScalarProperty Name="SystemAppVersion" ColumnName="SystemAppVersion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserMedicationById" FunctionName="TransafeRxModel.Store.GetUserMedicationById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUserMedicationById_Result">
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="InActive" ColumnName="InActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="GPI" ColumnName="GPI" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="dosage" ColumnName="dosage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserMedications" FunctionName="TransafeRxModel.Store.GetUserMedications">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUserMedications_Result">
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="InActive" ColumnName="InActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="GPI" ColumnName="GPI" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="dosage" ColumnName="dosage" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserMedicationsAPIByUserId" FunctionName="TransafeRxModel.Store.GetUserMedicationsAPIByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUserMedicationsAPIByUserId_Result">
+          <ScalarProperty Name="GPI" ColumnName="GPI" />
+          <ScalarProperty Name="UserMedicationId" ColumnName="UserMedicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UpdatedDateUTC" ColumnName="UpdatedDateUTC" />
+          <ScalarProperty Name="UpdatedDateDTO" ColumnName="UpdatedDateDTO" />
+          <ScalarProperty Name="UpdatedDateCTZ" ColumnName="UpdatedDateCTZ" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+          <ScalarProperty Name="InActive" ColumnName="InActive" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="dosage" ColumnName="dosage" />
+          <ScalarProperty Name="CreatedDateUTC" ColumnName="CreatedDateUTC" />
+          <ScalarProperty Name="CreatedDateDTO" ColumnName="CreatedDateDTO" />
+          <ScalarProperty Name="CreatedDateCTZ" ColumnName="CreatedDateCTZ" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserPersonalizedSurveyTaken" FunctionName="TransafeRxModel.Store.GetUserPersonalizedSurveyTaken" />
+    <FunctionImportMapping FunctionImportName="GetUserRoles" FunctionName="TransafeRxModel.Store.GetUserRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUserRoles_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUsers" FunctionName="TransafeRxModel.Store.GetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TransafeRxModel.GetUsers_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SubjectNbr" ColumnName="SubjectNbr" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="APNSToken" ColumnName="APNSToken" />
+          <ScalarProperty Name="GCMToken" ColumnName="GCMToken" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateMedsReviewed" ColumnName="DateMedsReviewed" />
+          <ScalarProperty Name="PersonalizedSurveyTaken" ColumnName="PersonalizedSurveyTaken" />
+          <ScalarProperty Name="ResearchNumber" ColumnName="ResearchNumber" />
+          <ScalarProperty Name="DisableMotivationalMessages" ColumnName="DisableMotivationalMessages" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="AspUserName" ColumnName="AspUserName" />
+          <ScalarProperty Name="TacrolimusCV" ColumnName="TacrolimusCV" />
+          <ScalarProperty Name="SBPAvg" ColumnName="SBPAvg" />
+          <ScalarProperty Name="DBPAvg" ColumnName="DBPAvg" />
+          <ScalarProperty Name="PulseAvg" ColumnName="PulseAvg" />
+          <ScalarProperty Name="GlucoseAvg" ColumnName="GlucoseAvg" />
+          <ScalarProperty Name="MissedAppts" ColumnName="MissedAppts" />
+          <ScalarProperty Name="MedAdh" ColumnName="MedAdh" />
+          <ScalarProperty Name="MedRefillAdh" ColumnName="MedRefillAdh" />
+          <ScalarProperty Name="SurveyScore" ColumnName="SurveyScore" />
+          <ScalarProperty Name="SurveyRisk" ColumnName="SurveyRisk" />
+          <ScalarProperty Name="RiskLevel" ColumnName="RiskLevel" />
+          <ScalarProperty Name="MedChanged" ColumnName="MedChanged" />
+          <ScalarProperty Name="LastMissedAppt" ColumnName="LastMissedAppt" />
+          <ScalarProperty Name="MedReviewed" ColumnName="MedReviewed" />
+          <ScalarProperty Name="NeedDischarge" ColumnName="NeedDischarge" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetUserTimeZone" FunctionName="TransafeRxModel.Store.GetUserTimeZone" />
+    <FunctionImportMapping FunctionImportName="InsertPatientMedPhase" FunctionName="TransafeRxModel.Store.InsertPatientMedPhase" />
+    <FunctionImportMapping FunctionImportName="InsertPatientMessageSent" FunctionName="TransafeRxModel.Store.InsertPatientMessageSent" />
+    <FunctionImportMapping FunctionImportName="SetMedicationSchedulesInactive" FunctionName="TransafeRxModel.Store.SetMedicationSchedulesInactive" />
+    <FunctionImportMapping FunctionImportName="UpdateAggregateMedReviewed" FunctionName="TransafeRxModel.Store.UpdateAggregateMedReviewed" />
+    <FunctionImportMapping FunctionImportName="UpdateAllUsersMedicationAdherenceOverAllScore" FunctionName="TransafeRxModel.Store.UpdateAllUsersMedicationAdherenceOverAllScore" />
+    <FunctionImportMapping FunctionImportName="UpdateAllUsersMedicationRefillAdherenceScores" FunctionName="TransafeRxModel.Store.UpdateAllUsersMedicationRefillAdherenceScores" />
+    <FunctionImportMapping FunctionImportName="UpdateDateMedsReviewed" FunctionName="TransafeRxModel.Store.UpdateDateMedsReviewed" />
+    <FunctionImportMapping FunctionImportName="UpdateItemDesign" FunctionName="TransafeRxModel.Store.UpdateItemDesign" />
+    <FunctionImportMapping FunctionImportName="UpdateMsgSendQueue" FunctionName="TransafeRxModel.Store.UpdateMsgSendQueue" />
+    <FunctionImportMapping FunctionImportName="UpdateNeedDischarge" FunctionName="TransafeRxModel.Store.UpdateNeedDischarge" />
+    <FunctionImportMapping FunctionImportName="UpdateSentMsgs" FunctionName="TransafeRxModel.Store.UpdateSentMsgs" />
+    <FunctionImportMapping FunctionImportName="UpdateSurveyData" FunctionName="TransafeRxModel.Store.UpdateSurveyData" />
+    <FunctionImportMapping FunctionImportName="UpdateSurveyDesign" FunctionName="TransafeRxModel.Store.UpdateSurveyDesign" />
+    <FunctionImportMapping FunctionImportName="UpdateTacrolimusValues" FunctionName="TransafeRxModel.Store.UpdateTacrolimusValues" />
+    <FunctionImportMapping FunctionImportName="AddLink" FunctionName="TransafeRxModel.Store.AddLink" />
+    <FunctionImportMapping FunctionImportName="AddZone" FunctionName="TransafeRxModel.Store.AddZone" />
+    <FunctionImportMapping FunctionImportName="SetIntervals" FunctionName="TransafeRxModel.Store.SetIntervals" />
+    <FunctionImportMapping FunctionImportName="SetVersion" FunctionName="TransafeRxModel.Store.SetVersion" />
+  </EntityContainerMapping>
+</Mapping>

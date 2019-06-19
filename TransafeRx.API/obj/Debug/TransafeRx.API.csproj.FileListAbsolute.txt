@@ -1,0 +1,164 @@
+C:\Repositories\TransafeRx\TransafeRx.API\bin\TransafeRx.API.dll.config
+C:\Repositories\TransafeRx\TransafeRx.API\bin\TransafeRx.API.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\TransafeRx.API.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Antlr3.Runtime.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFramework.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFramework.SqlServer.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFrameworkExtras.EF6.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Google.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Web.Infrastructure.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Newtonsoft.Json.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Owin.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Net.Http.Formatting.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Helpers.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.Owin.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.WebHost.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Mvc.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Optimization.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Razor.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Deployment.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Razor.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\TransafeRx.Shared.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\WebGrease.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Antlr3.Runtime.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFrameworkExtras.EF6.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Google.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Newtonsoft.Json.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Optimization.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Net.Http.Formatting.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Helpers.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.WebHost.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Mvc.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Razor.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Deployment.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Razor.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\TransafeRx.Shared.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFramework.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\EntityFramework.SqlServer.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.Owin.xml
+C:\Repositories\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.csprojResolveAssemblyReference.cache
+C:\Repositories\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.dll
+C:\Repositories\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Cors.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.Cors.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\System.Web.Http.Cors.xml
+C:\Repositories\TransafeRx\TransafeRx.API\bin\NodaTime.dll
+C:\Repositories\TransafeRx\TransafeRx.API\bin\NodaTime.pdb
+C:\Repositories\TransafeRx\TransafeRx.API\bin\NodaTime.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\TransafeRx.API.dll.config
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\TransafeRx.API.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\TransafeRx.API.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Antlr3.Runtime.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFramework.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFramework.SqlServer.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFrameworkExtras.EF6.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Core.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Cookies.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Facebook.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Google.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.OAuth.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Twitter.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Web.Infrastructure.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Newtonsoft.Json.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\NodaTime.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Owin.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Net.Http.Formatting.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Cors.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Helpers.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.Cors.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.Owin.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.WebHost.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Mvc.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Optimization.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Razor.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Deployment.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Razor.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\TransafeRx.Shared.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\WebGrease.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Antlr3.Runtime.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFrameworkExtras.EF6.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Cookies.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Facebook.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Google.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.OAuth.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.Owin.Security.Twitter.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Newtonsoft.Json.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\NodaTime.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\NodaTime.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.Cors.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Optimization.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Net.Http.Formatting.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Helpers.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.WebHost.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Mvc.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Razor.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Deployment.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.WebPages.Razor.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\TransafeRx.Shared.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFramework.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\EntityFramework.SqlServer.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Core.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Web.Http.Owin.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.csprojResolveAssemblyReference.cache
+C:\[API Projects]\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\obj\Debug\TransafeRx.API.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\ApplicationInsights.config
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.Agent.Intercept.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.DependencyCollector.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.Web.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.WindowsServer.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.ApplicationInsights.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.TelemetryCorrelation.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Diagnostics.DiagnosticSource.dll
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.DependencyCollector.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.PerfCounterCollector.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.Web.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AI.WindowsServer.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.ApplicationInsights.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\Microsoft.AspNet.TelemetryCorrelation.xml
+C:\[API Projects]\TransafeRx\TransafeRx.API\bin\System.Diagnostics.DiagnosticSource.xml

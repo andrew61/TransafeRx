@@ -1,0 +1,1249 @@
+﻿@{
+    ViewBag.Title = "Users";
+}
+<div overflow:hidden>
+    <h2>Users</h2>
+
+    @(
+        Html.Kendo().Grid<TransafeRx.Models.UserViewModel>()
+            .Name("UsersGrid")
+            .Columns(columns =>
+            {
+                columns.Command(command => { command.Edit().Text(" "); command.Custom("Change Pwd").Click("showChangePassword"); }).Width(200);
+                columns.Bound(x => x.UserId).Hidden();
+                columns.Bound(x => x.MedChanged).Hidden();
+                columns.Bound(x => x.IsActive).Width(60).HeaderTemplate("<div align=center><Strong>Active</Strong></div>");
+                //columns.Bound(x => x.FirstName).ClientTemplate("<span class='#if(RiskLevel == 1) {# orange #} else if(RiskLevel > 1) {# red #} else {# black #}#'>#= FirstName#</span></div>").Width(120).HeaderTemplate("<div align=center><Strong>First Name</Strong></div>");
+                //columns.Bound(x => x.LastName).ClientTemplate("<span class='#if(RiskLevel == 1) {# orange #} else if(RiskLevel > 1) {# red #} else {# black #}#'>#= LastName#</span>").Width(120).HeaderTemplate("<div align=center><Strong>Last Name</Strong></div>");
+                columns.Bound(x => x.DisplayName).ClientTemplate("<span class='#if(RiskLevel == 1) {# orange #} else if(RiskLevel > 1) {# red #} else {# black #}#'>#= DisplayName#</span>").Width(175).HeaderTemplate("<div align=center><Strong>Patient Name</Strong></div>");
+                columns.Bound(x => x.MRN).Width(90).HeaderTemplate("<div align=center><Strong>MRN</Strong></div>");
+                columns.Bound(x => x.ResearchNumber).Width(90).HeaderTemplate("<div align=center><Strong>Research #</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+                columns.Bound(x => x.TacrolimusCV).ClientTemplate("<div align=center><a class='#if(TacrolimusCV > 40 && RiskLevel == 1) {# orange #} else if(TacrolimusCV > 40 && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showTacrolimus('#=UserId#', '#=MRN#', '#=DisplayName#')\">#= (TacrolimusCV == null) ? '' : TacrolimusCV#</a></div>").Width(100).HeaderTemplate("<div align=center><Strong>Tacrolimus CV</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal", title = "Past year, < 40" });
+                columns.Bound(x => x.SBPAvg).ClientTemplate("<div align=center><a class='#if((SBPAvg < 104 || SBPAvg > 156) && RiskLevel == 1) {# orange #} else if((SBPAvg < 104 || SBPAvg > 156) && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showBP('#=UserId#', '#=DisplayName#')\">#= (SBPAvg == null) ? '' : SBPAvg#</a></div>").Width(75).HeaderTemplate("<div align=center><Strong>SBP</Strong></div>").HeaderHtmlAttributes(new { @title = "Past 2 weeks, between 104 and 156" });
+                columns.Bound(x => x.DBPAvg).ClientTemplate("<div align=center><a class='#if((DBPAvg < 64 || DBPAvg > 96) && RiskLevel == 1) {# orange #} else if((DBPAvg < 64 || DBPAvg > 96) && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showBP('#=UserId#', '#=DisplayName#')\">#= (DBPAvg == null) ? '' : DBPAvg#</a></div>").Width(75).HeaderTemplate("<div align=center><Strong>DBP</Strong></div>").HeaderHtmlAttributes(new { @title = "Past 2 weeks, between 64 and 96" });
+                columns.Bound(x => x.PulseAvg).ClientTemplate("<div align=center><a onclick=\"showBP('#=UserId#', '#=DisplayName#')\">#= (PulseAvg == null) ? '' : PulseAvg#</a></div>").Width(75).HeaderTemplate("<div align=center><Strong>Pulse</Strong></div>").HeaderHtmlAttributes(new { @title = "Past 2 weeks" });
+                columns.Bound(x => x.GlucoseAvg).ClientTemplate("<div align=center><a class='#if((GlucoseAvg < 70 || GlucoseAvg > 130) && RiskLevel == 1) {# orange #} else if((GlucoseAvg < 70 || GlucoseAvg > 130) && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showGlucose('#=UserId#', '#=DisplayName#')\">#= (GlucoseAvg == null) ? '' : GlucoseAvg#</a></div>").Width(85).HeaderTemplate("<div align=center><Strong>Glucose</Strong></div>").HeaderHtmlAttributes(new { @title = "Past 2 weeks, between 70 and 130" });
+                columns.Bound(x => x.MissedAppts).ClientTemplate("<div align=center><a class='#if(MissedAppts < 100 && LastMissedAppt >  Date.now()-90 && RiskLevel == 1) {# orange #} else if(MissedAppts < 100 && LastMissedAppt >  Date.now() -90 && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showAppt('#=UserId#', '#=MRN#', '#=DisplayName#')\">#= (MissedAppts == null) ? '' : MissedAppts#</a></div>").Width(80).HeaderTemplate("<div align=center><Strong>Appointment Adherence</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal", title = "Past year, 100%" });
+                columns.Bound(x => x.MedAdh).ClientTemplate("<div align=center><a class='#if(MedAdh < 80 && RiskLevel == 1) {# orange #} else if(MedAdh < 80 && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showMedAdh('#=UserId#', '#=DisplayName#')\">#= (MedAdh == null) ? '' : MedAdh#</a></div>").Width(100).HeaderTemplate("<div align=center><Strong>Med Adherence</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" }).HeaderHtmlAttributes(new { @title = "Past 2 weeks, >= 80" });
+                columns.Bound(x => x.MedRefillAdh).ClientTemplate("<div align=center><a onclick=\"showMedRefillAdh('#=UserId#', '#=MRN#', '#=DisplayName#')\">#= (MedRefillAdh == null) ? '' : MedRefillAdh#</a></div>").Width(80).HeaderTemplate("<div align=center><Strong>Refill Adherence</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" }).HeaderHtmlAttributes(new { @title = "Since transplant, 100%" });
+                columns.Bound(x => x.SurveyScore).ClientTemplate("<div align=center><a class='#if(SurveyRisk && RiskLevel == 1) {# orange #} else if(SurveyRisk && RiskLevel > 1) {# red #} else {# black #}#' onclick=\"showSymptoms('#=UserId#', '#=DisplayName#')\">#= (SurveyScore == null) ? 'N/A' : SurveyScore#</a></div>").Width(90).HeaderTemplate("<div align=center><Strong>Symptom Score</Strong></div>").HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+                columns.Command(command => { command.Custom("Medications").Click("showMedications"); command.Custom("Notifications").Click("showNotification"); command.Custom("Discharge").Click("discharge"); command.Custom("Text Patient").Click("showText"); }).Width(320);
+            })
+            .ToolBar(toolbar =>
+            {
+                toolbar.Create().Text("ADD NEW PATIENT").HtmlAttributes(new { @class = "k-grid-add" });
+            }).Events(e => e.DataBound("userGridDataBound"))
+            .Pageable()
+            .Sortable()
+            .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("PatientPopUp").Window(w => w.Width(400)))
+            .Scrollable()
+            .Resizable(resize => resize.Columns(true))
+            .Filterable(filter => filter
+                .Extra(false)
+                .Operators(operators => operators.ForString(str => str.Clear().Contains("Contains"))))
+            .HtmlAttributes(new { style = "height: 800px; width: 1800px" })
+            .Events(events => events.Edit("onEdit"))
+            .Events(e => e.Cancel("onCancel"))
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Filter(f => f.Add(a => a.IsActive).IsEqualTo(true))
+                .PageSize(50)
+                .Events(events => events.Error("error_handler"))
+                .Sort(sort => sort.Add("AspUserName").Ascending())
+                .Model(model =>
+                {
+                    model.Id(x => x.UserId);
+                    model.Field(x => x.FirstName);
+                    model.Field(x => x.LastName);
+                    model.Field(x => x.DisplayName);
+                    model.Field(x => x.PhoneNumber);
+                    model.Field(x => x.AspUserName);
+                    model.Field(x => x.MRN);
+                    model.Field(x => x.TacrolimusCV);
+                    model.Field(x => x.Password);
+                    model.Field(x => x.PasswordVerify);
+                    model.Field(x => x.MedChanged);
+                    model.Field(x => x.MissedAppts);
+                    model.Field(x => x.IsActive);
+                    model.Field(x => x.MedReviewed);
+                })
+                .Create(update => update.Action("Users_Create", "Users"))
+                .Read(read => read.Action("Users_Read", "Users"))
+                .Update(update => update.Action("Users_Update", "Users"))
+            )
+    )
+</div>
+@{
+            Html.Kendo().Window()
+            .Name("MedicationsWindow")
+            .Title("Medications")
+            .Content(@Html.Partial("_TabStripUserMedication").ToHtmlString())
+            .Events(events => events.Open("medicationsMasterOpen"))
+            .Draggable()
+            .Resizable()
+            .Actions(actions => actions.Minimize().Maximize().Close())
+            .Width(1400)
+            .Modal(true)
+            .Visible(false)
+            .Render();
+        }
+
+@{
+            Html.Kendo().Window()
+            .Name("SchedulesWindow")
+            .Title("Schedules")
+            .Content(@Html.Partial("_TabStrip").ToHtmlString())
+            .Events(events => events.Open("schedulesOpen"))
+            .Draggable()
+            .Resizable()
+            .Actions(actions => actions.Minimize().Maximize().Close())
+            .Width(1200)
+            .Modal(true)
+            .Visible(false)
+            .Render();
+        }
+
+@{
+            Html.Kendo().Window()
+            .Name("BPWindow")
+            .Title("Blood Pressure")
+            .Content(@Html.Partial("_TabStripBP").ToHtmlString())
+            .Events(events => events.Open("bpChartOpen"))
+            .Draggable()
+            .Resizable()
+            .Actions(actions => actions.Minimize().Maximize().Close())
+            .Width(1400)
+            .Modal(true)
+            .Visible(false)
+            .Render();
+        }
+
+@{
+            Html.Kendo().Window()
+            .Name("GlucoseWindow")
+            .Title("Glucose")
+            .Content(@Html.Partial("_TabStripGlucose").ToHtmlString())
+            .Events(events => events.Open("glucoseChartOpen"))
+            .Draggable()
+            .Resizable()
+            .Actions(actions => actions.Minimize().Maximize().Close())
+            .Width(1400)
+            .Modal(true)
+            .Visible(false)
+            .Render();
+        }
+
+@{
+            Html.Kendo().Window()
+            .Name("ApptWindow")
+            .Title("Appointments")
+            .Content(@<text>
+            <h2 id="ApptHeader"></h2>
+            
+            @{Html.Kendo().Grid<TransafeRx.Models.AppointmentViewModel>()
+        .Name("ApptGrid")
+        .Columns(columns =>
+        {
+            columns.Bound(x => x.Contact_Date).EditorTemplateName("Date").Title("Appt Date").Width(75).Format("{0:MM/dd/yyyy}");
+            columns.Bound(x => x.Enc_Type_Name).Title("Appt Type").Width(75);
+            columns.Bound(x => x.Appt_Status_Name).Title("Appt Status").Width(75);
+        })
+        .Resizable(resize => resize.Columns(true))
+        .Editable(ed => ed.Mode(GridEditMode.InCell))
+        .Pageable()
+        .Sortable()
+        .Scrollable(scroll => scroll.Height(500))
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(50)
+        .Model(model =>
+        {
+            model.Id(x => x.MRN);
+            model.Field(x => x.Contact_Date);
+            model.Field(x => x.Enc_Type_Name);
+            model.Field(x => x.Appt_Status_Name);
+        })
+        .Read(read => read.Action("ApptData_Read", "Users").Data("apptData"))
+        )
+        .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("apptsOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("TacrolimusWindow")
+        .Title("Tacrolimus Results")
+        .Content(@<text>
+            <h2 id="TacrolimusHeader"></h2>
+
+            @{Html.Kendo().Grid<TransafeRx.Models.TacrolimusViewModel>()
+            .Name("TacrolimusGrid")
+            .Columns(columns =>
+            {
+                columns.Bound(x => x.RESULTNUMERIC).Title("Result").Width(75);
+                columns.Bound(x => x.SPECIMENTAKENTIME).EditorTemplateName("DateTime").Title("Taken Date/Time").Width(75).Format("{0:G}");
+            })
+            .Resizable(resize => resize.Columns(true))
+            //.Editable(ed => ed.Mode(GridEditMode.InCell))
+            .Pageable()
+            .Sortable()
+            .Scrollable(scroll => scroll.Height(500))
+            .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(50)
+            .Model(model =>
+            {
+                model.Id(x => x.PATIENTEXTERNALID);
+                model.Field(x => x.ORDERCLASSDESC);
+                model.Field(x => x.RESULTNUMERIC);
+                model.Field(x => x.SPECIMENTAKENTIME);
+            })
+            .Read(read => read.Action("TacrolimusData_Read", "Users").Data("tacrolimusData"))
+            )
+            .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("tacrolimusOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("SymptomTabWindow")
+        .Title("Symptom Results")
+        .Content(@Html.Partial("_SymptomStrip").ToHtmlString())
+        .Events(events => events.Open("symptomDataOpen"))
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(1400)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("SymptomWindow")
+        .Title("Symptom Results")
+        .Content(@<text>
+            <h2 id="SymptomHeader"></h2>
+
+            @{Html.Kendo().Grid<TransafeRx.Models.SymptomViewModel>()
+      .Name("SymptomGrid")
+      .Columns(columns =>
+      {
+          columns.Bound(x => x.QuestionText).Title("Question").Width(200);
+          columns.Bound(x => x.AnswerText).ClientTemplate("<span class='#if(OptionValue > 1) {# red #} else {# black #}#'>#= AnswerText#</span>").Title("Answer").Width(100).HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+          columns.Bound(x => x.AnswerDateUTC).EditorTemplateName("Date").Title("Date").Width(75).Format("{0:G}");
+      })
+      .Resizable(resize => resize.Columns(true))
+      .Pageable()
+      .Sortable()
+      .Scrollable(scroll => scroll.Height(500))
+      .DataSource(dataSource => dataSource
+      .Ajax()
+      .PageSize(50)
+      .Model(model =>
+      {
+          model.Id(x => x.QuestionId);
+          model.Field(x => x.QuestionText);
+          model.Field(x => x.AnswerText);
+          model.Field(x => x.OptionValue);
+          model.Field(x => x.AnswerDateUTC);
+      })
+      .Read(read => read.Action("SymptomData_Read", "Users").Data("symptomData"))
+      )
+      .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("symptomOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+@{
+    Html.Kendo().Window()
+        .Name("SymptomHistoryBySessionWindow")
+        .Title("Symptom History Detail")
+        .Content(@<text>
+            <h2 id="SymptomHeader"></h2>
+
+            @{Html.Kendo().Grid<TransafeRx.Models.SymptomViewModel>()
+    .Name("SymptomHistoryDetailGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.QuestionText).Title("Question").Width(200);
+        columns.Bound(x => x.AnswerText).ClientTemplate("<span class='#if(OptionValue > 1) {# red #} else {# black #}#'>#= AnswerText#</span>").Title("Answer").Width(100).HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+        columns.Bound(x => x.AnswerDateUTC).EditorTemplateName("Date").Title("Date").Width(75).Format("{0:G}");
+    })
+    .Resizable(resize => resize.Columns(true))
+    .Pageable()
+    .Sortable()
+    .Scrollable(scroll => scroll.Height(500))
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .PageSize(50)
+    .Model(model =>
+    {
+        model.Id(x => x.QuestionId);
+        model.Field(x => x.QuestionText);
+        model.Field(x => x.AnswerText);
+        model.Field(x => x.OptionValue);
+        model.Field(x => x.AnswerDateUTC);
+    })
+    .Read(read => read.Action("SymptomDataBySession_Read", "Users").Data("symptomHistoryData"))
+    )
+    .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("symptomHistoryOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+@{
+    Html.Kendo().Window()
+        .Name("MedRefillAdhWindow")
+        .Title("Prednisone Refills")
+        .Content(@<text>
+            <h2 id="MedRefillAdhHeader"></h2>
+
+            @{
+                    Html.Kendo().Grid<TransafeRx.Models.SurescriptsViewModel>()
+                           .Name("PrednisoneRefillGrid")
+                           .Columns(columns =>
+                           {
+                               columns.Bound(x => x.ID).Hidden();
+                               columns.Bound(x => x.DrugName).Width(75);
+                               columns.Bound(x => x.DispenseAmount).Width(75);
+                               columns.Bound(x => x.DaysSupply).Width(75);
+                               columns.Bound(x => x.DispenseDate).EditorTemplateName("Date").Title("Start Date").Width(75).Format("{0:MM/dd/yyyy}");
+                               columns.Bound(x => x.Instructions).Width(100);
+                           })
+                .Resizable(resize => resize.Columns(true))
+                .Pageable()
+                .Sortable()
+                .Scrollable(scroll => scroll.Height(500))
+                .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(50)
+                .Events(events => events.Error("medications_imported_error_handler"))
+                .Model(model =>
+                {
+                    model.Id(x => x.ID);
+                    model.Field(x => x.MRN);
+                    model.Field(x => x.DrugName);
+                    model.Field(x => x.DispenseAmount);
+                    model.Field(x => x.DaysSupply);
+                    model.Field(x => x.DispenseDate.Date);
+                    model.Field(x => x.Instructions);
+                })
+                .Read(read => read.Action("PrednisoneImported_Read", "Users").Data("medicationsImportedData"))
+                )
+                .Render();
+                }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("medRefillAdhOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("MedAdhWindow")
+        .Title("Medication Adherence")
+        .Content(@<text>
+            <h2 id="MedAdhHeader"></h2>
+
+            @{
+                Html.Kendo().Grid<TransafeRx.Models.MedAdherenceViewModel>()
+                       .Name("MedAdhGrid")
+                       .Columns(columns =>
+                       {
+                           columns.Bound(x => x.Id).Hidden();
+                           columns.Bound(x => x.Medication).Width(75);
+                           columns.Bound(x => x.ScheduleDate).EditorTemplateName("Date").Title("Schedule Date").Width(75).Format("{0:G}");
+                           columns.Bound(x => x.ActivityDate).EditorTemplateName("Date").Title("Activity Date").Width(75).Format("{0:G}");
+                           columns.Bound(x => x.Status).Width(75);
+                           columns.Bound(x => x.Score).Width(100);
+                       })
+            .Resizable(resize => resize.Columns(true))
+            .Pageable()
+            .Sortable()
+            .Scrollable(scroll => scroll.Height(500))
+            .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(50)
+            .Events(events => events.Error("medications_imported_error_handler"))
+            .Model(model =>
+            {
+                model.Id(x => x.Id);
+                model.Field(x => x.Medication);
+                model.Field(x => x.ScheduleDate);
+                model.Field(x => x.ActivityDate);
+                model.Field(x => x.Status);
+                model.Field(x => x.Score);
+            })
+            .Read(read => read.Action("MedAdherenceSummary_Read", "Users").Data("medAdhData"))
+            
+            )
+            .Render();
+            }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("medAdhOpen"))
+        .Width(1600)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+@{
+    Html.Kendo().Window()
+        .Name("NotificationsWindow")
+        .Title("Notification Preferences")
+        .Content(@<text>
+            <h2 id="NotificationHeader"></h2>
+
+            @{
+                Html.Kendo().Grid<TransafeRx.Models.NotificationViewModel>()
+                       .Name("NotificationsGrid")
+                       .Columns(columns =>
+                       {
+                           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(70);
+                           columns.Bound(x => x.NotificationPreferencesId).Hidden();
+                           columns.ForeignKey(x => x.NotificationTypeId, (System.Collections.IEnumerable)ViewData["NotificationTypes"], "Value", "Text").Title("Notification Type").Width(100);
+                           columns.Bound(x => x.NotificationDays).Width(75);
+                       })
+                       .ToolBar(toolbar => toolbar.Create().Text("ADD NEW NOTIFICATION"))
+                        .Resizable(resize => resize.Columns(true))
+                        //.Editable(editable => editable.Mode(GridEditMode.InLine))
+                        .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("NotificationPopUp"))
+                        .Events(events => events.Edit("notificationsEdit").Cancel("notificationsCancel"))
+                        .Pageable()
+                        .Sortable()
+                        .Scrollable(scroll => scroll.Height(500))
+                        .DataSource(dataSource => dataSource
+                        .Ajax()
+                        .PageSize(50)
+                        .Events(events => events.Error("notifications_error_handler"))
+                        .Model(model =>
+                        {
+                            model.Id(x => x.NotificationPreferencesId);
+                            model.Field(x => x.UserId);
+                            model.Field(x => x.NotificationDays);
+                            model.Field(x => x.NotificationTypeId);
+                        })
+                        .Create(update => update.Action("Notifications_Create", "Users"))
+                        .Read(read => read.Action("Notifications_Read", "Users").Data("notificationsData"))
+                        .Update(update => update.Action("Notifications_Update", "Users"))
+                        .Destroy(destroy => destroy.Action("Notifications_Destroy", "Users"))
+                        )
+                        .Render();
+                        }</text>)
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Events(events => events.Open("notificationsOpen"))
+        .Width(1200)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("PatientSMSWindow")
+        .Title("SMS Correspondence")
+        .Content(@Html.Partial("_TabPatientSMS").ToHtmlString())
+        .Events(events => events.Open("patientSMSHistoryOpen"))
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(1400)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+@{
+    Html.Kendo().Window()
+        .Name("ChangePasswordWindow")
+        .Title("Change Password")
+        .Content(@Html.Partial("_ChangePassword").ToHtmlString())
+        .Draggable()
+        .Resizable()
+        .Actions(actions => actions.Minimize().Maximize().Close())
+        .Width(500)
+        .Modal(true)
+        .Visible(false)
+        .Render();
+}
+
+
+<style type="text/css">
+    .red {
+        color: red;
+    }
+
+    .orange {
+        color: orange;
+    }
+</style>
+<script type="text/javascript">
+    var userId;
+    var sessionId;
+    var mrn;
+    var userMedicationId;
+    var bloodPressureId;
+
+    function onEdit(e) {
+        if (e.model.isNew() == false) {
+            $('#Email').prop("readonly", true);
+            $('#Password').prop("readonly", true).hide();
+            $('#PasswordVerify').prop("readonly", true).hide();
+        }
+    }
+
+    function onCancel(e) {
+        setTimeout(function () {
+            var grid = $("#UsersGrid").data("kendoGrid");
+            var gridData = grid.dataSource.view();
+            for (var i = 0; i < gridData.length; i++) {
+                var currentUid = gridData[i].UserId;
+                if (gridData[i].MedChanged == true && gridData[i].MedReviewed == false) {
+                    var item = grid.dataSource.get(currentUid);
+                    var tr = $("[data-uid='" + item.uid + "']", grid.tbody);
+                    var medButton = $(tr).find(".k-grid-Medications");
+                    medButton.css('background-color', 'yellow');
+                }
+                if (gridData[i].NeedDischarge == false) {
+                    var item = grid.dataSource.get(currentUid);
+                    var tr = $("[data-uid='" + item.uid + "']", grid.tbody);
+                    var dischargeButton = $(tr).find(".k-grid-Discharge");
+                    dischargeButton.hide();
+                }
+            }
+        });
+    }
+
+    function notificationsEdit(e) {
+        e.model.set("UserId", userId);
+    }
+
+    function notifications_error_handler(e) {
+        if (e.errors) {
+            var grid = $('#NotificationsGrid').data('kendoGrid');
+
+            grid.one("dataBinding", function (x) {
+                x.preventDefault();
+
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            });
+        }
+    }
+
+    function notificationsCancel(e) {
+        var grid = $('#NotificationsGrid').data('kendoGrid');
+    }
+
+    function userGridDataBound(e) {
+
+        var grid = $("#UsersGrid").data("kendoGrid");
+        var gridData = grid.dataSource.view();
+        for (var i = 0; i < gridData.length; i++) {
+            var currentUid = gridData[i].UserId;
+            if (gridData[i].MedChanged == true && gridData[i].MedReviewed == false) {
+                var item = grid.dataSource.get(currentUid);
+                var tr = $("[data-uid='" + item.uid + "']", grid.tbody);
+                var medButton = $(tr).find(".k-grid-Medications");
+                medButton.css('background-color', 'yellow');
+            }
+            if (gridData[i].NeedDischarge == false) {
+                var item = grid.dataSource.get(currentUid);
+                var tr = $("[data-uid='" + item.uid + "']", grid.tbody);
+                var dischargeButton = $(tr).find(".k-grid-Discharge");
+                dischargeButton.hide();
+            }
+        }
+    }
+
+    function apptsOpen() {
+        $('#ApptGrid').data('kendoGrid').dataSource.read();
+        $('#ApptGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function medRefillAdhOpen() {
+        $('#PrednisoneRefillGrid').data('kendoGrid').dataSource.read();
+        $('#PrednisoneRefillGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function medAdhOpen() {
+        $('#MedAdhGrid').data('kendoGrid').dataSource.read();
+        $('#MedAdhGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function notificationsOpen() {
+        $('#NotificationsGrid').data('kendoGrid').dataSource.read();
+        $('#NotificationsGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function tacrolimusOpen() {
+        $('#TacrolimusGrid').data('kendoGrid').dataSource.read();
+        $('#TacrolimusGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function symptomOpen() {
+        $('#SymptomGrid').data('kendoGrid').dataSource.read();
+        $('#SymptomGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function symptomHistoryOpen() {
+        $('#SymptomHistoryDetailGrid').data('kendoGrid').dataSource.read();
+        $('#SymptomHistoryDetailGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function showBP(uId, displayName) {
+
+        var window = $("#BPWindow").data("kendoWindow");
+
+        $("#BPHeader").text("Blood Pressure Readings for " + displayName);
+        
+        userId = uId;
+        window.center().open();
+    }
+
+    function showGlucose(uId, displayName) {
+
+        var window = $("#GlucoseWindow").data("kendoWindow");
+
+        $("#GlucoseHeader").text("Glucose Levels for " + displayName);
+
+        userId = uId;
+        window.center().open();
+    }
+
+    function showAppt(uId, theMrn, displayName) {
+
+        var window = $("#ApptWindow").data("kendoWindow");
+
+        $("#ApptHeader").text("Appointments for " + displayName);
+
+        userId = uId;
+        mrn = theMrn;
+        window.center().open();
+    }
+
+    function showMedRefillAdh(uId, theMrn, displayName) {
+
+        var window = $("#MedRefillAdhWindow").data("kendoWindow");
+
+        $("#MedRefillAdhHeader").text("Prednisone Refills for " + displayName);
+
+        userId = uId;
+        mrn = theMrn;
+        window.center().open();
+    }
+
+    function showMedAdh(uId, displayName) {
+
+        var window = $("#MedAdhWindow").data("kendoWindow");
+
+        $("#MedAdhHeader").text("Medication Adherence for " + displayName);
+
+        userId = uId;
+        window.center().open();
+        
+    }
+
+    function showSymptomsHistoryBySession(sId) {
+
+        var window = $("#SymptomHistoryBySessionWindow").data("kendoWindow");
+
+        //$("#SymptomHistoryHeader").text("Symptoms History for " + displayName);
+
+        sessionId = sId;
+        window.center().open();
+    }
+
+    function showSymptoms(uId, displayName) {
+
+        var window = $("#SymptomTabWindow").data("kendoWindow");
+
+        $("#SymptomHeader").text("Symptoms for " + displayName);
+
+        userId = uId;
+        window.center().open();
+    }
+
+    function showSymptomsHistory(uId, displayName, sId) {
+
+        var window = $("#SymptomHistoryWindow").data("kendoWindow");
+
+        $("#SymptomHistoryHeader").text("Symptoms History for " + displayName);
+
+        userId = uId;
+        sessionId = sId;
+        window.center().open();
+    }
+
+    function showTacrolimus(uId, theMrn, displayName) {
+
+        var window = $("#TacrolimusWindow").data("kendoWindow");
+
+        $("#TacrolimusHeader").text("Tacrolimus Results for " + displayName);
+
+        userId = uId;
+        mrn = theMrn;
+        window.center().open();
+    }
+
+    function error_handler(e) {
+        if (e.errors) {
+            var grid = $('#UsersGrid').data('kendoGrid');
+
+            grid.one("dataBinding", function (x) {
+                x.preventDefault();
+
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            });
+        }
+    }
+
+    function schedules_error_handler(e) {
+        if (e.errors) {
+            var grid = $('#SchedulesGrid').data('kendoGrid');
+
+            grid.one("dataBinding", function (x) {
+                x.preventDefault();
+
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            });
+        }
+    }
+
+    function schedules_request_end(e) {
+        var grid = $('#SchedulesGrid').data('kendoGrid');
+
+        if (e.type == "create" || e.type == "update") {
+            if (!e.response.Errors) {
+                grid.dataSource.read();
+                grid.showColumn("Active");
+            }
+        }
+    }
+
+    function onSelect(e) {
+        var grid = $('#UsersGrid').data('kendoGrid');
+        var data = grid._data[0];
+
+        var dataItem = this.dataItem(e.item.index());
+        data.FirstName = dataItem.FirstName;
+        data.LastName = dataItem.LastName;
+        $('#FirstName').val(dataItem.FirstName);
+        $('#LastName').val(dataItem.LastName);
+    }
+
+    function schedules_cancel(e) {
+        var grid = $('#SchedulesGrid').data('kendoGrid');
+        grid.showColumn("Active");
+    }
+
+    function showSchedules(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#SchedulesWindow").data("kendoWindow");
+
+        $("#ScheduleHeader").text("Schedules for " + dataItem.DrugName);
+
+        userId = dataItem.UserId;
+        userMedicationId = dataItem.UserMedicationId;
+
+        window.center().open();
+        $('#ScheduleSummary').load('@Url.Action("ScheduleSummaryGrid","Users")' + "?userId=" + userId);
+    }
+
+    function schedulesOpen() {
+        $('#SchedulesGrid').data('kendoGrid').dataSource.read();
+        $('#SchedulesGrid').data('kendoGrid').dataSource.page(1);
+    }
+
+    function schedulesExpiredOpen() {
+        $('#SchedulesGridExpired').data('kendoGrid').dataSource.read();
+        $('#SchedulesGridExpired').data('kendoGrid').dataSource.page(1);
+    }
+
+    function schedulesData() {
+        return {
+            UserId: userId,
+            UserMedicationId: userMedicationId
+        };
+    }
+
+    function smsData() {
+        return {
+            UserId: userId
+        };
+    }
+
+    function smsOnClick(e) {
+
+
+        $.ajax({
+            type: 'post',
+            url: '@Url.Action("SendPatientSMS", "Users")',
+            data: JSON.stringify({ userId: e }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: "json",
+            success: function (data) {
+                location.reload();
+            }
+        });
+    }
+
+    function scheduleTabs_select(e) {
+        @*if ($(e.item).find("> .k-link").text() == "Daily Summary") {
+            $('#ScheduleSummary').load('@Url.Action("ScheduleSummaryGrid","Users")' + "?userId=" + userId);
+        }*@
+        if ($(e.item).find("> .k-link").text() == "Expired Schedule") {
+            schedulesExpiredOpen();
+        }
+        if ($(e.item).find("> .k-link").text() == "Full Schedule") {
+            schedulesOpen();
+        }
+    }
+
+    function scheduleSummary_dataBound(e) {
+        var rows = e.sender.tbody.children();
+        for (var j = 0; j < rows.length; j++) {
+            var row = $(rows[j]);
+            row.addClass("summary-row");
+        }
+    }
+
+    function printScheduleSummaryGrid() {
+        var gridElement = $('#ScheduleSummaryGrid'),
+        printableContent = '',
+        win = window.open('', '', 'width=800, height=500'),
+        doc = win.document.open();
+
+        var htmlStart =
+                '<!DOCTYPE html>' +
+                '<html>' +
+                '<head>' +
+                '<meta charset="utf-8" />' +
+                '<title></title>' +
+                '<link href="http://kendo.cdn.telerik.com/' + kendo.version + '/styles/kendo.common.min.css" rel="stylesheet" /> ' +
+                '<style>' +
+                'html { font: 16pt sans-serif; }' +
+                '.k-grid { border-top-width: 0; }' +
+                '.k-grid, .k-grid-content { height: auto !important; }' +
+                '.k-grid-content { overflow: visible !important; }' +
+                'div.k-grid table { table-layout: auto; width: 100% !important; }' +
+                '.k-grid .k-grid-header th { border-top: 1px solid; }' +
+                '.k-grid-toolbar, .k-grid-pager > .k-link { display: none; }' +
+                '.k-grouping-header { display: none; }' +
+                '.k-grid td { border-bottom: 1px solid; }' +
+                '</style>' +
+                '</head>' +
+                '<body>';
+
+        var htmlEnd =
+                '</body>' +
+                '</html>';
+
+        var gridHeader = gridElement.children('.k-grid-header');
+        if (gridHeader[0]) {
+            var thead = gridHeader.find('thead').clone().addClass('k-grid-header');
+            printableContent = gridElement
+                .clone()
+                    .children('.k-grid-header').remove()
+                .end()
+                    .children('.k-grid-content')
+                        .find('table')
+                            .first()
+                                .children('tbody').before(thead)
+                            .end()
+                        .end()
+                    .end()
+                .end()[0].outerHTML;
+        }
+        else {
+            printableContent = gridElement.clone()[0].outerHTML;
+        }
+
+        doc.write(htmlStart + printableContent + htmlEnd);
+        doc.close();
+        win.print();
+    }
+
+    function userMedicationsData() {
+        return {
+            UserId: userId
+        }
+    }
+
+    function notificationsData() {
+        return {
+            UserId: userId
+        }
+    }
+
+    function bpData() {
+        return {
+            UserId: userId
+        }
+    }
+
+    function apptData() {
+        return {
+            MRN: mrn
+        }
+    }
+
+    function tacrolimusData() {
+        return {
+            MRN: mrn
+        }
+    }
+
+    function symptomData() {
+        return {
+            UserId: userId
+        }
+    }
+
+    function medAdhData() {
+        return {
+            UserId: userId
+        }
+    }
+
+    function bpEdit(e) {
+        e.model.set("UserId", userId);
+    }
+
+    function bpCancel(e) {
+        var grid = $('#BPGrid').data('kendoGrid');
+    }
+
+    function glucoseEdit(e) {
+        e.model.set("UserId", userId);
+    }
+
+    function glucoseCancel(e) {
+        var grid = $('#GlucoseGrid').data('kendoGrid');
+    }
+
+    function showMedications(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#MedicationsWindow").data("kendoWindow");
+
+        $("#MedicationHeader").text("Medications for " + dataItem.DisplayName);
+
+        userId = dataItem.UserId;
+        mrn = dataItem.MRN;
+        window.center().open();
+    }
+
+    function showChangePassword(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#ChangePasswordWindow").data("kendoWindow");
+
+        $("#ChangePasswordHeader").text("Change password for " + dataItem.DisplayName);
+
+        userId = dataItem.UserId;
+
+       // $('#someDiv').load('_ChangePassword?userid=' + userId);
+
+        window.center().open();
+    }
+
+    function discharge(e) {
+
+        e.preventDefault();
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        $.ajax({
+            type: 'post',
+            url: '@Url.Action("DischargePatient", "Users")',
+            data: JSON.stringify({ userId: dataItem.UserId }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: "json",
+            success: function (data) {
+                location.reload();
+            }
+        });
+    }
+
+    function showNotification(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#NotificationsWindow").data("kendoWindow");
+
+        $("#NotificationHeader").text("Notifications for " + dataItem.DisplayName);
+
+        userId = dataItem.UserId;
+        mrn = dataItem.MRN;
+        window.center().open();
+    }
+
+
+    function showText(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#PatientSMSWindow").data("kendoWindow");
+
+        $("#TextHeader").text("Send Text to " + dataItem.DisplayName);
+        $("#messageText").text("");
+        userId = dataItem.UserId;
+        mrn = dataItem.MRN;
+
+        window.center().open();
+    }
+
+    function medicationsImportedOpen() {
+        $('#MedicationsImportedGrid').data('kendoGrid').dataSource.read();
+        $('#MedicationsImportedGrid').data('kendoGrid').dataSource.page(1);
+        var MedicationsGrid = $("#MedicationsImportedGrid").data("kendoGrid");
+        MedicationsGrid.resize();
+        MedicationsGrid.resize(true);
+    }
+
+    function bpChartOpen() {
+        var BPChart = $("#BPChart").data("kendoChart");
+        var BPGrid = $("#BPGrid").data("kendoGrid");
+        $('#BPGrid').data('kendoGrid').dataSource.page(1);
+        BPChart.dataSource.read();
+        BPGrid.dataSource.read();
+
+        BPChart.resize();
+        BPChart.resize(true);
+        
+    }
+
+    function symptomDataHistoryOpen() {
+        $('#SymptomHistory').data('kendoGrid').dataSource.read();
+        $('#SymptomHistory').data('kendoGrid').dataSource.page(1);
+        var SymptomHistory = $("#SymptomHistory").data("kendoGrid");
+        SymptomHistory.resize();
+        SymptomHistory.resize(true);
+    }
+
+    function symptomDataOpen() {
+        $('#SymptomResults').data('kendoGrid').dataSource.read();
+        $('#SymptomResults').data('kendoGrid').dataSource.page(1);
+        var SymptomResults = $("#SymptomResults").data("kendoGrid");
+        SymptomResults.resize();
+        SymptomResults.resize(true);
+    }
+
+    function bpDataOpen() {
+        $('#BPGrid').data('kendoGrid').dataSource.read();
+        $('#BPGrid').data('kendoGrid').dataSource.page(1);
+        var BPGrid = $("#BPGrid").data("kendoGrid");
+        BPGrid.resize();
+        BPGrid.resize(true);
+   
+    }
+
+    function glucoseChartOpen() {
+        $('#GlucoseChart').data('kendoChart').dataSource.read();
+        
+        var GlucoseChart = $("#GlucoseChart").data("kendoChart");
+        var GlucoseGrid = $("#GlucoseGrid").data("kendoGrid");
+        GlucoseGrid.dataSource.read();
+        GlucoseChart.resize();
+        GlucoseChart.resize(true);
+    }
+
+    function glucoseDataOpen() {
+        $('#GlucoseGrid').data('kendoGrid').dataSource.read();
+        $('#GlucoseGrid').data('kendoGrid').dataSource.page(1);
+        var GlucoseGrid = $("#GlucoseGrid").data("kendoGrid");
+        GlucoseGrid.resize();
+        GlucoseGrid.resize(true);
+    }
+
+    function medicationsMasterOpen() {
+        $('#MedicationsGridMaster').data('kendoGrid').dataSource.read();
+        $('#MedicationsGridMaster').data('kendoGrid').dataSource.page(1);
+        var MedicationsGrid = $("#MedicationsGridMaster").data("kendoGrid");
+        MedicationsGrid.resize();
+        MedicationsGrid.resize(true);
+    }
+
+    function patientSMSSendOpen() {
+
+    }
+
+    function patientSMSHistoryOpen() {
+        $('#SMSMessageHistoryGrid').data('kendoGrid').dataSource.read();
+        $('#SMSMessageHistoryGrid').data('kendoGrid').dataSource.page(1);
+        var smsHistoryGrid = $("#SMSMessageHistoryGrid").data("kendoGrid");
+        smsHistoryGrid.resize();
+        smsHistoryGrid.resize(true);
+    }
+
+    function medicationsImportedData() {
+        return {
+            MRN: mrn
+        };
+    }
+
+    function medicationsMasterEdit(e) {
+        e.model.set("UserId", userId);
+    }
+
+    function medication_expired_change(e) {
+        var model = $("#MedicationsGridMaster").data("kendoGrid").dataItem(this.element.closest("tr"));
+        var data = $('#Medication').data('kendoDropDownList').dataItem(e.sender.selectedIndex);
+
+        model.MedicationId = data.MedicationId;
+        model.Unit = data.Unit;
+        model.DosageForm = data.DosageForm;
+
+        $('#Unit').data('kendoDropDownList').value(data.Unit);
+        $('#DosageForm').data('kendoDropDownList').value(data.DosageForm);
+    }
+
+    function userMedicationTabs_select(e) {
+        if ($(e.item).find("> .k-link").text() == "EPIC Medications List") {
+            medicationsMasterOpen();
+        }
+        else {
+            medicationsImportedOpen();
+        }
+    }
+
+    function patientSMSTabs_select(e) {
+        if ($(e.item).find("> .k-link").text() == "Send SMS Message") {
+            patientSMSSendOpen();
+        }
+        else {
+            patientSMSHistoryOpen();
+        }
+    }
+
+    function bpTabs_select(e) {
+        if ($(e.item).find("> .k-link").text() == "BP Data") {
+            bpDataOpen();
+        }
+        else {
+            bpChartOpen();
+        }
+    }
+
+    function symptomTabs_select(e) {
+        if ($(e.item).find("> .k-link").text() == "Latest Symptom Result") {
+            symptomDataOpen();
+        }
+        else {
+            symptomDataHistoryOpen();
+        }
+    }
+
+    function glucoseTabs_select(e) {
+        if ($(e.item).find("> .k-link").text() == "Glucose Data") {
+            glucoseDataOpen();
+        }
+        else {
+            glucoseChartOpen();
+        }
+    }
+
+    function medications_imported_error_handler(e) {
+        if (e.errors) {
+            var grid = $('#MedicationsImportedGrid').data('kendoGrid');
+
+            grid.one("dataBinding", function (x) {
+                x.preventDefault();
+
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            });
+        }
+    }
+
+    function medications_master_error_handler(e) {
+        if (e.errors) {
+            var grid = $('#MedicationsGridMaster').data('kendoGrid');
+
+            grid.one("dataBinding", function (x) {
+                x.preventDefault();
+
+                var message = "Errors:\n";
+                $.each(e.errors, function (key, value) {
+                    if ('errors' in value) {
+                        $.each(value.errors, function () {
+                            message += this + "\n";
+                        });
+                    }
+                });
+                alert(message);
+            });
+        }
+    }
+
+</script>

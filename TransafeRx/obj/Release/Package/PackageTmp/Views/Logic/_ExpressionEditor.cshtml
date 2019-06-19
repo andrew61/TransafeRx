@@ -1,0 +1,241 @@
+﻿<div>
+    @(
+        Html.Kendo().DropDownList()
+            .Name("EditorSelect")
+            .OptionLabel("Select item...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Items", "Logic")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("Name")
+            .Events(events => events.Change("editorSelect_change"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("AddExpression")
+            .Content("Add")
+            .Events(events => events.Click("addExpression_click"))
+    )
+
+    <div id="EditorSelect2Section" style="display: none;">
+        @(
+            Html.Kendo().DropDownList()
+                .Name("EditorSelect2")
+        )
+
+        @(
+            Html.Kendo().Button()
+                .Name("AddExpression2")
+                .Content("Add")
+                .Events(events => events.Click("addExpression2_click"))
+        )
+    </div>
+</div>
+
+<div>
+    @(
+        Html.Kendo().Button()
+            .Name("Equal")
+            .Content("=")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' ='); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("NotEqual")
+            .Content("!=")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' !='); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("LessThan")
+            .Content("<")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' <'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("LessThanOrEqual")
+            .Content("<=")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' <='); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("GreaterThan")
+            .Content(">")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' >'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("GreaterThanOrEqual")
+            .Content(">=")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' >='); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("LogicalAnd")
+            .Content("AND")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' AND'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("LogicalOr")
+            .Content("OR")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' OR'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Add")
+            .Content("+")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' +'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Subtract")
+            .Content("-")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' -'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Multiply")
+            .Content("*")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' *'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Divide")
+            .Content("/")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' /'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("LeftParenthesis")
+            .Content("(")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' ('); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("RightParenthesis")
+            .Content(")")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' )'); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Average")
+            .Content("AVERAGE")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' AVERAGE('); }"))
+    )
+
+    @(
+        Html.Kendo().Button()
+            .Name("Sum")
+            .Content("SUM")
+            .Events(events => events.Click("function() { $('#LogicExpression').data('kendoEditor').value($('#LogicExpression').data('kendoEditor').value() + ' SUM('); }"))
+    )
+</div>
+
+@(
+    Html.Kendo().Editor()
+        .Name("LogicExpression")
+        .Tools(tools => tools.Clear())
+)
+
+<script>
+    var editorSelectType = "Item";
+
+    function editorSelect_change(e) {
+        $('#EditorSelect2Section').hide();
+
+        var value = $('#EditorSelect').data("kendoDropDownList").value();
+
+        if (editorSelectType == "Item") {
+            if (value == "Quiz") {
+                $.getJSON("Quizzes", function (data) {
+                    $('#EditorSelect').data("kendoDropDownList").setDataSource(data);
+                    $('#EditorSelect').data("kendoDropDownList").setOptions({ dataTextField: "Name", dataValueField: "QuizId", optionLabel: "Select quiz..." });
+                    $('#EditorSelect').data("kendoDropDownList").select(0);
+                    editorSelectType = "Quiz";
+                });
+            }
+            else if (value == "Survey") {
+                $.getJSON("Surveys", function (data) {
+                    $('#EditorSelect').data("kendoDropDownList").setDataSource(data);
+                    $('#EditorSelect').data("kendoDropDownList").setOptions({ dataTextField: "Name", dataValueField: "SurveyId", optionLabel: "Select survey..." });
+                    $('#EditorSelect').data("kendoDropDownList").select(0);
+                    editorSelectType = "Survey";
+                });
+            }
+        }
+        else if (editorSelectType == "Quiz") {
+            $.getJSON("QuizQuestions", { quizId: value }, function (data) {
+                $('#EditorSelect').data("kendoDropDownList").setDataSource(data);
+                $('#EditorSelect').data("kendoDropDownList").setOptions({ dataTextField: "Name", dataValueField: "QuestionId", optionLabel: "Select question..." });
+                $('#EditorSelect').data("kendoDropDownList").select(0);
+                editorSelectType = "QuizQuestion";
+            });
+        }
+        else if (editorSelectType == "QuizQuestion") {
+            $('#EditorSelect2Section').show();
+            $.getJSON("QuizAnswers", { questionId: value }, function (data) {
+                $('#EditorSelect2').data("kendoDropDownList").setDataSource(data);
+                $('#EditorSelect2').data("kendoDropDownList").setOptions({ dataTextField: "LogicDisplay", dataValueField: "AnswerId", optionLabel: "Select answer..." });
+                $('#EditorSelect2').data("kendoDropDownList").select(0);
+                editorSelectType = "QuizQuestion";
+            });
+        }
+        else if (editorSelectType == "Survey") {
+            $.getJSON("SurveyQuestions", { surveyId: value }, function (data) {
+                $('#EditorSelect').data("kendoDropDownList").setDataSource(data);
+                $('#EditorSelect').data("kendoDropDownList").setOptions({ dataTextField: "Name", dataValueField: "QuestionId", optionLabel: "Select question..." });
+                $('#EditorSelect').data("kendoDropDownList").select(0);
+                editorSelectType = "SurveyQuestion";
+            });
+        }
+        else if (editorSelectType == "SurveyQuestion") {
+            $('#EditorSelect2Section').show();
+            $.getJSON("SurveyQuestionOptions", { questionId: value }, function (data) {
+                $('#EditorSelect2').data("kendoDropDownList").setDataSource(data);
+                $('#EditorSelect2').data("kendoDropDownList").setOptions({ dataTextField: "OptionText", dataValueField: "OptionId", optionLabel: "Select option..." });
+                $('#EditorSelect2').data("kendoDropDownList").select(0);
+                editorSelectType = "SurveyQuestion";
+            });
+        }
+    }
+
+    function addExpression_click(e) {
+        var value = $('#EditorSelect').data("kendoDropDownList").value();
+
+        if (editorSelectType == "QuizQuestion") {
+            $('#LogicExpression').data("kendoEditor").value($('#LogicExpression').data("kendoEditor").value() + " QUIZQUESTION(" + value + ")");
+        }
+        else if (editorSelectType == "SurveyQuestion") {
+            $('#LogicExpression').data("kendoEditor").value($('#LogicExpression').data("kendoEditor").value() + " SURVEYANSWER(" + value + ")");
+        }
+    }
+
+    function addExpression2_click(e) {
+        var value = $('#EditorSelect2').data("kendoDropDownList").value();
+
+        if (editorSelectType == "QuizQuestion") {
+            $('#LogicExpression').data("kendoEditor").value($('#LogicExpression').data("kendoEditor").value() + " QUIZANSWER(" + value + ")");
+        }
+        else if (editorSelectType == "SurveyQuestion") {
+            $('#LogicExpression').data("kendoEditor").value($('#LogicExpression').data("kendoEditor").value() + " SURVEYOPTION(" + value + ")");
+        }
+    }
+</script>

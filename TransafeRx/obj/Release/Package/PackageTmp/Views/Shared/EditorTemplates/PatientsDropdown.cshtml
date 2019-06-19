@@ -1,0 +1,15 @@
+﻿@model TransafeRx.Models.EpicPatientViewModel
+
+@(
+ Html.Kendo().AutoComplete()
+        .Name("MRN")
+        .DataTextField("MRN")
+        .Filter(FilterType.Contains)
+        .DataSource(source =>
+        {
+            source.Read(x => x.Action("EpicPatients", "Users"));
+        })
+        .Events(events => events.Select("onSelect"))
+
+)
+

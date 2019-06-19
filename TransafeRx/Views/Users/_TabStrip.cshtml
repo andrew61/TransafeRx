@@ -1,0 +1,21 @@
+﻿<h2 id="ScheduleHeader"></h2>
+Use the Add, Edit and Delete buttons to modify the schedules. After making all changes, make sure to click on the Update button
+@(Html.Kendo().TabStrip()
+    .Name("ScheduleTabs")
+    .SelectedIndex(0)
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Full Schedule")
+            .Content(@Html.Partial("_ScheduleGrid").ToHtmlString());
+        items.Add()
+            .Text("Expired Schedule")
+            .Content(@Html.Partial("_ScheduleGridExpired").ToHtmlString());
+        @*items.Add()
+            .Text("Daily Summary")
+            .Content(@<text>
+                <div id="ScheduleSummary"></div>
+            </text>);*@
+    })
+    .Events(events => events.Select("scheduleTabs_select"))
+)

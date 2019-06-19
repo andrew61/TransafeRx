@@ -1,0 +1,27 @@
+﻿ @{Html.Kendo().Grid<TransafeRx.Models.SymptomViewModel>()
+    .Name("SymptomResults")
+    .Columns(columns =>
+    {
+        columns.Bound(x => x.QuestionText).Title("Question").Width(200);
+        columns.Bound(x => x.AnswerText).ClientTemplate("<span class='#if(OptionValue > 1) {# red #} else {# black #}#'>#= AnswerText#</span>").Title("Answer").Width(100).HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+        columns.Bound(x => x.AnswerDateUTC).EditorTemplateName("Date").Title("Date").Width(75).Format("{0:G}");
+    })
+    .Resizable(resize => resize.Columns(true))
+    .Pageable()
+    .Sortable()
+    .Scrollable(scroll => scroll.Height(500))
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .PageSize(50)
+    .Model(model =>
+    {
+        model.Id(x => x.QuestionId);
+        model.Field(x => x.QuestionText);
+        model.Field(x => x.AnswerText);
+        model.Field(x => x.OptionValue);
+        model.Field(x => x.AnswerDateUTC);
+    })
+    .Read(read => read.Action("SymptomData_Read", "Users").Data("symptomData"))
+    )
+    .Render();
+            }

@@ -1,0 +1,1762 @@
+﻿<style>
+    .expr-line {
+        padding: 10px;
+        margin: 5px 0;
+        border: solid 1px #eee;
+    }
+
+    .expr-toolbar {
+        border: solid 1px #eee;
+    }
+
+    .k-widget .k-multiselect {
+        width: 400px;
+        vertical-align: top;
+        display: inline-block;
+    }
+</style>
+
+<form id="ExpressionForm" action="">
+    <div id="ExpressionContainer"></div>
+</form>
+
+<div class="expr-toolbar">
+    @(
+ Html.Kendo().Button()
+            .Name("ConditionButton")
+            .Content("Condition")
+            .Events(events => events.Click("condition_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("AndButton")
+            .Content("AND")
+            .Events(events => events.Click("and_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("OrButton")
+            .Content("OR")
+            .Events(events => events.Click("or_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("LeftParenButton")
+            .Content("(")
+            .Events(events => events.Click("leftParen_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("RightParenButton")
+            .Content(")")
+            .Events(events => events.Click("rightParen_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("UndoButton")
+            .Content("UNDO")
+            .Events(events => events.Click("undo_click"))
+    )
+
+    @(
+ Html.Kendo().Button()
+            .Name("Submit")
+            .Content("Save")
+            .Events(events => events.Click("submit_click"))
+            .HtmlAttributes(new { style = "float: right; background-color: #3f51b5; color: #fff;" })
+    )
+</div>
+
+<script>
+    var indentionCount = 0;
+    var conditionCount = 0;
+
+    function on_load(components) {
+        indentionCount = 0;
+        conditionCount = 0;
+
+        if (components != null && components != "") {
+            $.each(components.split('%'), function (i, condition) {
+                var tokens = condition.split(',');
+
+                if (tokens[0] == "Quiz") {
+                    jQuery.ajaxSetup({ async: false });
+
+                    $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+                        $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+
+                        $('#ItemSelect_' + conditionCount).data("kendoDropDownList").value(tokens[0]);
+
+                        $('#Quizzes_' + conditionCount).show();
+                        $('#QuizSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#QuizSelect_' + conditionCount).data("kendoDropDownList").value(tokens[1]);
+
+                        $('#QuizQuestions_' + conditionCount).show();
+                        $('#QuizQuestionSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#QuizQuestionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[2]);
+
+                        $('#Operators_' + conditionCount).show();
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                        $('#QuizAnswers_' + conditionCount).show();
+                        $('#QuizAnswerSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#QuizAnswerSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+                    });
+
+                    jQuery.ajaxSetup({ async: true });
+                    conditionCount++;
+
+                    $('#ConditionButton').prop("disabled", true);
+                    $('#AndButton').prop("disabled", false);
+                    $('#OrButton').prop("disabled", false);
+                    $('#LeftParenButton').prop("disabled", true);
+
+                    if (indentionCount > 0) {
+                        $('#RightParenButton').prop("disabled", false);
+                    }
+                }
+                else if (tokens[0] == "Survey") {
+                    jQuery.ajaxSetup({ async: false });
+
+                    $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+                        $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+
+                        $('#ItemSelect_' + conditionCount).data("kendoDropDownList").value(tokens[0]);
+
+                        $('#Surveys_' + conditionCount).show();
+                        $('#SurveySelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#SurveySelect_' + conditionCount).data("kendoDropDownList").value(tokens[1]);
+
+                        $('#SurveyFunctions_' + conditionCount).show();
+                        $('#SurveyFunctionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[2]);
+
+                        if (tokens[2] == "0") {
+                            $('#SurveyQuestions_' + conditionCount).show();
+                            $('#SurveyQuestionSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                            $('#SurveyQuestionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            var questionSelect = $('#SurveyQuestionSelect_' + conditionCount).data("kendoDropDownList");
+                            var question = questionSelect.dataItem(questionSelect.select());
+                            var questionType = question.QuestionTypeId;
+
+                            if ((questionType == 1) || (questionType == 2) || (questionType == 3) || (questionType == 6) || (questionType == 7) || (questionType == 8) || (questionType == 12)) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#SurveyQuestionOptions_' + conditionCount).show();
+                                $('#SurveyQuestionOptionSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                                $('#SurveyQuestionOptionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[5]);
+                            }
+                            else if (questionType == 4) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#TextValue_' + conditionCount).show();
+                                $('#ValueText_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (questionType == 5) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#NumericValue_' + conditionCount).show();
+                                $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+                            }
+                            else if (questionType == 9) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#DateTimeValue_' + conditionCount).show();
+                                $('#ValueDateTime_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (questionType == 10) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#DateValue_' + conditionCount).show();
+                                $('#ValueDate_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (questionType == 11) {
+                                $('#SurveyQuestionCategories_' + conditionCount).show();
+                                $('#SurveyQuestionCategorySelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                                $('#SurveyQuestionCategorySelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[5]);
+
+                                $('#SurveyQuestionOptions_' + conditionCount).show();
+                                $('#SurveyQuestionOptionSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                                $('#SurveyQuestionOptionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[6]);
+                            }
+                        }
+                        else if (tokens[2] == "1") {
+                            $('#SurveyQuestionsList_' + conditionCount).show();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").dataSource.read();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").value(tokens[3].split('*').filter(function (e) { return e.length != 0 }));
+
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+                        }
+                        else if (tokens[2] == "2") {
+                            $('#SurveyQuestionsList_' + conditionCount).show();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").dataSource.read();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").value(tokens[3].split('*').filter(function (e) { return e.length != 0 }));
+
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+                        }
+                        else if (tokens[2] == "3") {
+                            $('#SurveyQuestionsList_' + conditionCount).show();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").dataSource.read();
+                            $('#SurveyQuestionMultiSelect_' + conditionCount).data("kendoMultiSelect").value(tokens[3].split('*').filter(function (e) { return e.length != 0 }));
+
+                            $('#CountOperators_' + conditionCount).show();
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#CountOperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                            $('#CountValue_' + conditionCount).show();
+                            $('#ValueCount_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[6]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[7]);
+                        }
+                        else if (tokens[2] == "4") {
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[4]);
+                        }
+                    });
+
+                    jQuery.ajaxSetup({ async: true });
+                    conditionCount++;
+
+                    $('#ConditionButton').prop("disabled", true);
+                    $('#AndButton').prop("disabled", false);
+                    $('#OrButton').prop("disabled", false);
+                    $('#LeftParenButton').prop("disabled", true);
+
+                    if (indentionCount > 0) {
+                        $('#RightParenButton').prop("disabled", false);
+                    }
+                }
+                else if (tokens[0] == "Form") {
+                    jQuery.ajaxSetup({ async: false });
+
+                    $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+                        $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+
+                        $('#ItemSelect_' + conditionCount).data("kendoDropDownList").value(tokens[0]);
+
+                        $('#Forms_' + conditionCount).show();
+                        $('#FormSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#FormSelect_' + conditionCount).data("kendoDropDownList").value(tokens[1]);
+
+                        $('#FormFunctions_' + conditionCount).show();
+                        $('#FormFunctionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[2]);
+
+                        if (tokens[2] == "0") {
+                            $('#FormFields_' + conditionCount).show();
+                            $('#FormFieldSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                            $('#FormFieldSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            var fieldSelect = $('#FormFieldSelect_' + conditionCount).data("kendoDropDownList");
+                            var field = fieldSelect.dataItem(fieldSelect.select());
+                            var fieldType = field.FieldTypeId;
+
+                            if ((fieldType == 4) || (fieldType == 5) || (fieldType == 19)) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#FormFieldOptions_' + conditionCount).show();
+                                $('#FormFieldOptionSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                                $('#FormFieldOptionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[5]);
+                            }
+                            else if (fieldType == 1) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#TextValue_' + conditionCount).show();
+                                $('#ValueText_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (fieldType == 2) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#NumericValue_' + conditionCount).show();
+                                $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+                            }
+                            else if (fieldType == 3) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#TextValue_' + conditionCount).show();
+                                $('#ValueText_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (fieldType == 6) {
+                                // Address
+                            }
+                            else if (fieldType == 7) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#DateValue_' + conditionCount).show();
+                                $('#ValueDate_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (fieldType == 8) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#DateTimeValue_' + conditionCount).show();
+                                $('#ValueDateTime_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (fieldType == 9) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#DateTimeValue_' + conditionCount).show();
+                                $('#ValueDateTime_' + conditionCount).val(tokens[5]);
+                            }
+                            else if (fieldType == 10) {
+                                // Email
+                            }
+                            else if (fieldType == 11) {
+                                // Phone
+                            }
+                            else if (fieldType == 12) {
+                                // Website
+                            }
+                            else if (fieldType == 13) {
+                                $('#Operators_' + conditionCount).show();
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                                $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+
+                                $('#NumericValue_' + conditionCount).show();
+                                $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[5]);
+                            }
+                            else if (fieldType == 14) {
+                                // File
+                            }
+                            else if (fieldType == 15) {
+                                // Section
+                            }
+                            else if (fieldType == 16) {
+                                // Profile - First Name
+                            }
+                            else if (fieldType == 17) {
+                                // Profile - Last Name
+                            }
+                            else if (fieldType == 18) {
+                                // Profile - Phone Number
+                            }
+                        }
+                        else if (tokens[2] == "1") {
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[4]);
+                        }
+                    });
+
+                    jQuery.ajaxSetup({ async: true });
+                    conditionCount++;
+
+                    $('#ConditionButton').prop("disabled", true);
+                    $('#AndButton').prop("disabled", false);
+                    $('#OrButton').prop("disabled", false);
+                    $('#LeftParenButton').prop("disabled", true);
+
+                    if (indentionCount > 0) {
+                        $('#RightParenButton').prop("disabled", false);
+                    }
+                }
+                else if (tokens[0] == "Agreement") {
+                    jQuery.ajaxSetup({ async: false });
+
+                    $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+                        $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+
+                        $('#ItemSelect_' + conditionCount).data("kendoDropDownList").value(tokens[0]);
+
+                        $('#Agreements_' + conditionCount).show();
+                        $('#AgreementSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#AgreementSelect_' + conditionCount).data("kendoDropDownList").value(tokens[1]);
+
+                        $('#AgreementFunctions_' + conditionCount).show();
+                        $('#AgreementFunctionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[2]);
+
+                        if (tokens[2] == "0") {
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            $('#AgreementOptions_' + conditionCount).show();
+                            $('#AgreementOptionSelect_' + conditionCount).data("kendoDropDownList").value(tokens[4]);
+                        }
+                        else if (tokens[2] == "1") {
+                            $('#Operators_' + conditionCount).show();
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than", "Value": "<" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than", "Value": ">" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+                            $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[3]);
+
+                            $('#NumericValue_' + conditionCount).show();
+                            $('#ValueNumeric_' + conditionCount).data("kendoNumericTextBox").value(tokens[4]);
+                        }
+                    });
+
+                    jQuery.ajaxSetup({ async: true });
+                    conditionCount++;
+
+                    $('#ConditionButton').prop("disabled", true);
+                    $('#AndButton').prop("disabled", false);
+                    $('#OrButton').prop("disabled", false);
+                    $('#LeftParenButton').prop("disabled", true);
+
+                    if (indentionCount > 0) {
+                        $('#RightParenButton').prop("disabled", false);
+                    }
+                }
+                else if (tokens[0] == "Role") {
+                    jQuery.ajaxSetup({ async: false });
+
+                    $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+                        $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+
+                        $('#ItemSelect_' + conditionCount).data("kendoDropDownList").value(tokens[0]);
+
+                        $('#Operators_' + conditionCount).show();
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.data([]);
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is equal to", "Value": "=" });
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+                        $('#OperatorSelect_' + conditionCount).data("kendoDropDownList").value(tokens[1]);
+
+                        $('#Roles_' + conditionCount).show();
+                        $('#RoleSelect_' + conditionCount).data("kendoDropDownList").dataSource.read();
+                        $('#RoleSelect_' + conditionCount).data("kendoDropDownList").value(tokens[2]);
+                    });
+
+                    jQuery.ajaxSetup({ async: true });
+                    conditionCount++;
+
+                    $('#ConditionButton').prop("disabled", true);
+                    $('#AndButton').prop("disabled", false);
+                    $('#OrButton').prop("disabled", false);
+                    $('#LeftParenButton').prop("disabled", true);
+
+                    if (indentionCount > 0) {
+                        $('#RightParenButton').prop("disabled", false);
+                    }
+                }
+                else if (tokens[0] == "and") {
+                    $('#ExpressionContainer').append("<div expr-type='logicalAnd' class='expr-line' style='padding-left: " + get_padding() + "px;'>AND</div>");
+                    $('#ConditionButton').prop("disabled", false);
+                    $('#AndButton').prop("disabled", true);
+                    $('#OrButton').prop("disabled", true);
+                    $('#LeftParenButton').prop("disabled", false);
+                    $('#RightParenButton').prop("disabled", true);
+                }
+                else if (tokens[0] == "or") {
+                    $('#ExpressionContainer').append("<div expr-type='logicalOr' class='expr-line' style='padding-left: " + get_padding() + "px;'>OR</div>");
+                    $('#ConditionButton').prop("disabled", false);
+                    $('#AndButton').prop("disabled", true);
+                    $('#OrButton').prop("disabled", true);
+                    $('#LeftParenButton').prop("disabled", false);
+                    $('#RightParenButton').prop("disabled", true);
+                }
+                else if (tokens[0] == "(") {
+                    indentionCount++;
+                    $('#ExpressionContainer').append("<div expr-type='leftParen' class='expr-line' style='padding-left: " + get_padding() + "px;'>(</div>");
+                    $('#LeftParenButton').prop("disabled", true);
+                }
+                else if (tokens[0] == ")") {
+                    $('#ExpressionContainer').append("<div expr-type='rightParen' class='expr-line' style='padding-left: " + get_padding() + "px;'>)</div>");
+                    $('#RightParenButton').prop("disabled", true);
+                    indentionCount--;
+                }
+            });
+        }
+        else {
+            $('#ConditionButton').prop("disabled", false);
+            $('#AndButton').prop("disabled", true);
+            $('#OrButton').prop("disabled", true);
+            $('#LeftParenButton').prop("disabled", true);
+            $('#RightParenButton').prop("disabled", true);
+        }
+    }
+
+    $(function () {
+        var validator = $("#ExpressionForm").kendoValidator({
+            rules: {
+                //requirevisible: function (input) {
+                //    if (!input.is(":visible")) {
+                //        return $.trim(input.val()) !== "";
+                //    }
+                //    return true;
+                //}
+            }
+        });
+
+        $('#AndButton').prop("disabled", true);
+        $('#OrButton').prop("disabled", true);
+        $('#LeftParenButton').prop("disabled", true);
+        $('#RightParenButton').prop("disabled", true);
+    });
+
+    function get_padding() {
+        return 10 + (indentionCount * 40);
+    }
+
+    function condition_click(e) {
+        $.get("../Logic/Condition", { conditionId: conditionCount }, function (data) {
+            $('#ExpressionContainer').append("<div id='Condition_" + conditionCount + "' conditionId=" + conditionCount + " expr-type='condition' class='expr-line' style='padding-left: " + get_padding() + "px;'>" + data + "</div>");
+            conditionCount++;
+        });
+
+        $('#ConditionButton').prop("disabled", true);
+        $('#AndButton').prop("disabled", false);
+        $('#OrButton').prop("disabled", false);
+        $('#LeftParenButton').prop("disabled", true);
+
+        if (indentionCount > 0) {
+            $('#RightParenButton').prop("disabled", false);
+        }
+    }
+
+    function and_click(e) {
+        $('#ExpressionContainer').append("<div expr-type='logicalAnd' class='expr-line' style='padding-left: " + get_padding() + "px;'>AND</div>");
+        $('#ConditionButton').prop("disabled", false);
+        $('#AndButton').prop("disabled", true);
+        $('#OrButton').prop("disabled", true);
+        $('#LeftParenButton').prop("disabled", false);
+        $('#RightParenButton').prop("disabled", true);
+    }
+
+    function or_click(e) {
+        $('#ExpressionContainer').append("<div expr-type='logicalOr' class='expr-line' style='padding-left: " + get_padding() + "px;'>OR</div>");
+        $('#ConditionButton').prop("disabled", false);
+        $('#AndButton').prop("disabled", true);
+        $('#OrButton').prop("disabled", true);
+        $('#LeftParenButton').prop("disabled", false);
+        $('#RightParenButton').prop("disabled", true);
+    }
+
+    function leftParen_click(e) {
+        indentionCount++;
+        $('#LeftParenButton').prop("disabled", true);
+        $('#ExpressionContainer').append("<div expr-type='leftParen' class='expr-line' style='padding-left: " + get_padding() + "px;'>(</div>");
+    }
+
+    function rightParen_click(e) {
+        $('#ExpressionContainer').append("<div expr-type='rightParen' class='expr-line' style='padding-left: " + get_padding() + "px;'>)</div>");
+        $('#RightParenButton').prop("disabled", true);
+        indentionCount--;
+    }
+
+    function undo_click(e) {
+        var last = $('#ExpressionContainer .expr-line:last');
+        var expressionType = $(last).attr("expr-type");
+
+        if (expressionType == "leftParen") {
+            indentionCount--;
+        }
+        else if (expressionType == "rightParen") {
+            indentionCount++;
+        }
+        else if (expressionType == "condition") {
+            conditionCount--;
+        }
+
+        $(last).remove();
+        last = $('#ExpressionContainer .expr-line:last');
+        expressionType = $(last).attr("expr-type");
+
+        if (expressionType == "condition") {
+            $('#ConditionButton').prop("disabled", true);
+            $('#AndButton').prop("disabled", false);
+            $('#OrButton').prop("disabled", false);
+            $('#LeftParenButton').prop("disabled", true);
+
+            if (indentionCount > 0) {
+                $('#RightParenButton').prop("disabled", false);
+            }
+            else {
+                $('#RightParenButton').prop("disabled", true);
+            }
+        }
+        else if (expressionType == "logicalAnd") {
+            $('#ConditionButton').prop("disabled", false);
+            $('#AndButton').prop("disabled", true);
+            $('#OrButton').prop("disabled", true);
+            $('#LeftParenButton').prop("disabled", false);
+            $('#RightParenButton').prop("disabled", true);
+        }
+        else if (expressionType == "logicalOr") {
+            $('#ConditionButton').prop("disabled", false);
+            $('#AndButton').prop("disabled", true);
+            $('#OrButton').prop("disabled", true);
+            $('#LeftParenButton').prop("disabled", false);
+            $('#RightParenButton').prop("disabled", true);
+        }
+        else if (expressionType == "leftParen") {
+            $('#ConditionButton').prop("disabled", false);
+            $('#AndButton').prop("disabled", true);
+            $('#OrButton').prop("disabled", true);
+            $('#LeftParenButton').prop("disabled", true);
+            $('#RightParenButton').prop("disabled", true);
+        }
+        else if (expressionType == "rightParen") {
+            $('#ConditionButton').prop("disabled", true);
+            $('#AndButton').prop("disabled", false);
+            $('#OrButton').prop("disabled", false);
+            $('#LeftParenButton').prop("disabled", true);
+            $('#RightParenButton').prop("disabled", true);
+        }
+        else {
+            $('#ConditionButton').prop("disabled", false);
+            $('#AndButton').prop("disabled", true);
+            $('#OrButton').prop("disabled", true);
+            $('#LeftParenButton').prop("disabled", true);
+            $('#RightParenButton').prop("disabled", true);
+        }
+    }
+
+    function get_conditionId(element) {
+        return $(element).attr("conditionId");
+    }
+
+    function itemSelect_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        $('#Quizzes_' + conditionId).hide();
+        $('#QuizQuestions_' + conditionId).hide();
+        $('#QuizAnswers_' + conditionId).hide();
+        $('#Surveys_' + conditionId).hide();
+        $('#SurveyFunctions_' + conditionId).hide();
+        $('#SurveyQuestions_' + conditionId).hide();
+        $('#SurveyQuestionsList_' + conditionId).hide();
+        $('#SurveyQuestionCategories_' + conditionId).hide();
+        $('#SurveyQuestionOptions_' + conditionId).hide();
+        $('#Forms_' + conditionId).hide();
+        $('#FormFunctions_' + conditionId).hide();
+        $('#FormFields_' + conditionId).hide();
+        $('#FormFieldOptions_' + conditionId).hide();
+        $('#Agreements_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+        $('#Roles_' + conditionId).hide();
+        $('#AgreementOptions_' + conditionId).hide();
+
+        var itemType = this.value();
+
+        if (itemType == "Quiz") {
+            $('#Quizzes_' + conditionId).show();
+            $('#QuizSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#QuizSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (itemType == "Survey") {
+            $('#Surveys_' + conditionId).show();
+            $('#SurveySelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveySelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (itemType == "Form") {
+            $('#Forms_' + conditionId).show();
+            $('#FormSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#FormSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (itemType == "Agreement") {
+            $('#Agreements_' + conditionId).show();
+            $('#AgreementSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#AgreementSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (itemType == "Role") {
+            operatorSelect.dataSource.data([]);
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.select(0);
+
+            $('#Operators_' + conditionId).show();
+            $('#Roles_' + conditionId).show();
+            $('#RoleSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#RoleSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+    }
+
+    function quiz_change(e) {
+        var conditionId = get_conditionId(this.element);
+
+        $('#QuizQuestions_' + conditionId).show();
+        $('#QuizQuestionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+        $('#QuizQuestionSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function quizQuestion_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        operatorSelect.dataSource.data([]);
+        operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+        operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+        operatorSelect.select(0);
+
+        $('#Operators_' + conditionId).show();
+        $('#QuizAnswers_' + conditionId).show();
+        $('#QuizAnswerSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+        $('#QuizAnswerSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function survey_change(e) {
+        var conditionId = get_conditionId(this.element);
+
+        $('#SurveyQuestions_' + conditionId).hide();
+        $('#SurveyQuestionsList_' + conditionId).hide();
+        $('#SurveyQuestionCategories_' + conditionId).hide();
+        $('#SurveyQuestionOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+        $('#SurveyFunctions_' + conditionId).show();
+        $('#SurveyFunctionSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function surveyFunction_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var func = this.value();
+
+        $('#SurveyQuestions_' + conditionId).hide();
+        $('#SurveyQuestionsList_' + conditionId).hide();
+        $('#SurveyQuestionCategories_' + conditionId).hide();
+        $('#SurveyQuestionOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+
+        if (func == "0") {
+            $('#SurveyQuestions_' + conditionId).show();
+            $('#SurveyQuestionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (func == "1") {
+            $('#SurveyQuestionsList_' + conditionId).show();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataSource.read();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").value("");
+        }
+        else if (func == "2") {
+            $('#SurveyQuestionsList_' + conditionId).show();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataSource.read();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").value("");
+        }
+        else if (func == "3") {
+            $('#SurveyQuestionsList_' + conditionId).show();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataSource.read();
+            $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").value("");
+        }
+        else if (func == "4") {
+            var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+            operatorSelect.dataSource.data([]);
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+            operatorSelect.select(0);
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+    }
+
+    function surveyQuestion_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var dataItem = this.dataItem(e.item);
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        operatorSelect.dataSource.data([]);
+
+        $('#Operators_' + conditionId).hide();
+        $('#SurveyQuestionCategories_' + conditionId).hide();
+        $('#SurveyQuestionOptions_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+
+        $('#SurveyQuestionCategorySelect_' + conditionId).data("kendoDropDownList").dataSource.data([]);
+        $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.data([]);
+
+        if (dataItem.QuestionTypeId == 1) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 2) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 3) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 4) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#TextValue_' + conditionId).show();
+        }
+        else if (dataItem.QuestionTypeId == 5) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+        else if (dataItem.QuestionTypeId == 6) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 7) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 8) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 9) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#DateTimeValue_' + conditionId).show();
+        }
+        else if (dataItem.QuestionTypeId == 10) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#DateValue_' + conditionId).show();
+        }
+        else if (dataItem.QuestionTypeId == 11) {
+            $('#SurveyQuestionCategories_' + conditionId).show();
+            $('#SurveyQuestionCategorySelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionCategorySelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.QuestionTypeId == 12) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#SurveyQuestionOptions_' + conditionId).show();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+
+        operatorSelect.select(0);
+    }
+
+    function surveyQuestionList_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var func = $('#SurveyFunctionSelect_' + conditionId).data("kendoDropDownList").value();
+
+        if (func == "Count") {
+            var countOperatorSelect = $('#CountOperatorSelect_' + conditionId).data("kendoDropDownList");
+
+            countOperatorSelect.dataSource.data([]);
+            countOperatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            countOperatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            countOperatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            countOperatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            countOperatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            countOperatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+            countOperatorSelect.select(0);
+
+            $('#CountOperators_' + conditionId).show();
+            $('#CountValue_' + conditionId).show();
+        }
+
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        operatorSelect.dataSource.data([]);
+        operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+        operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+        operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+        operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+        operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+        operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+        operatorSelect.select(0);
+
+        $('#Operators_' + conditionId).show();
+        $('#NumericValue_' + conditionId).show();
+    }
+
+    function surveyQuestionCategory_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        operatorSelect.dataSource.data([]);
+        operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+        operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+        operatorSelect.select(0);
+
+        $('#Operators_' + conditionId).show();
+        $('#SurveyQuestionOptions_' + conditionId).show();
+        $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+        $('#SurveyQuestionOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function form_change(e) {
+        var conditionId = get_conditionId(this.element);
+
+        $('#FormFields_' + conditionId).hide();
+        $('#FormFieldOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+        $('#FormFunctions_' + conditionId).show();
+        $('#FormFunctionSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function formFunction_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var func = this.value();
+
+        $('#FormFields_' + conditionId).hide();
+        $('#FormFieldOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+
+        if (func == "0") {
+            $('#FormFields_' + conditionId).show();
+            $('#FormFieldSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#FormFieldSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (func == "1") {
+            var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+            operatorSelect.dataSource.data([]);
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+            operatorSelect.select(0);
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+    }
+
+    function formField_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var dataItem = this.dataItem(e.item);
+        var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+        operatorSelect.dataSource.data([]);
+
+        $('#Operators_' + conditionId).hide();
+        $('#FormFieldOptions_' + conditionId).hide();
+        $('#TextValue_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#DateTimeValue_' + conditionId).hide();
+        $('#DateValue_' + conditionId).hide();
+
+        $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.data([]);
+
+        if (dataItem.FieldTypeId == 1) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#TextValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 2) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 3) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#TextValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 4) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#FormFieldOptions_' + conditionId).show();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.FieldTypeId == 5) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#FormFieldOptions_' + conditionId).show();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (dataItem.FieldTypeId == 6) {
+            // Address
+        }
+        else if (dataItem.FieldTypeId == 7) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#DateValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 8) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#DateTimeValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 9) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#DateTimeValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 10) {
+            // Email
+        }
+        else if (dataItem.FieldTypeId == 11) {
+            // Phone
+        }
+        else if (dataItem.FieldTypeId == 12) {
+            // Website
+        }
+        else if (dataItem.FieldTypeId == 13) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+        else if (dataItem.FieldTypeId == 14) {
+            // File
+        }
+        else if (dataItem.FieldTypeId == 15) {
+            // Section
+        }
+        else if (dataItem.FieldTypeId == 16) {
+            // Profile - First Name
+        }
+        else if (dataItem.FieldTypeId == 17) {
+            // Profile - Last Name
+        }
+        else if (dataItem.FieldTypeId == 18) {
+            // Profile - Phone Number
+        }
+        else if (dataItem.FieldTypeId == 19) {
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+
+            $('#Operators_' + conditionId).show();
+            $('#FormFieldOptions_' + conditionId).show();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").dataSource.read();
+            $('#FormFieldOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+
+        operatorSelect.select(0);
+    }
+
+    function agreement_change(e) {
+        var conditionId = get_conditionId(this.element);
+
+        $('#AgreementOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+        $('#AgreementFunctions_' + conditionId).show();
+        $('#AgreementFunctionSelect_' + conditionId).data("kendoDropDownList").select(0);
+    }
+
+    function agreementFunction_change(e) {
+        var conditionId = get_conditionId(this.element);
+        var func = this.value();
+
+        $('#AgreementOptions_' + conditionId).hide();
+        $('#Operators_' + conditionId).hide();
+        $('#NumericValue_' + conditionId).hide();
+
+        if (func == "0") {
+            var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+            operatorSelect.dataSource.data([]);
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.select(0);
+
+            $('#Operators_' + conditionId).show();
+            $('#AgreementOptions_' + conditionId).show();
+            $('#AgreementOptionSelect_' + conditionId).data("kendoDropDownList").select(0);
+        }
+        else if (func == "1") {
+            var operatorSelect = $('#OperatorSelect_' + conditionId).data("kendoDropDownList");
+
+            operatorSelect.dataSource.data([]);
+            operatorSelect.dataSource.add({ "Text": "Is equal to", "Value": "=" });
+            operatorSelect.dataSource.add({ "Text": "Is not equal to", "Value": "!=" });
+            operatorSelect.dataSource.add({ "Text": "Is less than", "Value": "<" });
+            operatorSelect.dataSource.add({ "Text": "Is less than or equal to", "Value": "<=" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than", "Value": ">" });
+            operatorSelect.dataSource.add({ "Text": "Is greater than or equal to", "Value": ">=" });
+            operatorSelect.select(0);
+
+            $('#Operators_' + conditionId).show();
+            $('#NumericValue_' + conditionId).show();
+        }
+    }
+
+    function submit_click(e) {
+        var validator = $("#ExpressionForm").kendoValidator().data("kendoValidator");
+        if (validator.validate()) {
+            var expression = "";
+            var components = "";
+
+            $('#ExpressionContainer .expr-line').each(function () {
+                var expressionType = $(this).attr("expr-type");
+
+                if (expressionType == "condition") {
+                    var conditionId = get_conditionId($(this));
+                    var item = $('#ItemSelect_' + conditionId).val();
+
+                    if (item == "Quiz") {
+                        var quizQuestionSelect = $('#QuizQuestionSelect_' + conditionId).data("kendoDropDownList");
+                        var dataItem = quizQuestionSelect.dataItem(quizQuestionSelect.select());
+
+                        components += "%Quiz";
+
+                        if ((dataItem.QuestionTypeId == 1) || (dataItem.QuestionTypeId == 4)) {
+                            expression += "((SELECT TOP 1 AnswerId FROM QuizResults WHERE QuizId = " + $('#QuizSelect_' + conditionId).val() + " AND QuestionId = " + $('#QuizQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY AttemptId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#QuizAnswerSelect_' + conditionId).val() + ")";
+
+                            components += "," + $('#QuizSelect_' + conditionId).val();
+                            components += "," + $('#QuizQuestionSelect_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#QuizAnswerSelect_' + conditionId).val();
+                        }
+                        else if (dataItem.QuestionTypeId == 2) {
+                            expression += "((SELECT COUNT(*) WHERE " + $('#QuizAnswerSelect_' + conditionId).val() + " IN (SELECT AnswerId FROM QuizResults WHERE QuizId = " + $('#QuizSelect_' + conditionId).val() + " AND QuestionId = " + $('#QuizQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] AND AttemptId = (SELECT TOP 1 AttemptId FROM QuizResults WHERE QuizId = " + $('#QuizSelect_' + conditionId).val() + " AND QuestionId = " + $('#QuizQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY AttemptId DESC, AnswerDateUTC DESC))) > 0)";
+
+                            components += "," + $('#QuizSelect_' + conditionId).val();
+                            components += "," + $('#QuizQuestionSelect_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#QuizAnswerSelect_' + conditionId).val();
+                        }
+                        else if (dataItem.QuestionTypeId == 3) {
+                            expression += "((SELECT TOP 1 AnswerId FROM QuizResults WHERE QuizId = " + $('#QuizSelect_' + conditionId).val() + " AND QuestionId = " + $('#QuizQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY AttemptId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#QuizAnswerSelect_' + conditionId).val() + ")";
+
+                            components += "," + $('#QuizSelect_' + conditionId).val();
+                            components += "," + $('#QuizQuestionSelect_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#QuizAnswerSelect_' + conditionId).val();
+                        }
+                    }
+                    else if (item == "Survey") {
+                        var surveyFunctionSelect = $('#SurveyFunctionSelect_' + conditionId).data("kendoDropDownList");
+                        var func = surveyFunctionSelect.value();
+
+                        components += "%Survey";
+
+                        if (func == "0") {
+                            var surveyQuestionSelect = $('#SurveyQuestionSelect_' + conditionId).data("kendoDropDownList");
+                            var dataItem = surveyQuestionSelect.dataItem(surveyQuestionSelect.select());
+
+                            if (dataItem.QuestionTypeId == 1) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 2) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 3) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 4) {
+                                expression += "((SELECT TOP 1 AnswerText FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " '" + $('#ValueText_' + conditionId).val() + "')";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueText_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 5) {
+                                expression += "((SELECT TOP 1 CONVERT(decimal(19, 10), AnswerText) FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(decimal(19, 10), '" + $('#ValueNumeric_' + conditionId).val() + "'))";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueNumeric_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 6) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 7) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 8) {
+                                expression += "((SELECT COUNT(*) WHERE " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + " IN (SELECT OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] AND SessionId = (SELECT TOP 1 SessionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC))) > 0)";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 9) {
+                                expression += "((SELECT TOP 1 CONVERT(datetime, AnswerText) FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(datetime, '" + $('#ValueDateTime_' + conditionId).val() + "'))";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueDateTime_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 10) {
+                                expression += "((SELECT TOP 1 CONVERT(date, AnswerText) FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(date, '" + $('#ValueDate_' + conditionId).val() + "'))";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueDate_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 11) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND CategoryId = " + $('#SurveyQuestionCategorySelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionCategorySelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.QuestionTypeId == 12) {
+                                expression += "((SELECT TOP 1 OptionId FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId = " + $('#SurveyQuestionSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#SurveyQuestionOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#SurveySelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#SurveyQuestionSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#SurveyQuestionOptionSelect_' + conditionId).val();
+                            }
+                        }
+                        else if (func == "1") {
+                            var questions = $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataItems();
+
+                            expression += "(SELECT SUM(OptionValue) FROM (";
+                            components += "," + $('#SurveySelect_' + conditionId).val();
+                            components += "," + "1,";
+
+                            $.each(questions, function (index, question) {
+                                if (index > 0) {
+                                    expression += " UNION ALL ";
+                                }
+
+                                expression += "SELECT TOP 1 OptionValue FROM SurveyAnswers WHERE SurveyId = " + question.SurveyId + " AND QuestionId = " + question.QuestionId + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC";
+                                components += "*" + question.QuestionId;
+                            });
+
+                            expression += ") src) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                        else if (func == "2") {
+                            var questions = $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataItems();
+
+                            expression += "(SELECT AVG(OptionValue) FROM (";
+                            components += "," + $('#SurveySelect_' + conditionId).val();
+                            components += "," + "2,";
+
+                            $.each(questions, function (index, question) {
+                                if (index > 0) {
+                                    expression += " UNION ALL ";
+                                }
+
+                                expression += "SELECT TOP 1 OptionValue FROM SurveyAnswers WHERE SurveyId = " + question.SurveyId + " AND QuestionId = " + question.QuestionId + " AND UserId = [UserId] ORDER BY SessionId DESC, AnswerDateUTC DESC";
+                                components += "*" + question.QuestionId;
+                            });
+
+                            expression += ") src) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                        else if (func == "3") {
+                            var questions = $('#SurveyQuestionMultiSelect_' + conditionId).data("kendoMultiSelect").dataItems();
+
+                            expression += "(SELECT COUNT(*) FROM (SELECT ROW_NUMBER() OVER(PARTITION BY QuestionId ORDER BY AnswerDate DESC) AS RowNumber FROM SurveyAnswers WHERE SurveyId = " + $('#SurveySelect_' + conditionId).val() + " AND QuestionId IN (";
+                            components += "," + $('#SurveySelect_' + conditionId).val();
+                            components += "," + "3,";
+
+                            $.each(questions, function (index, question) {
+                                if (index > 0) {
+                                    expression += ", ";
+                                }
+
+                                expression += question.QuestionId;
+                                components += "*" + question.QuestionId;
+                            });
+
+                            expression += ") AND UserId = [UserId] AND OptionValue " + $('#CountOperatorSelect_' + conditionId).val() + " " + $('#ValueCount_' + conditionId).val() + ") src WHERE RowNumber = 1) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val();
+                            components += "," + $('#CountOperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueCount_' + conditionId).val();
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                        else if (func == "4") {
+                            expression += "((SELECT COUNT(*) FROM UserItems WHERE ItemId = " + $('#SurveySelect_' + conditionId).val() + " AND UserId = [UserId] AND CompletedDate IS NOT NULL) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val() + ")";
+                            components += "," + $('#SurveySelect_' + conditionId).val();
+                            components += "," + "4";
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                    }
+                    else if (item == "Form") {
+                        var formFunctionSelect = $('#FormFunctionSelect_' + conditionId).data("kendoDropDownList");
+                        var func = formFunctionSelect.value();
+
+                        components += "%Form";
+
+                        if (func == "0") {
+                            var formFieldSelect = $('#FormFieldSelect_' + conditionId).data("kendoDropDownList");
+                            var dataItem = formFieldSelect.dataItem(formFieldSelect.select());
+
+                            if (dataItem.FieldTypeId == 1) {
+                                expression += "((SELECT TOP 1 ResultText FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " '" + $('#ValueText_' + conditionId).val() + "')";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueText_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 2) {
+                                expression += "((SELECT TOP 1 CONVERT(decimal(19, 10), ResultText) FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(decimal(19, 10), '" + $('#ValueNumeric_' + conditionId).val() + "'))";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueNumeric_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 3) {
+                                expression += "((SELECT TOP 1 ResultText FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " '" + $('#ValueText_' + conditionId).val() + "')";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueText_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 4) {
+                                expression += "((SELECT TOP 1 OptionId FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#FormFieldOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#FormFieldOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 5) {
+                                expression += "((SELECT TOP 1 OptionId FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#FormFieldOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#FormFieldOptionSelect_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 6) {
+                                // Address
+                            }
+                            else if (dataItem.FieldTypeId == 7) {
+                                expression += "((SELECT TOP 1 CONVERT(date, ResultText) FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(date, '" + $('#ValueDate_' + conditionId).val() + "'))";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueDate_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 8) {
+                                expression += "((SELECT TOP 1 CONVERT(datetime, ResultText) FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(datetime, '" + $('#ValueDateTime_' + conditionId).val() + "'))";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueDateTime_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 9) {
+                                expression += "((SELECT TOP 1 CONVERT(time(7), ResultText) FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(time(7), '" + $('#ValueDateTime_' + conditionId).val() + "'))";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueDateTime_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 10) {
+                                // Email
+                            }
+                            else if (dataItem.FieldTypeId == 11) {
+                                // Phone
+                            }
+                            else if (dataItem.FieldTypeId == 12) {
+                                // Website
+                            }
+                            else if (dataItem.FieldTypeId == 13) {
+                                expression += "((SELECT TOP 1 CONVERT(decimal(19, 10), ResultText) FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " CONVERT(decimal(19, 10), '" + $('#ValueNumeric_' + conditionId).val() + "'))";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#ValueNumeric_' + conditionId).val();
+                            }
+                            else if (dataItem.FieldTypeId == 14) {
+                                // File
+                            }
+                            else if (dataItem.FieldTypeId == 15) {
+                                // Section
+                            }
+                            else if (dataItem.FieldTypeId == 16) {
+                                // Profile - First Name
+                            }
+                            else if (dataItem.FieldTypeId == 17) {
+                                // Profile - Last Name
+                            }
+                            else if (dataItem.FieldTypeId == 18) {
+                                // Profile - Phone Number
+                            }
+                            else if (dataItem.FieldTypeId == 19) {
+                                expression += "((SELECT TOP 1 OptionId FROM FormResults WHERE FormId = " + $('#FormSelect_' + conditionId).val() + " AND FieldId = " + $('#FormFieldSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResultDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#FormFieldOptionSelect_' + conditionId).val() + ")";
+
+                                components += "," + $('#FormSelect_' + conditionId).val();
+                                components += "," + "0";
+                                components += "," + $('#FormFieldSelect_' + conditionId).val();
+                                components += "," + $('#OperatorSelect_' + conditionId).val();
+                                components += "," + $('#FormFieldOptionSelect_' + conditionId).val();
+                            }
+                        }
+                        else if (func == "1") {
+                            expression += "((SELECT COUNT(*) FROM UserItems WHERE ItemId = " + $('#FormSelect_' + conditionId).val() + " AND UserId = [UserId] AND CompletedDate IS NOT NULL) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val() + ")";
+                            components += "," + $('#FormSelect_' + conditionId).val();
+                            components += "," + "1";
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                    }
+                    else if (item == "Agreement") {
+                        var agreementFunctionSelect = $('#AgreementFunctionSelect_' + conditionId).data("kendoDropDownList");
+                        var func = agreementFunctionSelect.value();
+
+                        components += "%Agreement";
+
+                        if (func == "0") {
+                            expression += "((SELECT TOP 1 Accepted FROM AgreementResponses WHERE AgreementId = " + $('#AgreementSelect_' + conditionId).val() + " AND UserId = [UserId] ORDER BY ResponseDate DESC) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#AgreementOptionSelect_' + conditionId).val() + ")";
+                            components += "," + $('#AgreementSelect_' + conditionId).val();
+                            components += "," + "0";
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#AgreementOptionSelect_' + conditionId).val();
+                        }
+                        else if (func == "1") {
+                            expression += "((SELECT COUNT(*) FROM UserItems WHERE ItemId = " + $('#AgreementSelect_' + conditionId).val() + " AND UserId = [UserId] AND CompletedDate IS NOT NULL) " + $('#OperatorSelect_' + conditionId).val() + " " + $('#ValueNumeric_' + conditionId).val() + ")";
+                            components += "," + $('#AgreementSelect_' + conditionId).val();
+                            components += "," + "1";
+                            components += "," + $('#OperatorSelect_' + conditionId).val();
+                            components += "," + $('#ValueNumeric_' + conditionId).val();
+                        }
+                    }
+                    else if (item == "Role") {
+                        var operator = $('#OperatorSelect_' + conditionId).val()
+
+                        if (operator == "=") {
+                            expression += "('" + $('#RoleSelect_' + conditionId).val() + "' IN (SELECT RoleId FROM AspNetUserRoles WHERE UserId = [USERID]))";
+                        }
+                        else {
+                            expression += "('" + $('#RoleSelect_' + conditionId).val() + "' NOT IN (SELECT RoleId FROM AspNetUserRoles WHERE UserId = [USERID]))";
+                        }
+
+                        components += "%Role";
+                        components += "," + $('#OperatorSelect_' + conditionId).val();
+                        components += "," + $('#RoleSelect_' + conditionId).val();
+                    }
+                }
+                else if (expressionType == "logicalAnd") {
+                    expression += " AND ";
+                    components += "%and";
+                }
+                else if (expressionType == "logicalOr") {
+                    expression += " OR ";
+                    components += "%or";
+                }
+                else if (expressionType == "leftParen") {
+                    expression += " (";
+                    components += "%(";
+                }
+                else if (expressionType == "rightParen") {
+                    expression += ")";
+                    components += "%)";
+                }
+            });
+
+            save_expression(expression, components);
+        }
+    }
+</script>

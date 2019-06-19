@@ -1,0 +1,87 @@
+﻿@{Html.Kendo().Grid<TransafeRx.Models.UserMedicationViewModel>()
+                        .Name("MedicationsGridMaster")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(x => x.DrugName).Width(75);
+                            columns.Bound(x => x.Route).Width(75);
+                            columns.Bound(x => x.Quantity).Width(75);
+                            columns.Bound(x => x.StartDate).EditorTemplateName("Date").Title("Start Date").Width(75).Format("{0:MM/dd/yyyy}");
+                            columns.Bound(x => x.Instructions).Width(100);
+                            columns.Bound(x => x.ModifiedDate).EditorTemplateName("Date").Title("Modified Date").Width(75).Format("{0:G}");
+                            columns.Command(command => { command.Custom("Schedules").Click("showSchedules"); }).Width(100);
+                        })
+        .Resizable(resize => resize.Columns(true))
+        //.ToolBar(toolbar => toolbar.Create().Text("ADD NEW USER MEDICATION"))
+        //.Editable(ed => ed.Mode(GridEditMode.InCell))
+        //.Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("MedPopUp").Window(w => w.Width(400)))
+        .Events(events => events.Edit("medicationsMasterEdit"))
+        .Pageable()
+        .Sortable()
+        .Scrollable(scroll => scroll.Height(500))
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(50)
+        .Events(events => events.Error("medications_master_error_handler"))
+        .Model(model =>
+        {
+            model.Id(x => x.UserMedicationId);
+            model.Field(x => x.UserId);
+            model.Field(x => x.DrugName);
+            model.Field(x => x.StartDate.Date);
+            model.Field(x => x.Route);
+            model.Field(x => x.Instructions);
+            model.Field(x => x.ModifiedDate);
+        })
+        .Create(create => create.Action("UserMedications_Create", "Users"))
+        .Read(read => read.Action("UserMedications_Read", "Users").Data("userMedicationsData"))
+        .Update(update => update.Action("UserMedications_Update", "Users"))
+        .Destroy(destroy => destroy.Action("UserMedications_Destroy", "Users"))
+        )
+        .Render();
+}
+
+<script type="text/javascript">
+    var modelData;
+    var userId;
+    var userMedicationId;
+
+    function medicationsEdit(e) {
+        e.model.set("UserId", userId);
+        modelData = e.model;
+    }
+
+    function medication_change(e) {
+        var model = modelData;
+        var data = $('#Medication').data('kendoDropDownList').dataItem(e.sender.selectedIndex);
+
+    }
+
+    function schedules_expired_cancel(e) {
+        var grid = $('#SchedulesGridExpired').data('kendoGrid');
+        grid.showColumn("Active");
+    }
+
+    function schedules_expired_request_end(e) {
+        var grid = $('#SchedulesGridExpired').data('kendoGrid');
+
+        if (e.type == "update") {
+            if (!e.response.Errors) {
+                grid.dataSource.read();
+                grid.showColumn("Active");
+            }
+        }
+    }
+
+    function showSchedules(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+        var window = $("#SchedulesWindow").data("kendoWindow");
+
+        userId = dataItem.UserId;
+        userMedicationId = dataItem.UserMedicationId;
+        $("#ScheduleHeader").text("Schedules for " + dataItem.Medication.DisplayName);
+        window.center().open();
+        // $('#ScheduleSummary').load('@Url.Action("ScheduleSummaryGrid","Users")' + "?userId=" + userId);
+    }
+</script>

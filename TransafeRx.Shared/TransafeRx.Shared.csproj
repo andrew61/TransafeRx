@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1D1529A8-10C3-426C-8AF2-FFBB397CF867}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransafeRx.Shared</RootNamespace>
+    <AssemblyName>TransafeRx.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFrameworkExtras.EF6, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkExtras.EF6.1.0.0\lib\net45\EntityFrameworkExtras.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\packages\NodaTime.2.2.1\lib\net45\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\AddUpdateSurveySession_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AdherenceProtocol.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Admission.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ApplicationSetting.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AppVersion.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetRole.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetUser.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetUserClaim.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetUserLogin.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AspNetUserRole.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BloodGlucoseMeasurement.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BloodPressureMeasurement.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Calendar.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Client.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DeviceToken.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fnGetUserMedicationScheduleDates_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Font.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAllDeviceTokensWithUser_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAllMedicationsNotTakenWindow_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAllUserNotifications_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetAppointments_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetBloodGlucoseMeasurementsMonth_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetBloodGlucoseMeasurements_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetBloodPressureMeasurementsChart_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetBloodPressureMeasurements_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetCurrentSurveySession_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetDeviceTokensByUser_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetEpicPatients_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetExternalDrugData_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetGlucoseMeasurementsChart_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItemLogic_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItemNavigation_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItemTemplates_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItemToolbarItems_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItemTypes_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetItem_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetLatestAppVersionByAppId_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedAdhMsgs_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedicationAdherenceByMed_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedicationSchedules_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedicationsNotTakenByHour_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedicationsNotTakenWindow_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMedicationsNotTaken_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetMessagesToSend_30_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetNotificationPreferences_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetNotifications_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetNotificationTypes_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetPatientSMSHistory_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetPhoneNumber_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetPlaceholders_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetPrednisoneRefillData_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSchedulesByUserMedicationId_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyAnswers_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyOptionGroups_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyOptions_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestionCategories_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestionLogicActions_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestionLogic_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestionOptions_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestions_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestionTypes_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyQuestion_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyResultsBySessionId_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyResults_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveyScoresForUser_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveySession_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurveys_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetSurvey_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetTacrolimusResults_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetToolbarItemNavigation_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUserHasLatestAppVersion_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUserMedicationById_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUserMedicationsAPIByUserId_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUserMedications_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUserRoles_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUsers_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetUser_Result.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Interval.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Item.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemLogic.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemLogicAction.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemLogicEvent.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemNavigation.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemNavigationTemplate.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemNavigationType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemTemplate.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemToolbarItem.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemTransitionType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ItemType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LoginInformation.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LU_AdmissionTypes.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LU_AppId.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LU_DeviceTokenTypes.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LU_MedicationActivityTypes.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LU_NotificationType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MedicationActivity.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Message.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Message1.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NotificationMessage.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NotificationPreference.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientMedPhase.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientMessageSent.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatientSMSMessage.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PersonalizedMessageType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PhoneNumber.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Placeholder.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RefreshToken.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Schedule.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Score.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Sequencer.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Survey.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyAnswer.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyOption.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyOptionGroup.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestion.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestionCategory.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestionLogic.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestionLogicAction.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestionOption.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveyQuestionType.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SurveySession.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Theme.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ToolbarItem.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ToolbarItemAction.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ToolbarItemNavigation.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TransafeRxdb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransafeRxdb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TransafeRxdb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TransafeRxdb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransafeRxdb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\User.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserMedication.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VersionInfo.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Zone.cs">
+      <DependentUpon>TransafeRxdb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\GetSurveyQuestions_Result.cs" />
+    <Compile Include="Models\GetSurvey_Result.cs" />
+    <Compile Include="Models\MedicationActivityType.cs" />
+    <Compile Include="Models\MedicationAlertType.cs" />
+    <Compile Include="Models\MedicationSchedule.cs" />
+    <Compile Include="Models\MedicationScheduleType.cs" />
+    <Compile Include="Models\ModelNameAttribute.cs" />
+    <Compile Include="Models\DeviceToken.cs" />
+    <Compile Include="Models\ScheduleType.cs" />
+    <Compile Include="Models\SurveyAnswer.cs" />
+    <Compile Include="Models\TimeZoneAdjustedDateInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="StoredProcedures\AddMedicationActivityBatch.cs" />
+    <Compile Include="StoredProcedures\AddSurveyAnswers.cs" />
+    <Compile Include="StoredProcedures\AddUpdateMedicationAlerts.cs" />
+    <Compile Include="StoredProcedures\AddUpdateMedicationSchedules.cs" />
+    <Compile Include="StoredProcedures\DeleteMedicationSchedules.cs" />
+    <Compile Include="StoredProcedures\SetMedicationSchedulesInactive.cs" />
+    <Compile Include="Utils\DateHelper.cs" />
+    <Compile Include="Utils\ItemHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Data\TransafeRxdb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TransafeRxdb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\TransafeRxdb.edmx.diagram">
+      <DependentUpon>TransafeRxdb.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\DEV_PUSH_TRANSAFE_RX.p12" />
+    <None Include="Resources\PROD_PUSH_TRANSAFE_RX.p12" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\TransafeRxdb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TransafeRxdb.edmx</DependentUpon>
+      <LastGenOutput>TransafeRxdb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\TransafeRxdb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TransafeRxdb.edmx</DependentUpon>
+      <LastGenOutput>TransafeRxdb.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

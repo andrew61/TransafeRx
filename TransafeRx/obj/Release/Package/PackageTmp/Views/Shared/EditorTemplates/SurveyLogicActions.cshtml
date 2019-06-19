@@ -1,0 +1,12 @@
+﻿@model TransafeRx.Models.SurveyLogicActionViewModel
+
+@(
+    Html.Kendo().DropDownListFor(x => x)
+        .DataValueField("ActionId")
+        .DataTextField("Name")
+        .DataSource(source =>
+        {
+            source.Read(x => x.Action("SurveyLogicActions", "Item"));
+        })
+        //.Events(events => events.Change("questionLogicAction_change"))
+)

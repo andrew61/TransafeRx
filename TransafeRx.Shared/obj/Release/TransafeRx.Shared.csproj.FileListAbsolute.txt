@@ -1,0 +1,34 @@
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.dll.config
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.pdb
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.SqlServer.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFrameworkExtras.EF6.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.xml
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.SqlServer.xml
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\EntityFrameworkExtras.EF6.pdb
+C:\Repositories\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.csprojResolveAssemblyReference.cache
+C:\Repositories\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.Properties.Resources.resources
+C:\Repositories\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.csproj.GenerateResource.Cache
+C:\Repositories\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.pdb
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.dll
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.pdb
+C:\Repositories\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.xml
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.dll.config
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\TransafeRx.Shared.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.SqlServer.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFrameworkExtras.EF6.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.xml
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFramework.SqlServer.xml
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\EntityFrameworkExtras.EF6.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.pdb
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\bin\Release\NodaTime.xml
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.csprojResolveAssemblyReference.cache
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.Properties.Resources.resources
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.csproj.GenerateResource.Cache
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.dll
+C:\[API Projects]\TransafeRx\TransafeRx.Shared\obj\Release\TransafeRx.Shared.pdb

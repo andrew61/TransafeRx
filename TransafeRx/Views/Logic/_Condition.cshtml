@@ -1,0 +1,390 @@
+﻿@model TransafeRx.Models.LogicBuilderViewModel
+
+@(
+    Html.Kendo().DropDownList()
+        .Name("ItemSelect_" + Model.ConditionId)
+        .OptionLabel("Select item...")
+        .DataSource(source => source
+            .Read(read => read
+                .Action("Items", "Logic")
+            )
+        )
+        .DataTextField("Name")
+        .DataValueField("Name")
+        .Events(events => events.Change("itemSelect_change"))
+        .SelectedIndex(Model.ConditionValue)
+        .HtmlAttributes(new { conditionId = Model.ConditionId })
+        .AutoBind(true)
+)
+
+<span id="Quizzes_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("QuizSelect_" + Model.ConditionId)
+            .OptionLabel("Select quiz...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Quizzes", "Logic")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("QuizId")
+            .Events(events => events.Change("quiz_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="QuizQuestions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("QuizQuestionSelect_" + Model.ConditionId)
+            .OptionLabel("Select question...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("QuizQuestions", "Logic")
+                    .Data("function() { return { quizId: $('#QuizSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("QuestionId")
+            .Events(events => events.Change("quizQuestion_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="Surveys_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("SurveySelect_" + Model.ConditionId)
+            .OptionLabel("Select survey...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Surveys", "Logic")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("SurveyId")
+            .Events(events => events.Change("survey_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="SurveyFunctions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("SurveyFunctionSelect_" + Model.ConditionId)
+            .OptionLabel("Select function...")
+            .BindTo(new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "None", Value = "0" },
+                new SelectListItem() { Text = "Sum of Questions", Value = "1" },
+                new SelectListItem() { Text = "Average of Questions", Value = "2" },
+                new SelectListItem() { Text = "Count of Questions", Value = "3" },
+                new SelectListItem() { Text = "Count of Completions", Value = "4" }
+            })
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .Events(events => events.Change("surveyFunction_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+    )
+</span>
+
+<span id="SurveyQuestions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("SurveyQuestionSelect_" + Model.ConditionId)
+            .OptionLabel("Select question...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("SurveyQuestions", "Logic")
+                    .Data("function() { return { surveyId: $('#SurveySelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("QuestionId")
+            .Events(events => events.Change("surveyQuestion_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="SurveyQuestionsList_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().MultiSelect()
+            .Name("SurveyQuestionMultiSelect_" + Model.ConditionId)
+            .Placeholder("Select questions...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("SurveyQuestionsList", "Logic")
+                    .Data("function() { return { surveyId: $('#SurveySelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("QuestionId")
+            .Events(events => events.Change("surveyQuestionList_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+            .AutoClose(false)
+    )
+</span>
+
+<span id="SurveyQuestionCategories_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("SurveyQuestionCategorySelect_" + Model.ConditionId)
+            .OptionLabel("Select category...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("SurveyQuestionCategories", "Logic")
+                    .Data("function() { return { questionId: $('#SurveyQuestionSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("CategoryId")
+            .Events(events => events.Change("surveyQuestionCategory_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="Forms_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("FormSelect_" + Model.ConditionId)
+            .OptionLabel("Select form...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Forms", "Logic")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("FormId")
+            .Events(events => events.Change("form_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="FormFunctions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("FormFunctionSelect_" + Model.ConditionId)
+            .OptionLabel("Select function...")
+            .BindTo(new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "None", Value = "0" },
+                new SelectListItem() { Text = "Count of Completions", Value = "1" }
+            })
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .Events(events => events.Change("formFunction_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+    )
+</span>
+
+<span id="FormFields_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("FormFieldSelect_" + Model.ConditionId)
+            .OptionLabel("Select field...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("FormFields", "Logic")
+                    .Data("function() { return { formId: $('#FormSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Label")
+            .DataValueField("FieldId")
+            .Events(events => events.Change("formField_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="Agreements_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("AgreementSelect_" + Model.ConditionId)
+            .OptionLabel("Select agreement...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Agreements", "Logic")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("AgreementId")
+            .Events(events => events.Change("agreement_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="AgreementFunctions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("AgreementFunctionSelect_" + Model.ConditionId)
+            .OptionLabel("Select function...")
+            .BindTo(new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "None", Value = "0" },
+                new SelectListItem() { Text = "Count of Completions", Value = "1" }
+            })
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .Events(events => events.Change("agreementFunction_change"))
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+    )
+</span>
+
+<span id="CountOperators_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("CountOperatorSelect_" + Model.ConditionId)
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(true)
+    )
+</span>
+
+<span id="CountValue_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().NumericTextBox()
+            .Name("ValueCount_" + Model.ConditionId)
+            .HtmlAttributes(new { conditionId = Model.ConditionId, data_requirevisible = "" })
+    )
+</span>
+
+<span id="Operators_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("OperatorSelect_" + Model.ConditionId)
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(true)
+    )
+</span>
+
+<span id="QuizAnswers_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("QuizAnswerSelect_" + Model.ConditionId)
+            .OptionLabel("Select answer...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("QuizAnswers", "Logic")
+                    .Data("function() { return { questionId: $('#QuizQuestionSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("LogicDisplay")
+            .DataValueField("AnswerId")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="SurveyQuestionOptions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("SurveyQuestionOptionSelect_" + Model.ConditionId)
+            .OptionLabel("Select option...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("SurveyQuestionOptions", "Logic")
+                    .Data("function() { return { questionId: $('#SurveyQuestionSelect_" + Model.ConditionId + "').val(), categoryId: $('#SurveyQuestionCategorySelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("OptionText")
+            .DataValueField("OptionId")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="FormFieldOptions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("FormFieldOptionSelect_" + Model.ConditionId)
+            .OptionLabel("Select option...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("FormFieldOptions", "Logic")
+                    .Data("function() { return { fieldId: $('#FormFieldSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("OptionText")
+            .DataValueField("OptionId")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="TextValue_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().TextBox()
+            .Name("ValueText_" + Model.ConditionId)
+            .HtmlAttributes(new { conditionId = Model.ConditionId, data_requirevisible = "" })
+    )
+</span>
+
+<span id="NumericValue_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().NumericTextBox()
+            .Name("ValueNumeric_" + Model.ConditionId)
+            .HtmlAttributes(new { conditionId = Model.ConditionId, data_requirevisible = "" })
+    )
+</span>
+
+<span id="DateTimeValue_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DateTimePicker()
+            .Name("ValueDateTime_" + Model.ConditionId)
+            .HtmlAttributes(new { conditionId = Model.ConditionId, data_requirevisible = "" })
+    )
+</span>
+
+<span id="DateValue_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DatePicker()
+            .Name("ValueDate_" + Model.ConditionId)
+            .HtmlAttributes(new { conditionId = Model.ConditionId, data_requirevisible = "" })
+    )
+</span>
+
+<span id="Roles_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("RoleSelect_" + Model.ConditionId)
+            .OptionLabel("Select role...")
+            .DataSource(source => source
+                .Read(read => read
+                    .Action("Roles", "Logic")
+                    .Data("function() { return { questionId: $('#RoleSelect_" + Model.ConditionId + "').val() } }")
+                )
+            )
+            .DataTextField("Name")
+            .DataValueField("Id")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+            .AutoBind(false)
+    )
+</span>
+
+<span id="AgreementOptions_@Model.ConditionId" style="display: none;">
+    @(
+        Html.Kendo().DropDownList()
+            .Name("AgreementOptionSelect_" + Model.ConditionId)
+            .OptionLabel("Select option...")
+            .BindTo(new List<SelectListItem>()
+            {
+                new SelectListItem() { Text = "Accepted", Value = "1" },
+                new SelectListItem() { Text = "Declined", Value = "0" }
+            })
+            .DataTextField("Text")
+            .DataValueField("Value")
+            .HtmlAttributes(new { conditionId = Model.ConditionId })
+    )
+</span>

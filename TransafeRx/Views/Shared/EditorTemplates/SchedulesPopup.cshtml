@@ -1,0 +1,81 @@
+﻿@model TransafeRx.Models.ScheduleGroupViewModel
+
+@Html.HiddenFor(model => model.UserMedicationId)
+@Html.HiddenFor(model => model.UserId)
+@Html.HiddenFor(model => model.ScheduleTypeId)
+@Html.HiddenFor(model => model.GroupId)
+@Html.HiddenFor(model => model.Active)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.StartDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.StartDate)
+    @Html.ValidationMessageFor(model => model.StartDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.EndDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.EndDate)
+    @Html.ValidationMessageFor(model => model.EndDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ScheduleTime)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ScheduleTime)
+    @Html.ValidationMessageFor(model => model.ScheduleTime)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Monday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Monday)
+    @Html.ValidationMessageFor(model => model.Monday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Tuesday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Tuesday)
+    @Html.ValidationMessageFor(model => model.Tuesday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Wednesday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Wednesday)
+    @Html.ValidationMessageFor(model => model.Wednesday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Thursday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Thursday)
+    @Html.ValidationMessageFor(model => model.Thursday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Friday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Friday)
+    @Html.ValidationMessageFor(model => model.Friday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Saturday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Saturday)
+    @Html.ValidationMessageFor(model => model.Saturday)
+</div>
+<div class="editor-label">
+    @Html.LabelFor(model => model.Sunday)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Sunday)
+    @Html.ValidationMessageFor(model => model.Sunday)
+</div>

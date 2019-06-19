@@ -1,0 +1,46 @@
+﻿@model TransafeRx.Models.UserMedicationViewModel
+
+@Html.HiddenFor(model => model.UserMedicationId)
+@Html.HiddenFor(model => model.UserId)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DrugName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DrugName)
+    @Html.ValidationMessageFor(model => model.DrugName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Quantity)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Quantity)
+    @Html.ValidationMessageFor(model => model.Quantity)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Instructions)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Instructions)
+    @Html.ValidationMessageFor(model => model.Instructions)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Route)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Route)
+    @Html.ValidationMessageFor(model => model.Route)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.StartDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.StartDate)
+    @Html.ValidationMessageFor(model => model.StartDate)
+</div>
+
+

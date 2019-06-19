@@ -1,0 +1,12 @@
+﻿@model TransafeRx.Models.SurveyQuestionTypeViewModel
+
+@(
+    Html.Kendo().DropDownListFor(x => x)
+        .DataValueField("QuestionTypeId")
+        .DataTextField("Name")
+        .DataSource(source =>
+        {
+            source.Read(x => x.Action("SurveyQuestionTypes", "Item"));
+        })
+        .Events(events => events.Change("questionType_change"))
+)

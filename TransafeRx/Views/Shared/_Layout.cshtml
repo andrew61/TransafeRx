@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - TransafeRx</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("styles", false)
+    	<link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.blueopal.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2016.1.412/kendo.dataviz.blueopal.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2016.1.412/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.1.412/jszip.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.1.412/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2016.1.412/kendo.aspnetmvc.min.js")"></script>
+<style type="text/css">
+        @@media (min-width: 1500px) {
+            .container {
+                max-width: 2100px;
+                margin-left: 25px;
+            }
+
+        }
+    </style>
+	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("TransafeRx", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @(Html.Kendo().Menu().Name("Menu").Items(items =>
+                {
+                    items.Add().Text("Manage").Items(children =>
+                    {
+                        children.Add().Text("Users").Action("Index", "Users");
+                    });
+
+                    items.Add().Text("Reports").Items(children =>
+                    {
+                        children.Add().Text("Measurements").Action("Index", "Reports");
+                        children.Add().Text("Adherence").Action("Adherence", "Reports");
+                    });
+                    //items.Add().Text("Surveys").Items(children =>
+                    //{
+                    //    children.Add().Text("Surveys").Action("Surveys", "Item");
+                    //});
+                })
+                    .SecurityTrimming(security => security.HideParent(true))
+                    )
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Powered by TACHL</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

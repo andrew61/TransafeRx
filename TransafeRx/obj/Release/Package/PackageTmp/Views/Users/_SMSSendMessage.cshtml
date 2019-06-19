@@ -1,0 +1,54 @@
+﻿@*@model TransafeRx.Models.PatientSMSMessageViewModel
+
+@Html.HiddenFor(model => model.SMSMessageId)
+@Html.HiddenFor(model => model.UserId)
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Message)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Message)
+    @Html.ValidationMessageFor(model => model.Message)
+</div>
+
+<div class="editor-field">
+    @(Html.Kendo().Button()
+    .Name("textButton")
+    .Content("Send")
+    .HtmlAttributes(new { type = "button" })
+    .Events(ev => ev.Click("smsOnClick()")))
+</div>
+
+<script type="text/javascript">
+    
+</script>*@
+
+<form class="send-wrap form-group container" id="postForm" method="post" action='@Url.Action("SendPatientSMS", "Users")' onsubmit="return false">
+    <textarea name="messageText" id="messageText" style="max-width:none; height:100px;" class="form-control send-message" placeholder="Write a new message...."></textarea>
+    <div class="row btn-panel">
+        <a href="#" class="col-lg-4 text-right btn btn-outline send-message-btn pull-right btn-lg" type="submit" role="button" onclick="$(this).closest('form').submit()"><i class="fa fa-cloud-upload"></i> Post Message</a>
+
+    </div>
+</form>
+<script>
+    $("#postForm").submit(function (event) {
+        event.preventDefault();
+
+        var model = @Html.Raw(Json.Encode(Model));
+        var $form = $(this),
+        message = $form.find('textarea[name="messageText"]').val();
+
+        $.ajax({
+        type: 'post',
+        url: '@Url.Action("SendPatientSMS", "Users")',
+        data: JSON.stringify({ UserId: userId, message: message }),
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        success: function (data) {
+        $("#messageText").val('');
+        $("#messageText").attr("placeholder", "Post Message");
+        location.reload();
+        }
+        });
+    });
+</script>

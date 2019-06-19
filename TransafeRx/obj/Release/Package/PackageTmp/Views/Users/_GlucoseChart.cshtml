@@ -1,0 +1,33 @@
+﻿@{
+    Html.Kendo().Chart<TransafeRx.Models.GlucoseViewModel>()
+    .Name("GlucoseChart")
+    .Legend(legend => legend
+        .Position(ChartLegendPosition.Bottom)
+    )
+    .ChartArea(chartArea => chartArea
+        .Background("transparent")
+    )
+    .SeriesDefaults(seriesDefaults =>
+        seriesDefaults.Line().Style(ChartLineStyle.Smooth)
+    )
+    .DataSource(ds => ds.Read(read => read.Action("Glucose_Read", "Users").Data("bpData")))
+    .Series(series =>
+    {
+        series.Line(model => model.GlucoseLevel).Name("Glucose").Color("Blue");
+    })
+    .CategoryAxis(axis => axis
+        .Categories(model => model.ReadingDate)
+    .Labels(labels => labels.Rotation(-90))
+    .Crosshair(c => c.Visible(true))
+    )
+    .ValueAxis(axis => axis.Numeric()
+    .Labels(labels => labels.Format("{0:N0}"))
+    //.MajorUnit(10000)
+    )
+    .Tooltip(tooltip => tooltip
+    .Visible(true)
+    .Shared(true)
+    .Format("{0:N0}")
+    ).Render();
+}
+

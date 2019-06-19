@@ -1,0 +1,16 @@
+﻿<h2 id="MedicationHeader"></h2>
+
+@(Html.Kendo().TabStrip()
+    .Name("UserMedicationTabs")
+    .SelectedIndex(0)
+    .Items(items =>
+    {
+        items.Add()
+            .Text("EPIC Medications List")
+            .Content(@Html.Partial("_MasterMedicationsGrid").ToHtmlString());
+        items.Add()
+            .Text("Surescript Medications")
+            .Content(@Html.Partial("_MedicationsImportedGrid").ToHtmlString());
+    })
+    .Events(events => events.Select("userMedicationTabs_select"))
+)

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransafeRx", "TransafeRx\TransafeRx.csproj", "{28A3A420-46F7-4805-8A36-35960120FF68}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867} = {1D1529A8-10C3-426C-8AF2-FFBB397CF867}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransafeRx.API", "TransafeRx.API\TransafeRx.API.csproj", "{61ED1D82-60A5-433B-A040-5926D6619966}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867} = {1D1529A8-10C3-426C-8AF2-FFBB397CF867}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransafeRx.Services.NotificationService", "TransafeRx.Services.NotificationService\TransafeRx.Services.NotificationService.csproj", "{218528D1-80C2-4B68-BA0B-FA7051526355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransafeRx.Shared", "TransafeRx.Shared\TransafeRx.Shared.csproj", "{1D1529A8-10C3-426C-8AF2-FFBB397CF867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagingService", "MessagingService\MessagingService.csproj", "{89D40266-74D8-43AF-B601-855D771ABBD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28A3A420-46F7-4805-8A36-35960120FF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A3A420-46F7-4805-8A36-35960120FF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A3A420-46F7-4805-8A36-35960120FF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A3A420-46F7-4805-8A36-35960120FF68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61ED1D82-60A5-433B-A040-5926D6619966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61ED1D82-60A5-433B-A040-5926D6619966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61ED1D82-60A5-433B-A040-5926D6619966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61ED1D82-60A5-433B-A040-5926D6619966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218528D1-80C2-4B68-BA0B-FA7051526355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218528D1-80C2-4B68-BA0B-FA7051526355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218528D1-80C2-4B68-BA0B-FA7051526355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218528D1-80C2-4B68-BA0B-FA7051526355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D1529A8-10C3-426C-8AF2-FFBB397CF867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D40266-74D8-43AF-B601-855D771ABBD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D40266-74D8-43AF-B601-855D771ABBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D40266-74D8-43AF-B601-855D771ABBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D40266-74D8-43AF-B601-855D771ABBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

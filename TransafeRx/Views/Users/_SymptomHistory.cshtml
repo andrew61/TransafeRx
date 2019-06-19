@@ -1,0 +1,39 @@
+﻿@{Html.Kendo().Grid<TransafeRx.Models.SymptomHistoryViewModel>()
+                    .Name("SymptomHistory")
+                    .Columns(columns =>
+                    {
+                        columns.Bound(x => x.SessionId).Title("SessionId").Hidden();
+                        //columns.Bound(x => x.Score).Title("Score");
+                        columns.Bound(x => x.Score).ClientTemplate("<div align=center><a onclick=\"showSymptomsHistoryBySession('#=SessionId#')\">#= (Score == null) ? '' : Score#</a></div>").Title("Symptom Score").Width(70).HeaderHtmlAttributes(new { style = "overflow: visible; white-space: normal" });
+                        columns.Bound(x => x.SurveyDate).EditorTemplateName("Date").Title("Date").Width(75).Format("{0:G}");
+                    })
+                    .Resizable(resize => resize.Columns(true))
+                    .Pageable()
+                    .Sortable()
+                    .Scrollable(scroll => scroll.Height(500))
+                    .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .PageSize(50)
+                    .Model(model =>
+                    {
+                        model.Id(x => x.SessionId);
+                        model.Field(x => x.Score);
+                        model.Field(x => x.SurveyDate);
+                    })
+                    .Read(read => read.Action("SymptomHistoryData_Read", "Users").Data("symptomHistoryData"))
+                    )
+                    .Render();
+}
+
+<script type="text/javascript">
+    var userId;
+    var sessionId;
+function symptomHistoryData() {
+            return {
+                UserId: userId,
+                SessionId: sessionId
+            }
+}
+
+
+</script>

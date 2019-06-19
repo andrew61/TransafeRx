@@ -1,0 +1,101 @@
+﻿@{ Html.Kendo().Grid<TransafeRx.Models.ScheduleGroupViewModel>()
+                            .Name("SchedulesGrid")
+                            .Columns(columns =>
+                            {
+                                columns.Bound(x => x.GroupId).Hidden();
+                                columns.Bound(x => x.UserId).Hidden();
+                                columns.Bound(x => x.UserMedicationId).Hidden();
+                               //columns.Bound(x => x.DrugName);
+                               columns.Bound(x => x.StartDate).EditorTemplateName("Date").ClientTemplate("#= kendo.toString(StartDate, \"MM/dd/yyyy\") #").Width(130);
+                                columns.Bound(x => x.EndDate).EditorTemplateName("Date").ClientTemplate("#= EndDate == null ? '' : kendo.toString(EndDate, \"MM/dd/yyyy\") #").Width(130);
+                                columns.Bound(x => x.Monday).Title("Mon").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Monday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Tuesday).Title("Tue").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Tuesday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Wednesday).Title("Wed").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Wednesday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Thursday).Title("Thu").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Thursday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Friday).Title("Fri").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Friday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Saturday).Title("Sat").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Saturday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.Sunday).Title("Sun").Width(50)
+                                .ClientTemplate("<input type='checkbox' #= Sunday ? 'checked=checked' : '' # disabled='disabled' ></input>");
+                                columns.Bound(x => x.ScheduleTime).EditorTemplateName("Time").ClientTemplate("#= kendo.toString(ScheduleTime, \"h:mm tt\") #").Width(120);
+                               //columns.Bound(x => x.Dose).EditorTemplateName("String");
+                               columns.Bound(x => x.Active).Width(80)
+                                .ClientTemplate("<input type='checkbox' #= Active ? 'checked=checked' : '' # disabled='disabled' ></input>").Title("Active").Hidden();
+                                columns.Command(command => { command.Destroy(); }).Width(200);
+                            })
+                            .ToolBar(toolbar => { toolbar.Create(); })
+                            .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("SchedulesPopUp").Window(w => w.Width(400)))
+                            .Events(events => events.Edit("schedules_edit").Cancel("schedules_cancel"))
+                            //.Pageable()
+                            .Sortable()
+                            .Scrollable()
+                            .HtmlAttributes(new { style = "height: 500px;" })
+                            .DataSource(dataSource => dataSource
+                            .Ajax()
+                            .PageSize(50)
+                            //.Sort(x => x.Add("SubjectId").Ascending())
+                            .Events(events => events.Error("schedules_error_handler").RequestEnd("schedules_request_end"))
+                            .Model(model =>
+                            {
+                                model.Id(x => x.GroupId);
+                                model.Field(x => x.UserId);
+                                model.Field(x => x.UserMedicationId);
+                                model.Field(x => x.DrugName);
+                                model.Field(x => x.StartDate);
+                                model.Field(x => x.EndDate);
+                                model.Field(x => x.ScheduleTypeId);
+                                model.Field(x => x.ScheduleTime);
+                               //model.Field(x => x.Dose);
+                               model.Field(x => x.Monday).DefaultValue(true);
+                                model.Field(x => x.Tuesday).DefaultValue(true);
+                                model.Field(x => x.Wednesday).DefaultValue(true);
+                                model.Field(x => x.Thursday).DefaultValue(true);
+                                model.Field(x => x.Friday).DefaultValue(true);
+                                model.Field(x => x.Saturday).DefaultValue(true);
+                                model.Field(x => x.Sunday).DefaultValue(true);
+                            })
+                            .Create(update => update.Action("UserSchedules_Create", "Users"))
+                            .Read(read => read.Action("UserSchedules_Read", "Users").Data("schedulesData"))
+                            .Update(update => update.Action("UserSchedules_Update", "Users"))
+                            .Destroy(destroy => destroy.Action("UserSchedules_Destroy", "Users"))
+                            )
+                            //.Pdf(pdf => pdf.FileName("Medications.pdf"))
+                            .Render();
+}
+
+<script type="text/javascript">
+    var modelData;
+    var userId;
+    var userMedicationId;
+
+    function schedules_edit(e) {
+        var grid = $('#SchedulesGrid').data('kendoGrid');
+
+        if (e.model.isNew() == true) {
+            grid.hideColumn("Active");
+        }
+        e.model.set("UserId", userId);
+        e.model.set("UserMedicationId", userMedicationId);
+        modelData = e.model;
+    }
+
+    function userMedications_change(e) {
+        var model = modelData;//$("#SchedulesGrid").data("kendoGrid").dataItem(this.element.closest("tr"));
+        var data = $('#UserMedication').data('kendoDropDownList').dataItem(e.sender.selectedIndex);
+
+        model.UserMedicationId = data.UserMedicationId;
+
+    }
+
+    function schedulesData() {
+            return {
+                UserId: userId,
+                UserMedicationId: userMedicationId
+            };
+    }
+</script>

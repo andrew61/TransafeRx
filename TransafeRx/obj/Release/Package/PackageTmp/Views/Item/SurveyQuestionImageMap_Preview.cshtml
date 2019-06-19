@@ -1,0 +1,133 @@
+﻿@using TransafeRx.Shared.Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    @if ((int)ViewData["os"] == 1)
+    {
+        @Styles.Render("~/Content/css/framework7/ios")
+    }
+    else
+    {
+        @Styles.Render("~/Content/css/framework7/material")
+    }
+    <title>Image Preview</title>
+</head>
+
+<body>
+    <div class="panel-overlay"></div>
+    <div class="panel panel-cover panel-left">
+        <div class="view navbar-fixed" data-page="panel-left">
+            <div class="pages">
+                <div data-page="panel-left" class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">
+                                Main Menu
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="content-block-title">Menu Options</div>
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <a href="#" class="item-link close-panel">
+                                        <div class="item-content">
+                                            <div class="item-media">
+                                                <i class="icon fa fa-cog"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title">
+                                                    Settings
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages navbar-fixed">
+                <div data-page="index" class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">@Model.Name</div>
+                            <div class="right">
+                                <a href="#" class="open-panel link icon-only">
+                                    <i class="icon icon-bars"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="content-block center">@Model.QuestionText</div>
+                        <div class="content-block" style="width: 100%;">
+                            <img src='@Url.Content("~/Images/")@Model.OptionImage' usemap="#image_map" border="0" style="width: 100%;" alt="" />
+                            <map name="image_map">
+                                @foreach (var option in ViewBag.Options)
+                                {
+                                    <area alt="@option.OptionText" href='javascript:alert("@option.OptionText");' shape='@Enum.GetName(typeof(ShapeType), @option.ShapeType)' title="@option.OptionText" coords="@option.Coordinates">
+                                }
+                            </map>
+                        </div>
+                    </div>
+                </div>
+                <div class="page cached" data-page="menu">
+                    <div class="navbar">
+                        <div class="navbar-inner" data-page="menu">
+                            <div class="left">
+                                <a href="#index" class="back link icon-only">
+                                    <i class="icon icon-back"></i>
+                                </a>
+                            </div>
+                            <div class="center">Menu</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/framework7.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/imgmap/imageMapResizer.min.js"></script>
+    <script type="text/javascript">
+
+        @if ((int)ViewData["os"] == 1)
+        {
+            @:var myApp = new Framework7();
+        }
+        else
+        {
+            @:var myApp = new Framework7({ material: true });
+        }
+
+        var $$ = Dom7;
+
+        var mainView = myApp.addView('.view-main', {
+            domCache: true
+        });
+
+        imageMapResize();
+    </script>
+
+</body>
+
+</html>

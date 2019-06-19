@@ -1,0 +1,29 @@
+﻿@model TransafeRx.Models.AdherenceViewModel
+
+@if (!Request.UserAgent.ToLower().Contains("ipad"))
+{
+
+}
+
+@(Html.Kendo().RadialGauge()
+        .Name("gauge")
+        .Pointer(pointer => pointer.Value(Model.RefillAdherenceScore))
+        .Scale(scale => scale
+            .MinorUnit(5)
+            .StartAngle(-30)
+            .EndAngle(210)
+            .Max(100)
+        .Ranges(ranges =>
+        {
+            ranges.Add().From(0).To(80).Color("#FF0000");
+            ranges.Add().From(80).To(90).Color("#FFFF00");
+            ranges.Add().From(90).To(100).Color("#7FFF00");
+        })
+        )
+)
+
+<script type="text/javascript">
+        $("#ExportRefillAdherence").click(function () {
+            $("#RefillAdherenceChart").getKendoChart().saveAsPDF();
+        });
+</script>

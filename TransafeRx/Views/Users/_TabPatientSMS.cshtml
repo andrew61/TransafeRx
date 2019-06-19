@@ -1,0 +1,15 @@
+﻿<h2 id="TextHeader"></h2>
+@(Html.Kendo().TabStrip()
+    .Name("SMSTabs")
+    .SelectedIndex(0)
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Send SMS Message")
+            .Content(@Html.Partial("_SMSSendMessage").ToHtmlString());
+        items.Add()
+            .Text("SMS Message History")
+            .Content(@Html.Partial("_SMSMessageHistory").ToHtmlString());
+    })
+    .Events(events => events.Select("patientSMSTabs_select"))
+)

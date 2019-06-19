@@ -1,0 +1,31 @@
+﻿<style>
+    .col {
+        vertical-align: top;
+    }
+</style>
+
+@{
+    Html.Kendo().TabStrip()
+        .Name("LogicBuilderTabs")
+        .SelectedIndex(0)
+        .Items(items =>
+        {
+            items.Add()
+                .Text("Expression Builder")
+                .Content(@Html.Partial("../Logic/_ExpressionBuilder").ToHtmlString());
+            items.Add()
+                .Text("Expression Editor")
+                .Content(@Html.Partial("../Logic/_ExpressionEditor").ToHtmlString());
+        })
+        .Render();
+}
+
+<div id="Expression"></div>
+<div id="Components"></div>
+
+<script>
+    function save_expression(expression, components) {
+        $('#Expression').html(expression);
+        $('#Components').html(components);
+    }
+</script>

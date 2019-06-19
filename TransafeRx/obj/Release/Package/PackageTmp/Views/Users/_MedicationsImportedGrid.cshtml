@@ -1,0 +1,107 @@
+﻿   
+@{Html.Kendo().Grid<TransafeRx.Models.SurescriptsViewModel>()
+                      .Name("MedicationsImportedGrid")
+                      .Columns(columns =>
+                      {
+                          columns.Bound(x => x.ID).Hidden();
+                          //columns.Bound(x => x.MRN).Width(75); 
+                          columns.Bound(x => x.DrugName).Width(75);
+                          columns.Bound(x => x.DispenseAmount).Width(75);
+                          columns.Bound(x => x.DaysSupply).Width(75);
+                          columns.Bound(x => x.DispenseDate).EditorTemplateName("Date").Title("Dispense Date").Width(75).Format("{0:MM/dd/yyyy}");
+                          columns.Bound(x => x.Instructions).Width(100);
+                      })
+          .Resizable(resize => resize.Columns(true))
+          //.ToolBar(toolBar => toolBar.Template("<a class='k-button k-button-icontext' onclick='customCommand()' href='#'></span>Add to Master List</a>"))
+          //.Editable(ed => ed.Mode(GridEditMode.InCell))
+          //.Events(events => events.Edit("medicationsImportedEdit"))
+          .Pageable()
+          .Sortable()
+          .Scrollable(scroll => scroll.Height(500))
+          .DataSource(dataSource => dataSource
+          .Ajax()
+          .PageSize(50)
+          .Events(events => events.Error("medications_imported_error_handler"))
+          .Model(model =>
+          {
+              model.Id(x => x.ID);
+              model.Field(x => x.MRN);
+              model.Field(x => x.DrugName);
+              model.Field(x => x.DispenseAmount);
+              model.Field(x => x.DaysSupply);
+              model.Field(x => x.DispenseDate.Date);
+              model.Field(x => x.Instructions);
+          })
+          //.Create(create => create.Action("UserMedicationsImported_Create", "Users"))
+          .Read(read => read.Action("UserMedicationsImported_Read", "Users").Data("medicationsImportedData"))
+          //.Update(update => update.Action("UserMedications_Update", "Users"))
+          //.Destroy(destroy => destroy.Action("UserMedications_Destroy", "Users"))
+          )
+          .Render();
+    }    
+   
+    <script type="text/javascript">
+        var modelData;
+        var userId;
+        var userMedicationId;
+
+        function customCommand() {
+            var checked = [];
+            for (var i in checkedIds) {
+                if (checkedIds[i]) {
+                    checked.push(i);
+                }
+            }
+
+            $.ajax({
+                type: "POST",
+                traditional: true,
+                url: "../Users/SaveToMaster",
+                data: { checkedItems: checked }
+            });
+        }
+        var checkedIds = [];
+
+        $(function () {
+            $('#MedicationsImportedGrid').on('click', '.chkbx', function () {
+                var checked = $(this).is(':checked');
+                var grid = $('#MedicationsImportedGrid').data().kendoGrid;
+                var dataItem = grid.dataItem($(this).closest('tr'));
+                //dataItem.set('MedId', checked);
+
+                checkedIds[dataItem.AlphaId] = checked;
+            })
+        })
+
+        function checkAll(ele) {
+            var state = $(ele).is(':checked');
+            var grid = $('#MedicationsImportedGrid').data().kendoGrid;
+            $.each(grid.dataSource.view(), function () {
+                if (this['IsAdmin'] != state)
+                    this.dirty = true;
+                this['IsAdmin'] = state;
+            });
+            grid.refresh();
+        }
+
+        function medicationsImportedEdit(e) {
+            e.model.set("UserId", userId);
+            modelData = e.model;
+        }
+
+        function medication_change(e) {
+            var model = modelData;
+            var data = $('#Medication').data('kendoDropDownList').dataItem(e.sender.selectedIndex);
+
+            model.MedicationId = data.MedicationId;
+            model.Unit = data.Unit;
+            model.DosageForm = data.DosageForm;
+            model.TimerCapInstanceId = data.TimerCapInstanceId;
+
+            $('#Unit').data('kendoDropDownList').value(data.Unit);
+            $('#DosageForm').data('kendoDropDownList').value(data.DosageForm);
+
+            $('#Unit').data('kendoDropDownList').value(data.Unit);
+            $('#DosageForm').data('kendoDropDownList').value(data.DosageForm);
+        }
+    </script>

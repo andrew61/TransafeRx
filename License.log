@@ -1,0 +1,492 @@
+    ======  ======
+    Time:7/17/2018 10:18:52 AM
+    Title: Initiate log
+    Message: 
+    Time:7/17/2018 10:18:52 AM
+    Title: Initiate InternalManager
+    Message: Trying to Validate License
+    Time:7/17/2018 10:18:52 AM
+    Title: Requesting EVT
+    Message: EVTP
+    Time:7/17/2018 10:18:52 AM
+    Title: Requesting Validation
+    Message: ILMValidate
+    Time:7/17/2018 10:18:52 AM
+    Title: LICENSER
+    Message: READ REGS START
+    Time:7/17/2018 10:18:52 AM
+    Title: LIC TS_KEY
+    Message: NULL
+    Time:7/17/2018 10:18:52 AM
+    Title: LICENSER
+    Message: READ REGS SUCCESS
+    Time:7/17/2018 10:18:52 AM
+    Title: LICENSER
+    Message: TRL MODE
+    Time:7/17/2018 10:18:52 AM
+    Title: LICENSER
+    Message: DS LEFT-41
+    Time:7/17/2018 10:18:52 AM
+    Title: LICENSER
+    Message: DT MARK PASSED-41.00:00:00
+    Time:7/17/2018 10:18:52 AM
+    Title: ILMValidate action
+    Message: LIC
+    Time:7/17/2018 10:18:53 AM
+    Title: LICENSER - TGO
+    Message: Start
+    Entering constructor for: Telerik.Reporting.VsPackage.VsPackage
+    Entering Initialize() of: Telerik.Reporting.VsPackage.VsPackage
+    No Telerik Reporting products found in registry
+    Entering constructor for: Telerik.CommonPackage.Telerik_CommonPackagePackage
+    Entering Initialize() of: Telerik.CommonPackage.Telerik_CommonPackagePackage
+    Entering constructor for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.Windows.Silverlight.VSPackage.VsPackage
+    Entering constructor for: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering Initialize() of: Telerik.VSX.UserSettingsPackage.UserSettingsPackage
+    Entering constructor for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.Converter.VSPackage.VSPackage
+    Entering constructor for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Entering constructor for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering constructor for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering Initialize() for: Telerik.KendoUI.ASP.NET.Core.VSPackage.VsPackage
+    Entering constructor for: Telerik.WinControls.VSPackage.VSPackage
+    Entering Initialize() for: Telerik.WinControls.VSPackage.VSPackage
+    Assembly resolution failed: Telerik.UserSettings.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.UserSettings.2018.2.710.1.XmlSerializers, Version=2018.2.710.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+g Initialize() for: Telerik.Windows.WPF.VSPackage.VSPackage
+    Assembly resolution failed: Telerik.JustMock.AddIn.XmlSerializers, Version=2017.3.913.1, Culture=neutral, PublicKeyToken=602a9bfd8c8c4ad7
+    Assembly resolution failed: Telerik.UserSettings.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.UserSettings.2018.2.514.1.XmlSerializers, Version=2018.2.514.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.Notifications.1.2.0.0.XmlSerializers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Assembly resolution failed: Telerik.Windows.Themes.Modern.2012.2.0903.1135, Culture=neutral
+    Assembly resolution failed: Telerik.Windows.Controls.2012.2.0903.1135, Version=2012.2.903.35, Culture=neutral, PublicKeyToken=5803cfa389c90ce7
+    Assembly resolution failed: Telerik.Windows.Controls.Input.2012.2.0903.1135, Version=2012.2.903.35, Culture=neutral, PublicKeyToken=5803cfa389c90ce7
+    Assembly resolution failed: Telerik.Windows.Controls.Navigation.2012.2.0903.1135, Version=2012.2.903.35, Culture=neutral, PublicKeyToken=5803cfa389c90ce7
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx/Controllers/ReportsController.cs    2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>] 631 ms
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens]
+    Assembly resolution failed: Telerik.VSX.2016.2.712.0.XmlSerializers, Version=2016.2.712.0, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens] 304 ms
+    devenv.exe Information: 0 : 6/4/2018 2:40:34 PM:  - TokenCache: Deserialized 3 items to token cache.
+    Assembly resolution failed: Telerik.VSX.2018.2.514.1.XmlSerializers, Version=2018.2.514.1, Culture=neutral, PublicKeyToken=0dfdc51bd06071b4
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/connectionData?connectOptions=IncludeServices&lastChangeId=4596&lastChangeId64=4596] (GET)connectionData[connectionData]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/] (OPTIONS)_apis[<unknown>] 724 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/connectionData?connectOptions=IncludeServices&lastChangeId=4596&lastChangeId64=4596] (GET)connectionData[connectionData] 338 ms
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/ServiceDefinitions/wit/a67d190c-c41f-424b-814d-0e906f659301] (GET)a67d190c-c41f-424b-814d-0e906f659301[ServiceDefinitions]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/Tagging/scopes/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/tags?includeInactive=False] (GET)tags[Tagging]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/work/boardcolumns] (GET)boardcolumns[work]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/work/boardrows] (GET)boardrows[work]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/ServiceDefinitions/wit/a67d190c-c41f-424b-814d-0e906f659301] (GET)a67d190c-c41f-424b-814d-0e906f659301[ServiceDefinitions] 279 ms
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/wit/queries?%24expand=Wiql&%24depth=1&%24includeDeleted=False] (GET)queries[wit]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/Tagging/scopes/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/tags?includeInactive=False] (GET)tags[Tagging] 264 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/work/boardcolumns] (GET)boardcolumns[work] 328 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/work/boardrows] (GET)boardrows[work] 328 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/55e663f7-9fa9-41b8-83c4-b5f1e23c50ed/_apis/wit/queries?%24expand=Wiql&%24depth=1&%24includeDeleted=False] (GET)queries[wit] 396 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens] 3385 ms
+    TransafeRxdb.edmx(6524,8) : error 3027: No mapping specified for the following EntitySet/AssociationSet - AppVersions.
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpMethod : TransafeRx.Shared.Data.TransafeRxEntities.AddAdmission(string,Nullable<int>,Nullable<System.DateTime>)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Zones
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.VersionInfoes
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Intervals
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Users
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/Data/TransafeRxdb.Context.cs    2752
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fData%2fTransafeRxdb.Context.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fData%2fTransafeRxdb.Context.cs@2752] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PhoneNumbers
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Themes
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemActions
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItemNavigations
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.ToolbarItems
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Scores
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.Sequencers
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fData%2fTransafeRxdb.Context.cs@2752] (GET)filesummaries[codelens] 468 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.UserMedications
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AdherenceProtocols
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.AppVersion1
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.LU_AppId
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\Data\TransafeRxdb.Context.cs    CSharpProperty : TransafeRx.Shared.Data.TransafeRxEntities.PatientMedPhases
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens] 672 ms
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpMethod : MessagingService.Program.Main(string[])
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\Program.cs    CSharpType : MessagingService.Program
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/Program.cs    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fProgram.cs@2332
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fProgram.cs@2332] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fProgram.cs@2332] (GET)filesummaries[codelens] 494 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens] 357 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens] 361 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens] 325 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens] 385 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens]
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens] 270 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens] 274 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2332
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222] (GET)filesummaries[codelens] 345 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2332] (GET)filesummaries[codelens] 347 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx/Controllers/ReportsController.cs    2752
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens] 759 ms
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2222
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222&timeStamp=20171114145515
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222&timeStamp=20171114145515] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2222&timeStamp=20171114145515] (GET)filesummaries[codelens] 338 ms
+    devenv.exe Information: 0 : Receive an check in event.
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx/Controllers/ReportsController.cs    2752
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2926
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens] 359 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens] 365 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens] 401 ms
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens] 297 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens] 298 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx/Controllers/ReportsController.cs    2752
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens] 293 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens] 279 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens] 275 ms
+    devenv.exe Information: 0 : Receive a get complete event.
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\MessagingService\App.config    All : File
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.AdherenceChart(AdherenceViewModel,string,string,string)
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx\Controllers\ReportsController.cs    CSharpMethod : TransafeRx.Controllers.ReportsController.Adherence
+    devenv.exe Information: 0 : GetTemporalAuthorAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetChangesetIdsAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetWorkItemssAsync: C:\Repositories\TransafeRx\TransafeRx.Shared\App.Config    All : File
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/MessagingService/App.config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx/Controllers/ReportsController.cs    2752
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens]
+    devenv.exe Information: 0 : GetFileSummaryDataAsync: $/TransafeRx/TransafeRx.Shared/App.Config    2926
+    devenv.exe Information: 0 : Send a request to codesense sever: http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926
+    Web method running: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens]
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fMessagingService%2fApp.config@2926] (GET)filesummaries[codelens] 291 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx%2fControllers%2fReportsController.cs@2752] (GET)filesummaries[codelens] 301 ms
+    Web method response: [http://tfs-tachl.mdc.musc.edu:8080/tfs/defaultcollection/_apis/codelens/filesummaries?pathversion=%24%2fTransafeRx%2fTransafeRx.Shared%2fApp.Config@2926] (GET)filesummaries[codelens] 316 ms

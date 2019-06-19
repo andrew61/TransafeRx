@@ -1,0 +1,18 @@
+﻿@model TransafeRx.Models.MedicationViewModel
+@(
+ Html.Kendo().DropDownListFor(x => x)
+    .DataValueField("MedicationId")
+    .DataTextField("GenericName")
+    .DataSource(source =>
+    {
+        source.Read(x => x.Action("Medications", "Users"));
+    })
+    .Events(events => events.Change("medication_change"))
+    .Template("<span class=\"med-name\">#:data.GenericName#</span><br/>#if (data.BrandName != null) {# ${data.BrandName}<br/> #}##:data.Strength# #:data.Unit#")
+)
+
+<style>
+    .med-name {
+        font-weight: bold;
+    }
+</style>

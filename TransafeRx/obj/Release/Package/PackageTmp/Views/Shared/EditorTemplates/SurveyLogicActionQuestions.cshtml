@@ -1,0 +1,11 @@
+﻿@model TransafeRx.Models.SurveyLogicActionQuestionViewModel
+
+@(
+    Html.Kendo().DropDownListFor(x => x)
+        .DataValueField("QuestionId")
+        .DataTextField("Name")
+        .DataSource(source =>
+        {
+            source.Read(x => x.Action("SurveyLogicActionQuestions", "Item").Data("logicActionQuestions_data"));
+        })
+)

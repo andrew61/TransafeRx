@@ -1,0 +1,21 @@
+﻿@model TransafeRx.Models.NotificationViewModel
+
+@Html.HiddenFor(model => model.NotificationPreferencesId)
+@Html.HiddenFor(model => model.UserId)
+
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NotificationTypeId)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NotificationTypeId)
+    @Html.ValidationMessageFor(model => model.NotificationTypeId)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.NotificationDays)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.NotificationDays)
+    @Html.ValidationMessageFor(model => model.NotificationDays)
+</div>

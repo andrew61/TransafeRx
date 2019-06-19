@@ -1,0 +1,15 @@
+﻿<h2 id="GlucoseHeader"></h2>
+@(Html.Kendo().TabStrip()
+    .Name("UserGlucoseTabs")
+    .SelectedIndex(0)
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Glucose Chart")
+            .Content(@Html.Partial("_GlucoseChart").ToHtmlString());
+        items.Add()
+            .Text("Glucose Data")
+            .Content(@Html.Partial("_GlucoseData").ToHtmlString());
+    })
+    .Events(events => events.Select("glucoseTabs_select"))
+)

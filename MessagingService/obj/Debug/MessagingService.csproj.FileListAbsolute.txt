@@ -1,0 +1,46 @@
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\MessagingService.exe.config
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\MessagingService.exe
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\MessagingService.pdb
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFramework.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\RestSharp.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\TransafeRx.Shared.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\Twilio.Api.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\NodaTime.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFrameworkExtras.EF6.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\TransafeRx.Shared.pdb
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFramework.xml
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\RestSharp.xml
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\Twilio.Api.pdb
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\Twilio.Api.xml
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\NodaTime.pdb
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\NodaTime.xml
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFrameworkExtras.EF6.pdb
+C:\Repositories\TransafeRx\MessagingService\obj\Debug\MessagingService.csprojResolveAssemblyReference.cache
+C:\Repositories\TransafeRx\MessagingService\obj\Debug\MessagingService.exe
+C:\Repositories\TransafeRx\MessagingService\obj\Debug\MessagingService.pdb
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFramework.SqlServer.dll
+C:\Repositories\TransafeRx\MessagingService\bin\Debug\EntityFramework.SqlServer.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\MessagingService.exe.config
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\MessagingService.exe
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\MessagingService.pdb
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFramework.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFramework.SqlServer.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\RestSharp.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\TransafeRx.Shared.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\Twilio.Api.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\NodaTime.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFrameworkExtras.EF6.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\TransafeRx.Shared.pdb
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFramework.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFramework.SqlServer.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\RestSharp.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\Twilio.Api.pdb
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\Twilio.Api.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\NodaTime.pdb
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\NodaTime.xml
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\EntityFrameworkExtras.EF6.pdb
+C:\[API Projects]\TransafeRx\MessagingService\obj\Debug\MessagingService.csprojResolveAssemblyReference.cache
+C:\[API Projects]\TransafeRx\MessagingService\obj\Debug\MessagingService.exe
+C:\[API Projects]\TransafeRx\MessagingService\obj\Debug\MessagingService.pdb
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\Microsoft.Web.XmlTransform.dll
+C:\[API Projects]\TransafeRx\MessagingService\bin\Debug\SlowCheetah.Xdt.dll

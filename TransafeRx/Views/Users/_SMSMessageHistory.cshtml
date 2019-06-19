@@ -1,0 +1,31 @@
+﻿@{Html.Kendo().Grid<TransafeRx.Models.PatientSMSMessageViewModel>()
+                                            .Name("SMSMessageHistoryGrid")
+                                            .Columns(columns =>
+                                            {
+                                                columns.Bound(x => x.SMSMessageId).Hidden();
+                                                columns.Bound(x => x.Message).Width(250);
+                                                columns.Bound(x => x.DateSent).EditorTemplateName("DateTime").Title("Date Sent").Width(75).Format("{0:G}");
+                                                columns.Bound(x => x.SentByName).Width(75);
+                                                columns.Bound(x => x.PhoneNumberUsed).Width(75);
+                                            })
+                                            .Resizable(resize => resize.Columns(true))
+                                            .Pageable()
+                                            .Sortable()
+                                            .Scrollable(scroll => scroll.Height(500))
+                                            .DataSource(dataSource => dataSource
+                                            .Ajax()
+                                            .PageSize(50)
+                                            .Model(model =>
+                                            {
+                                                model.Id(x => x.SMSMessageId);
+                                                model.Field(x => x.UserId);
+                                                model.Field(x => x.Message);
+                                                model.Field(x => x.DateSent);
+                                                model.Field(x => x.SentBy);
+                                                model.Field(x => x.SentByName);
+                                                model.Field(x => x.PhoneNumberUsed);
+                                            })
+                                            .Read(read => read.Action("PatientSMS_Read", "Users").Data("smsData"))
+                                            )
+                                            .Render();
+}

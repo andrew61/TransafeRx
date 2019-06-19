@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92d8dcb896044cf2992749527b41a17a" Name="Diagram1">
+        <EntityTypeShape EntityType="TransafeRxModel.AdherenceProtocol" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Admission" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ApplicationSetting" Width="1.5" PointX="7.5" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AppVersion" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AspNetRole" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AspNetUserClaim" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AspNetUserLogin" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AspNetUserRole" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.AspNetUser" Width="1.5" PointX="5.25" PointY="60.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.BloodGlucoseMeasurement" Width="1.5" PointX="7.5" PointY="46.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.BloodPressureMeasurement" Width="1.5" PointX="7.5" PointY="69.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Calendar" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Client" Width="1.5" PointX="5.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.DeviceToken" Width="1.5" PointX="10.5" PointY="65.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Font" Width="1.5" PointX="10.5" PointY="58.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemLogic" Width="1.5" PointX="10.5" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemLogicAction" Width="1.5" PointX="8.25" PointY="41.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemLogicEvent" Width="1.5" PointX="8.25" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemNavigation" Width="1.5" PointX="10.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemNavigationTemplate" Width="1.5" PointX="8.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemNavigationType" Width="1.5" PointX="8.25" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Item" Width="1.5" PointX="5.25" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemTemplate" Width="1.5" PointX="3" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemToolbarItem" Width="1.5" PointX="10.5" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemTransitionType" Width="1.5" PointX="8.25" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ItemType" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LoginInformation" Width="1.5" PointX="7.5" PointY="73.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LU_AdmissionTypes" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LU_AppId" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LU_DeviceTokenTypes" Width="1.5" PointX="8.25" PointY="87.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LU_MedicationActivityTypes" Width="1.5" PointX="9.75" PointY="76.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.LU_NotificationType" Width="1.5" PointX="10.5" PointY="80.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.MedicationActivity" Width="1.5" PointX="12" PointY="75.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Message" Width="1.5" PointX="5.25" PointY="66" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Message1" Width="1.5" PointX="12.75" PointY="72.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.NotificationMessage" Width="1.5" PointX="15.75" PointY="62.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.NotificationPreference" Width="1.5" PointX="12.75" PointY="64.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.PatientMedPhase" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.PatientMessageSent" Width="1.5" PointX="12.75" PointY="67.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.PatientSMSMessage" Width="1.5" PointX="7.5" PointY="77.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.PersonalizedMessageType" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.PhoneNumber" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Placeholder" Width="1.5" PointX="4.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.RefreshToken" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Schedule" Width="1.5" PointX="9.75" PointY="71" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyAnswer" Width="1.5" PointX="9.75" PointY="52.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyOptionGroup" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyOption" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestionCategory" Width="1.5" PointX="15" PointY="54" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestionLogic" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestionLogicAction" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestionOption" Width="1.5" PointX="17.25" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestion" Width="1.5" PointX="12.75" PointY="49.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveyQuestionType" Width="1.5" PointX="10.5" PointY="62" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Survey" Width="1.5" PointX="7.5" PointY="51" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.SurveySession" Width="1.5" PointX="9.75" PointY="48.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Theme" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ToolbarItemAction" Width="1.5" PointX="11.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ToolbarItemNavigation" Width="1.5" PointX="13.5" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.ToolbarItem" Width="1.5" PointX="13.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.UserMedication" Width="1.5" PointX="7.5" PointY="81.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.User" Width="1.5" PointX="7.5" PointY="62.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Interval" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.VersionInfo" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Zone" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Score" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TransafeRxModel.Sequencer" Width="1.5" PointX="11.75" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="TransafeRxModel.FK_ApplicationSettings_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ApplicationSettings_Themes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_BloodGlucoseMeasurements_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_BloodPressureMeasurements_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_DeviceTokens_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_LoginInformation_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_NotificationMessages_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_PatientSMSMessages_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Schedules_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_UserMedications_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Users_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_RefreshTokens_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_DeviceTokens_LU_DeviceTokenTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Messages_DeviceTokens" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_NotificationMessages_DeviceTokens" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestionOptions_Fonts" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_ButtonFont" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_FeedbackFont" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_ListFont" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_SelectedFont" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_TooltipFont" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemLogic_ItemActions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemLogic_ItemEvents" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemLogic_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemLogic_TargetItem" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemNavigation_ItemNavigationTemplates" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemNavigation_ItemNavigationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemNavigation_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemNavigation_ItemTransitionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemNavigation_TargetItems" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItemNavigation_ItemNavigationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItems_ItemNavigationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Items_ItemTemplates" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Items_ItemTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemToolbarItems_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Surveys_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItemNavigation_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItems_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemTemplates_ItemTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ItemToolbarItems_ToolbarItems" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItemNavigation_ItemTransitionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItems_ItemTransitionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_MedicationActivity_LU_MedicationActivityTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_NotificationMessages_LU_NotificationType" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_NotificationPreferences_LU_NotificationType" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_MedicationActivity_Schedules" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_MedicationActivity_UserMedications" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_MedicationActivity_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_PatientMessageSent_Message" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Messages_Schedules" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_NotificationPreferences_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_PatientMessageSent_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Schedules_UserMedications" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_SurveyQuestionCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_SurveyQuestionOptions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_SurveyQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_SurveySessions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyAnswers_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyOptions_SurveyOptionGroups" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestionCategories_SurveyQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestionOptions_SurveyQuestionCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestionLogic_SurveyQuestionLogicActions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestionOptions_SurveyQuestions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_SurveyQuestionTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveyQuestions_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveySessions_Surveys" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_SurveySessions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItems_ToolbarItemActions" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_ToolbarItemNavigation_ToolbarItems" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.FK_Intervals_Zones" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.PersonalizedSurveyMessageHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="TransafeRxModel.Links" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

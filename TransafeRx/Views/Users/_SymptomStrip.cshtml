@@ -1,0 +1,24 @@
+﻿<h2 id="SymptomHeader"></h2>
+@(Html.Kendo().TabStrip()
+    .Name("SymptomTabs")
+    .SelectedIndex(0)
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Latest Symptom Result")
+            .Content(@Html.Partial("_SymptomResults").ToHtmlString());
+        items.Add()
+            .Text("History")
+            .Content(@Html.Partial("_SymptomHistory").ToHtmlString());
+    })
+    .Events(events => events.Select("symptomTabs_select"))
+)
+
+<script type="text/javascript">
+        var userId;
+function symptomData() {
+            return {
+                UserId: userId
+            }
+}
+</script>

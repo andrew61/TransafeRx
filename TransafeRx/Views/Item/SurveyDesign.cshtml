@@ -1,0 +1,434 @@
+﻿@model SurveyViewModel
+
+@{
+    ViewBag.Title = "Survey Design";
+}
+
+<style type="text/css">
+    label.header {
+        display: inline-block;
+        float: left;
+        margin: 10px 15px 10px 0px;
+        color: #999;
+    }
+
+    .row > div {
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    input, select, textarea {
+        max-width: none;
+    }
+
+    .row > .inline > * {
+        margin-right: 8px;
+        margin-left: 8px;
+    }
+
+    div.disabled label:not(.header) {
+        color: #bfbfbf;
+    }
+
+    img[src=""] {
+        display: none;
+    }
+</style>
+
+@using (Html.BeginForm("SurveyDesign", "Item", FormMethod.Post, new { @class = "form-horizontal design-form" }))
+{
+    <div class="container">
+
+        @Html.Kendo().TextBoxFor(model => model.SurveyId).HtmlAttributes(new { style = "display:none;" })
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("List Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ListColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("List Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ListBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("List Background Alpha")
+                @Html.Kendo().Slider().Name("ListBackgroundAlpha").Min(0).Max(1).SmallStep(0.01).LargeStep(1).Value((double)Model.ListBackgroundAlpha).HtmlAttributes(new { style = "width: 100%;" })
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("List Font")
+                @(Html.Kendo().DropDownListFor(x => x.ListFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("List Font Size")
+                @Html.Kendo().TextBoxFor(model => model.ListFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Selected Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.SelectedColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Selected Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.SelectedBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Selected Background Alpha")
+                @Html.Kendo().Slider().Name("SelectedBackgroundAlpha").Min(0).Max(1).SmallStep(0.01).LargeStep(1).Value((double)Model.SelectedBackgroundAlpha).HtmlAttributes(new { style = "width: 100%;" })
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Selected Font")
+                @(Html.Kendo().DropDownListFor(x => x.SelectedFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Selected Font Size")<br />
+                @Html.Kendo().TextBoxFor(model => model.SelectedFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Selected Icon Type")<br />
+                @Html.Kendo().TextBoxFor(model => model.SelectedIconType).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Selected Icon Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.SelectedIconColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Button Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ButtonColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Button Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ButtonBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Button Background Alpha")
+                @Html.Kendo().Slider().Name("ButtonBackgroundAlpha").Min(0).Max(1).SmallStep(0.01).LargeStep(1).Value((double)Model.ButtonBackgroundAlpha).HtmlAttributes(new { style = "width: 100%;" })
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Button Font")
+                @(Html.Kendo().DropDownListFor(x => x.ButtonFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Button Font Size")<br />
+                @Html.Kendo().TextBoxFor(model => model.ButtonFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("ProgressBar Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ProgressBarColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("ProgressBar Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.ProgressBarBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("ProgressBar Background Alpha")
+                @Html.Kendo().Slider().Name("ProgressBarBackgroundAlpha").Min(0).Max(1).SmallStep(0.01).LargeStep(1).Value((double)Model.ProgressBarBackgroundAlpha).HtmlAttributes(new { style = "width: 100%;" })
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Tooltip Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.TooltipColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Tooltip Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.TooltipBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Tooltip Background Alpha")
+                @Html.Kendo().Slider().Name("TooltipBackgroundAlpha").Min(0).Max(1).SmallStep(0.01).LargeStep(1).Value((double)Model.TooltipBackgroundAlpha).HtmlAttributes(new { style = "width: 100%;" })
+            </div>  
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Tooltip Font")
+                @(Html.Kendo().DropDownListFor(x => x.TooltipFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Tooltip Font Size")
+                @Html.Kendo().TextBoxFor(model => model.TooltipFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Header Title")
+                @Html.Kendo().TextBoxFor(model => model.HeaderTitle).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Header Image")
+                @Html.Kendo().TextBoxFor(model => model.HeaderImage).HtmlAttributes(new { @id = "HeaderImage", style = "width: 100%; display:none;" })
+                @(
+                Html.Kendo().Upload()
+                .Name("HeaderImage1")
+                .ShowFileList(true)
+                .Multiple(false)
+                .Messages(m => m.Select("Select Image..."))
+                .Async(async => async
+                .Save("UploadImage", "Upload")
+                .SaveField("image")
+                .AutoUpload(true)
+                )
+                  .Events(events => events.Success("onSelectHeaderImage"))
+                )
+                @if (Model.HeaderImage != null)
+                {
+                    <img id="HeaderImg" src="@Url.Content("~/Images/",true)@Model.HeaderImage" style='max-width: 150px; max-height: 150px;'>
+                    <a href="javascript:DeleteHeaderImage();"><img src="@Url.Content("~/Content/Images/",true)delete.png" style="" /></a>
+                }
+                else
+                {
+                    <img id="HeaderImg" src="" style='max-width: 150px; max-height: 150px;'>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Header Font")
+                @(Html.Kendo().DropDownListFor(x => x.HeaderFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Header Font Size")
+                @Html.Kendo().TextBoxFor(model => model.HeaderFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Header Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.HeaderColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Header Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.HeaderBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Header Background Image")
+                @Html.Kendo().TextBoxFor(model => model.HeaderBackgroundImage).HtmlAttributes(new { @id = "HeaderBackgroundImage", style = "width: 100%; display:none;" })
+                @(
+                Html.Kendo().Upload()
+                .Name("HeaderBackgroundImage1")
+                .ShowFileList(true)
+                .Multiple(false)
+                .Messages(m => m.Select("Select Image..."))
+                .Async(async => async
+                .Save("UploadImage", "Upload")
+                .SaveField("image")
+                .AutoUpload(true)
+                ).Events(events => events.Success("onSelectHeaderBackgroundImage"))
+                )
+                @if (Model.HeaderBackgroundImage != null)
+                {
+                    <img id="HeaderBackImg" src="@Url.Content("~/Images/",true)@Model.HeaderBackgroundImage" style='max-width: 150px; max-height: 150px;'>
+                    <a href="javascript:DeleteHeaderBackgroundImage();"><img src="@Url.Content("~/Content/Images/",true)delete.png" style="" /></a>
+                }
+                else
+                {
+                    <img id="HeaderBackImg" src="" style='max-width: 150px; max-height: 150px;'>
+                }
+
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Header Effect")
+                @Html.Kendo().TextBoxFor(model => model.HeaderEffect).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Back Button Type")
+                @Html.Kendo().TextBoxFor(model => model.BackButtonType).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Back Button Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.BackButtonColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Back Button Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.BackButtonBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Body Font")
+
+                @(Html.Kendo().DropDownListFor(x => x.BodyFontId)
+                .HtmlAttributes(new { style = "width:  100%;" })
+                .DataTextField("Name")
+                .DataValueField("FontId")
+                .DataSource(source => source
+                    .Custom()
+                    .Transport(transport => transport
+                        .Read(read =>
+                        {
+                            read.Url(Url.Action("Fonts", "Item"));
+                        })
+                    )
+                )
+                )
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Body Font Size")
+                @Html.Kendo().TextBoxFor(model => model.BodyFontSize).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Body Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.BodyColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                @Html.Label("Body Background Color")<br />
+                @Html.Kendo().ColorPickerFor(model => model.BodyBackgroundColor).HtmlAttributes(new { style = "width: 100%;" })
+            </div>
+            <div class="col-sm-6">
+                @Html.Label("Body Background Image")
+                @Html.Kendo().TextBoxFor(model => model.BodyBackgroundPortraitImage).HtmlAttributes(new { @id = "BodyBackgroundPortraitImage", style = "width: 100%; display:none;" })
+                @(
+                Html.Kendo().Upload()
+                .Name("BodyBackgroundImage1")
+                .ShowFileList(true)
+                .Multiple(false)
+                .Messages(m => m.Select("Select Image..."))
+                .Async(async => async
+                .Save("UploadImage", "Upload")
+                .SaveField("image")
+                .AutoUpload(true)
+                ).Events(events => events.Success("onSelectBodyBackgroundPortraitImage"))
+                )
+                @if (Model.BodyBackgroundPortraitImage != null)
+                {
+                    <img id="BodyBackImg" src="@Url.Content("~/Images/",true)@Model.BodyBackgroundPortraitImage" style='max-width: 150px; max-height: 150px;'>
+                    <a href="javascript:DeleteBodyBackgroundPortraitImage();"><img src="@Url.Content("~/Content/Images/",true)delete.png" style="" /></a>
+                }
+                else
+                {
+                    <img id="BodyBackImg" src="" style='max-width: 150px; max-height: 150px;'>
+                }
+            </div>
+        </div>
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-2 text-center">
+                @Html.Kendo().Button().Name("Submit").Content("Update")
+            </div>
+        </div>
+
+    </div>
+}
+
+<script>
+    function DeleteBodyBackgroundPortraitImage() {
+        $('#BodyBackgroundPortraitImage').val("");
+        $('#BodyBackImg').remove();
+    }
+
+
+    function DeleteHeaderImage() {
+        $('#HeaderImage').val("");
+        $('#HeaderImg').remove();
+    }
+
+    function DeleteHeaderBackgroundImage() {
+        $('#HeaderBackgroundImage').val("");
+        $('#HeaderBackImg').remove();
+    }
+
+
+</script>

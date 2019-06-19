@@ -1,0 +1,6 @@
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\bin\Debug\ProcessDailyEpicFiles.exe.config
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\bin\Debug\ProcessDailyEpicFiles.exe
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\bin\Debug\ProcessDailyEpicFiles.pdb
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\obj\Debug\ProcessDailyEpicFiles.csprojResolveAssemblyReference.cache
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\obj\Debug\ProcessDailyEpicFiles.exe
+C:\Repositories\TransafeRx\ProcessDailyEpicFiles\obj\Debug\ProcessDailyEpicFiles.pdb
