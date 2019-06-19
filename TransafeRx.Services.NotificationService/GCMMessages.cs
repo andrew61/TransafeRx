@@ -1,4 +1,4 @@
-﻿namespace TransafeRx.Services.NotificationService
+namespace TransafeRx.Services.NotificationService
 {
     public class GCMMessages
     {
@@ -10,7 +10,6 @@
 
             //    if (reminders.Any())
             //    {
-            //        var config = new GcmConfiguration(Shared.Properties.Settings.Default.GooglePushSenderID, Shared.Properties.Settings.Default.GooglePushAuthToken, null);
             //        var gcmBroker = new GcmServiceBroker(config);
 
             //        gcmBroker.OnNotificationFailed += (notification, aggregateEx) =>

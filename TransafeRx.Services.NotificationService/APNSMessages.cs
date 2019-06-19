@@ -21,9 +21,7 @@ namespace TransafeRx.Services.NotificationService
                     var allMedicationsNotTaken = db.GetAllMedicationsNotTakenWindow(61).ToList();//Where(x => x.UserId == "3fd5b550-c517-4ff5-9825-c55b37d50175").ToList();
 
                     //var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Sandbox,
-                    //Shared.Properties.Resources.TransafeRx_DEV_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
                     var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Production,
-                    Shared.Properties.Resources.TransafeRx_PROD_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
 
                     var apnsBroker = new ApnsServiceBroker(config);
 

@@ -20,9 +20,7 @@ namespace TransafeRx.Services.NotificationService
                     var deviceTokenUsers = db.GetAllDeviceTokensWithUser().ToList();
 
                     //var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Sandbox,
-                    //Shared.Properties.Resources.TransafeRx_DEV_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
                     var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Production,
-                    Shared.Properties.Resources.TransafeRx_PROD_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
 
                     var apnsBroker = new ApnsServiceBroker(config);
 
