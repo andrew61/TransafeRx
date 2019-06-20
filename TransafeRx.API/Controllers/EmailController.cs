@@ -19,6 +19,8 @@ namespace TransafeRx.API.Controllers
         {
             var user = db.GetUser(UserId).SingleOrDefault();
             string body = "Subject: " + user.MRN + "\nHas been admitted to hospital.";
+            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+            MailAddress from = new MailAddress("tachl_support@musc.edu");
             MailMessage message = new MailMessage(from, to);
             message.To.Add("taberd@musc.edu");
             message.To.Add("fleminj@musc.edu");
@@ -37,6 +39,8 @@ namespace TransafeRx.API.Controllers
         {
             var user = db.GetUser(UserId).SingleOrDefault();
             string body = "Subject: " + user.MRN + "\nHas been discharged from hospital.";
+            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+            MailAddress from = new MailAddress("tachl_support@musc.edu");
             MailMessage message = new MailMessage(from, to);
             message.To.Add("taberd@musc.edu");
             message.To.Add("fleminj@musc.edu");
@@ -55,6 +59,8 @@ namespace TransafeRx.API.Controllers
         {
             var user = db.GetUser(UserId).SingleOrDefault();
             string body = "Subject: " + user.MRN + "\nHas visited the ER.";
+            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+            MailAddress from = new MailAddress("tachl_support@musc.edu");
             MailMessage message = new MailMessage(from, to);
             message.To.Add("taberd@musc.edu");
             message.To.Add("fleminj@musc.edu");
@@ -72,6 +78,8 @@ namespace TransafeRx.API.Controllers
         {
             var user = db.GetUser(UserId).SingleOrDefault();
             string body = "Subject: " + user.MRN + "\nHas a medication change";
+            SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+            MailAddress from = new MailAddress("tachl_support@musc.edu");
             MailMessage message = new MailMessage(from, to);
             message.To.Add("taberd@musc.edu");
             message.To.Add("fleminj@musc.edu");

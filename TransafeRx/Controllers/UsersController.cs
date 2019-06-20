@@ -1,4 +1,4 @@
-using TransafeRx.Models;
+﻿using TransafeRx.Models;
 using TransafeRx.Shared.Models;
 using EntityFrameworkExtras.EF6;
 using Kendo.Mvc.Extensions;
@@ -116,6 +116,8 @@ namespace TransafeRx.Controllers
 
             var user = db.GetUser(UserId).SingleOrDefault();
 
+            var tClient = new TwilioRestClient(ConfigurationManager.AppSettings["twilio_sid"], ConfigurationManager.AppSettings["twilio_authToken"]);
+            tClient.SendMessage(ConfigurationManager.AppSettings["twilioNbr"], user.PhoneNumber, message);
             
             string sentBy = User.Identity.GetUserId();
             var sms = db.AddPatientSMS(UserId, message, sentBy, user.PhoneNumber);

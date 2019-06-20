@@ -21,7 +21,9 @@ namespace TransafeRx.Services.NotificationService
                     var allMedicationsNotTaken = db.GetAllMedicationsNotTakenWindow(61).ToList();//Where(x => x.UserId == "3fd5b550-c517-4ff5-9825-c55b37d50175").ToList();
 
                     //var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Sandbox,
+                    //Shared.Properties.Resources.TransafeRx_DEV_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
                     var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Production,
+                    Shared.Properties.Resources.TransafeRx_PROD_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
 
                     var apnsBroker = new ApnsServiceBroker(config);
 
@@ -212,6 +214,8 @@ namespace TransafeRx.Services.NotificationService
                 }
                 catch (Exception e)
                 {
+                    SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+                    MailAddress from = new MailAddress("tachl_support@musc.edu");
                     MailMessage message = new MailMessage(from, to);
                     message.Body = "An error has occured in TransafeRx Medication Notification Service.  Please see below for details.\r\n";
                     message.Body += "Stack Trace: " + e.StackTrace + "\r\n";

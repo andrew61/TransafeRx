@@ -1,4 +1,4 @@
-using TransafeRx.Shared.Models;
+﻿using TransafeRx.Shared.Models;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -10,6 +10,8 @@ namespace TransafeRx.API.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post(ErrorMessage errorMessage)
         {
+            using (SmtpClient client = new SmtpClient("mailhost.musc.edu"))
+            using (MailMessage message = new MailMessage("tachl_support@musc.edu", "tachl_support@musc.edu"))
             {
                 message.Subject = errorMessage.Subject;
                 message.Body = errorMessage.Body;

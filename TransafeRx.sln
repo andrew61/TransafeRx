@@ -49,4 +49,29 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://spurstech.visualstudio.com/
+		SccProjectUniqueName0 = TransafeRx\\TransafeRx.csproj
+		SccProjectName0 = TransafeRx
+		SccAuxPath0 = https://spurstech.visualstudio.com
+		SccLocalPath0 = TransafeRx
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = TransafeRx.Shared\\TransafeRx.Shared.csproj
+		SccProjectName1 = TransafeRx.Shared
+		SccAuxPath1 = https://spurstech.visualstudio.com
+		SccLocalPath1 = TransafeRx.Shared
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = TransafeRx.API\\TransafeRx.API.csproj
+		SccProjectName2 = TransafeRx.API
+		SccAuxPath2 = https://spurstech.visualstudio.com
+		SccLocalPath2 = TransafeRx.API
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = TransafeRx.Services.NotificationService\\TransafeRx.Services.NotificationService.csproj
+		SccProjectName3 = TransafeRx.Services.NotificationService
+		SccAuxPath3 = https://spurstech.visualstudio.com
+		SccLocalPath3 = TransafeRx.Services.NotificationService
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
 EndGlobal

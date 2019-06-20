@@ -20,7 +20,9 @@ namespace TransafeRx.Services.NotificationService
                     var deviceTokenUsers = db.GetAllDeviceTokensWithUser().ToList();
 
                     //var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Sandbox,
+                    //Shared.Properties.Resources.TransafeRx_DEV_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
                     var config = new ApnsConfiguration(ApnsConfiguration.ApnsServerEnvironment.Production,
+                    Shared.Properties.Resources.TransafeRx_PROD_PUSH, Shared.Properties.Settings.Default.ApplePushPW);
 
                     var apnsBroker = new ApnsServiceBroker(config);
 
@@ -236,6 +238,8 @@ namespace TransafeRx.Services.NotificationService
                 }
                 catch (Exception e)
                 {
+                    SmtpClient client = new SmtpClient(ConfigurationManager.AppSettings["SMTP"]);
+                    MailAddress from = new MailAddress("tachl_support@musc.edu");
                     MailMessage message = new MailMessage(from, to);
                     message.Body = "An error has occured in TransafeRx User Notification Service.  Please see below for details.\r\n";
                     message.Body += "Stack Trace: " + e.StackTrace + "\r\n";
